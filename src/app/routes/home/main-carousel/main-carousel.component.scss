@@ -1,0 +1,88 @@
+.carousel-container {
+  width: 100%;
+  overflow: hidden;
+
+  .carousel {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: calc(
+      33.333% - 0.667rem
+    ); // Ensure 3 columns with proper spacing
+    gap: 1rem;
+    scroll-snap-type: inline mandatory;
+    // Enable horizontal scrolling
+    overflow-x: auto;
+    scroll-snap-type: inline mandatory;
+    overscroll-behavior-inline: contain;
+    // Smooth scrolling and drag properties
+    scroll-behavior: smooth;
+    -ms-overflow-style: none; // IE and Edge
+    scrollbar-width: none; // Firefox
+    // Cursor styles for dragging
+    cursor: grab;
+    // Prevent text selection
+    user-select: none;
+
+    & > * {
+      scroll-snap-align: start;
+    }
+
+    // Hide scrollbar but keep functionality
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    &.active {
+      cursor: grabbing;
+    }
+
+    .carousel-image-container {
+      scroll-snap-align: start;
+      width: 100%;
+    }
+
+    .carousel-item {
+      display: block;
+      width: 100%;
+
+      img.carousel-image {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        aspect-ratio: 510 / 669;
+      }
+    }
+  }
+
+  // // Navigation Dots
+  // .carousel-dots {
+  //   display: flex;
+  //   justify-content: center;
+  //   align-items: center;
+  //   margin-top: 1rem;
+
+  //   .dot {
+  //     width: 10px;
+  //     height: 10px;
+  //     border-radius: 50%;
+  //     background-color: #ccc;
+  //     margin: 0 5px;
+  //     cursor: pointer;
+  //     transition: background-color 0.3s ease;
+
+  //     &.active {
+  //       background-color: #333;
+  //       width: 12px;
+  //       height: 12px;
+  //     }
+  //   }
+  // }
+
+  // Responsive adjustments
+  @media (max-width: 750px) {
+    .carousel {
+      grid-auto-columns: 100%; // Full width on small screens
+      gap: 0.5rem;
+    }
+  }
+}

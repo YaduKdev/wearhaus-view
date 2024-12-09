@@ -1,0 +1,27 @@
+<div>
+  <a
+    [routerLink]="productData.path"
+    class="product-preview-item overflow-hidden cursor-pointer"
+  >
+    <div class="w-full overflow-hidden">
+      <img
+        [src]="productData.imageUrl"
+        class="product-preview-image"
+        [alt]="productData.title"
+        [title]="productData.title"
+      />
+    </div>
+    <div class="p-4 flex flex-col">
+      <h3 class="font-bold lg:text-sm sm:text-xs">{{ productData.title }}</h3>
+      <h4 class="font-medium lg:text-sm sm:text-xs preview-price-text">
+        &#8377;{{ productData.discountedPrice }} &nbsp;
+        <span class="preview-amount"
+          >&#8377;{{ productData.price }} &nbsp;</span
+        >
+        <span class="font-extralight text-green-400"
+          >&nbsp;{{ productData.discountPercent }}% OFF</span
+        >
+      </h4>
+    </div>
+  </a>
+</div>

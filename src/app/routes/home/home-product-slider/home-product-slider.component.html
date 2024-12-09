@@ -1,0 +1,53 @@
+<!-- <div class="p-5 lg:px-20 lg:py-10">
+  <p class="font-semibold text-2xl opacity-75">{{ title }}</p>
+  <div class="flex flex-wrap justify-center gap-3 w-full">
+    <ng-container class="w-full" *ngFor="let item of products">
+      <app-home-product-card [product]="item" />
+    </ng-container>
+  </div>
+</div> -->
+<div class="slider-container px-8 my-24">
+  <p class="font-semibold lg:text-2xl sm:text-xl mb-10 opacity-75">
+    {{ heading }}
+  </p>
+  <div
+    #sliderRef
+    class="slider"
+    (mousedown)="startDrag($event)"
+    (mousemove)="drag($event)"
+    (mouseup)="stopDrag()"
+    (mouseleave)="stopDrag()"
+    (touchstart)="startDrag($event)"
+    (touchmove)="drag($event)"
+    (touchend)="stopDrag()"
+  >
+    <ng-container
+      class="slider-image-container"
+      *ngFor="let item of products; let i = index"
+    >
+      <a
+        [routerLink]="item.path"
+        class="slider-item overflow-hidden cursor-pointer"
+      >
+        <div class="w-full overflow-hidden">
+          <img
+            [src]="item.imageUrl"
+            class="slider-image hover:scale-105 transition-all duration-500"
+            [alt]="item.title"
+            [title]="item.title"
+          />
+        </div>
+        <div class="p-4 flex flex-col">
+          <h3 class="font-bold lg:text-sm sm:text-xs">{{ item.title }}</h3>
+          <h4 class="font-medium lg:text-sm sm:text-xs price-text">
+            &#8377;{{ item.discountedPrice }} &nbsp;
+            <span class="amount">&#8377;{{ item.price }} &nbsp;</span>
+            <span class="font-extralight text-green-400"
+              >&nbsp;{{ item.discountPercent }}% OFF</span
+            >
+          </h4>
+        </div>
+      </a>
+    </ng-container>
+  </div>
+</div>

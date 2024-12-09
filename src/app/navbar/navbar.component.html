@@ -1,0 +1,137 @@
+<!-- <div class="fixed top-0 z-50 right-0 left-0 navbar">
+  <div class="flex h-20 items-center justify-between">
+    <div>
+      <img class="w-12" src="logo.png" alt="WEARHAUS" />
+    </div>
+  </div>
+</div> -->
+<!-- nav.component.html -->
+<header class="navigation-header fixed">
+  <!-- Mobile Header -->
+  <div *ngIf="isMobileView" class="mobile-header">
+    <div class="mobile-header-left">
+      <button class="menu-toggle" (click)="toggleMobileMenu()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <img
+        [routerLink]="''"
+        src="logo.png"
+        alt="Brand Logo"
+        class="mobile-logo cursor-pointer"
+      />
+    </div>
+    <div class="mobile-header-right">
+      <button class="search-icon">
+        <mat-icon>search</mat-icon>
+      </button>
+      <button class="wishlist-icon">
+        <mat-icon>favorite_border</mat-icon>
+      </button>
+      <button class="cart-icon">
+        <mat-icon>shopping_bag</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Sliding Menu -->
+  <div *ngIf="isMobileView && isMobileMenuOpen" class="mobile-menu-overlay">
+    <div class="mobile-menu-content">
+      <div class="mobile-menu-header">
+        <button class="close-menu" (click)="closeMobileMenu()">
+          <mat-icon>close</mat-icon>
+        </button>
+        <div class="mobile-menu-login">
+          <button>Login</button>
+          <button>Sign Up</button>
+        </div>
+      </div>
+
+      <div class="mobile-menu-categories">
+        <div class="category-group" *ngFor="let category of categories">
+          <div
+            class="category-header"
+            (click)="setActiveCategory(category.name)"
+          >
+            {{ category.name }}
+            <mat-icon class="dropdown-arrow">
+              {{
+                activeCategory === category.name ? "expand_less" : "expand_more"
+              }}
+            </mat-icon>
+          </div>
+
+          <div *ngIf="activeCategory === category.name" class="subcategories">
+            <div
+              *ngFor="let subcategory of category.sections"
+              class="subcategory-item"
+            >
+              {{ subcategory.name }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Desktop Header -->
+  <div *ngIf="!isMobileView" class="desktop-header">
+    <div class="desktop-header-container">
+      <div
+        [routerLink]="''"
+        class="logo-section cursor-pointer flex items-center justify-center gap-2"
+      >
+        <img src="logo.png" alt="Brand Logo" class="desktop-logo" />
+        <p class="logo-text lg:text-2xl sm:text-xl">WEARHAUS</p>
+      </div>
+
+      <nav class="main-navigation">
+        <div class="nav-categories open-button">
+          <div class="nav-category" *ngFor="let category of categories">
+            <button
+              class="menu-button"
+              (click)="openNavContent(category.sections)"
+              mat-button
+            >
+              {{ category.name }}
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      <div class="header-actions">
+        <div class="search-container">
+          <input
+            type="text"
+            placeholder="Search by products"
+            class="search-input"
+          />
+          <button class="search-button">
+            <mat-icon>search</mat-icon>
+          </button>
+        </div>
+        <div class="user-actions">
+          <button *ngIf="true" class="login-button">Login</button>
+          <button *ngIf="false" class="user-icon">
+            <mat-icon mat-button [matMenuTriggerFor]="userMenu"
+              >account_circle</mat-icon
+            >
+          </button>
+          <mat-menu #userMenu="matMenu">
+            <button mat-menu-item>Orders</button>
+            <button mat-menu-item>Profile</button>
+            <button mat-menu-item>Logout</button>
+          </mat-menu>
+          <button class="wishlist-icon">
+            <mat-icon>favorite_border</mat-icon>
+          </button>
+          <button class="cart-icon">
+            <mat-icon>shopping_bag</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="isNavbarContentOpen && !isMobileView" class="modal-container">
+    <app-nav-content [category]="selectedCategory" />
+  </div>
+</header>

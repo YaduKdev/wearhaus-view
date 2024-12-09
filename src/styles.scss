@@ -1,1 +1,41 @@
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 255, 255, 255;
+  --text: 0, 0, 0;
+  --shadow: 0, 0, 0, 0.1;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: 0, 0, 0;
+    --text: 255, 255, 255;
+    --shadow: 90, 90, 90, 0.2;
+  }
+}
+
+body {
+  margin: 0;
+  background: rgba(var(--background));
+  color: rgba(var(--text));
+}
+
+.box {
+  box-shadow: rgba(var(--text), 0.05) 0px 4px 12px;
+}
+
+.hideScrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

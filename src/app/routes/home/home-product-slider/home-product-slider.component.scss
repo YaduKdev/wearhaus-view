@@ -1,0 +1,127 @@
+.slider-container {
+  width: 100%;
+  overflow: hidden;
+
+  .slider {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: calc(
+      24% - 0.667rem
+    ); // Ensure 3 columns with proper spacing
+    gap: 1rem;
+    scroll-snap-type: inline mandatory;
+    // Enable horizontal scrolling
+    overflow-x: auto;
+    scroll-snap-type: inline mandatory;
+    overscroll-behavior-inline: contain;
+    // Smooth scrolling and drag properties
+    scroll-behavior: smooth;
+    -ms-overflow-style: none; // IE and Edge
+    scrollbar-width: none; // Firefox
+    // Cursor styles for dragging
+    cursor: grab;
+    // Prevent text selection
+    user-select: none;
+
+    & > * {
+      scroll-snap-align: start;
+    }
+
+    // Hide scrollbar but keep functionality
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    &.active {
+      cursor: grabbing;
+    }
+
+    .slider-image-container {
+      scroll-snap-align: start;
+      width: 100%;
+      min-width: 132.75px;
+    }
+
+    .amount {
+      color: rgba(var(--text), 0.5);
+      text-decoration: none;
+      position: relative;
+      &:before {
+        content: " ";
+        display: block;
+        width: 100%;
+        border-top: 2px solid rgba(red, 0.8);
+        height: 50%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        transform: rotate(-7deg);
+      }
+    }
+
+    .slider-item {
+      display: block;
+      width: 100%;
+
+      img.slider-image {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        aspect-ratio: 510 / 669;
+      }
+    }
+  }
+
+  // Responsive adjustments
+  @media (max-width: 850px) {
+    .slider {
+      grid-auto-columns: 45%; // Full width on small screens
+      gap: 0.5rem;
+
+      font-size: 0.75rem /* 12px */;
+      line-height: 1rem /* 16px */;
+
+      .price-text {
+        font-size: 0.7rem;
+      }
+    }
+  }
+
+  @media (max-width: 440px) {
+    .slider {
+      font-size: 0.66rem /* 12px */;
+
+      .price-text {
+        font-size: 0.55rem;
+      }
+    }
+  }
+
+  @media (max-width: 375px) {
+    .slider {
+      grid-auto-columns: 90%; // Full width on small screens
+      gap: 0.5rem;
+
+      font-size: 0.65rem /* 12px */;
+      line-height: 1rem /* 16px */;
+
+      .price-text {
+        font-size: 0.55rem;
+      }
+    }
+  }
+
+  @media (max-width: 200px) {
+    .slider {
+      grid-auto-columns: 90%; // Full width on small screens
+      gap: 0.2rem;
+
+      font-size: 0.55rem /* 12px */;
+      line-height: 1rem /* 16px */;
+
+      .price-text {
+        font-size: 0.45rem;
+      }
+    }
+  }
+}

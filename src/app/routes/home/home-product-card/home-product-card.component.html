@@ -1,0 +1,12 @@
+<div class="cursor-pointer flex flex-col items-center w-[21rem]">
+  <div class="h-[30rem] w-full overflow-hidden">
+    <img
+      class="h-full object-cover hover:scale-105 transition-all duration-500"
+      [src]="product.imageUrl"
+      [alt]="product.title"
+    />
+  </div>
+  <div class="p-4">
+    <h3 class="font-bold">{{ product.title }}</h3>
+  </div>
+</div>

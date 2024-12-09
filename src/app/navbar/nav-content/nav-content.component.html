@@ -1,0 +1,37 @@
+<div class="w-full nav-content-container">
+  <div class="w-full h-1/2 shadow-lg p-6">
+    <div class="flex justify-around">
+      <div class="flex flex-col">
+        <h1 class="mb-5 text-xl font-bold">Categories</h1>
+        <div class="flex flex-col items-start">
+          <button mat-button *ngFor="let item of category">
+            {{ item.name }}
+          </button>
+        </div>
+      </div>
+      <div class="flex flex-col mb-5 justify-center">
+        <h1 class="mb-5 text-xl font-bold">New Arrivals</h1>
+        <div class="flex gap-5">
+          <div>
+            <div>
+              <img
+                class="w-[19rem] h-[20rem] object-cover object-top"
+                src="https://images.bewakoof.com/t1080/women-s-brown-sugar-spice-everything-nice-graphic-printed-oversized-t-shirt-625586-1717578883-1.jpg"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="hidden lg:block">
+            <div>
+              <img
+                class="w-[19rem] h-[20rem] object-cover object-top"
+                src="https://images.bewakoof.com/t1080/men-s-red-moon-rider-graphic-printed-oversized-t-shirt-502017-1715257498-1.jpg"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

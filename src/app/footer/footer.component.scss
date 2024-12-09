@@ -1,0 +1,15 @@
+.footer-margin {
+  border-top: 2px solid rgba(var(--text));
+}
+
+@media screen and (max-width: 1024px) {
+  .desktop-footer {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .mobile-footer {
+    display: none;
+  }
+}

@@ -1,0 +1,32 @@
+<div class="carousel-container">
+  <div
+    #carouselRef
+    class="carousel"
+    (mousedown)="startDrag($event)"
+    (mousemove)="drag($event)"
+    (mouseup)="stopDrag()"
+    (mouseleave)="stopDrag()"
+    (touchstart)="startDrag($event)"
+    (touchmove)="drag($event)"
+    (touchend)="stopDrag()"
+  >
+    <ng-container
+      class="carousel-image-container"
+      *ngFor="let item of carouselData; let i = index"
+    >
+      <a [routerLink]="item.path" class="carousel-item">
+        <img [src]="item.image" class="carousel-image" alt="carousel image" />
+      </a>
+    </ng-container>
+  </div>
+
+  <!-- Navigation Dots -->
+  <!-- <div class="carousel-dots">
+    <span
+      *ngFor="let item of carouselData; let i = index"
+      class="dot"
+      [class.active]="currentIndex === i"
+      (click)="goToSlide(i)"
+    ></span>
+  </div> -->
+</div>
