@@ -1,0 +1,105 @@
+@use "@angular/material" as mat;
+
+.review-tab {
+  @include mat.tabs-overrides(
+    (
+      active-indicator-color: #ffd033,
+      active-focus-indicator-color: #ffd033,
+      active-label-text-color: rgba(var(--text)),
+      inactive-label-text-color: rgba(var(--text)),
+      active-focus-label-text-color: rgba(var(--text)),
+      active-hover-indicator-color: rgba(var(--text)),
+      active-hover-label-text-color: #ffd033,
+      active-ripple-color: #ffd033,
+      divider-color: rgba(var(--background)),
+      label-text-font: "Montserrat",
+      inactive-hover-label-text-color: #ffd033,
+      active-indicator-height: 0.4rem,
+      label-text-size: 1.3rem,
+    )
+  );
+}
+
+.ratings-bar-5 {
+  @include mat.progress-bar-overrides(
+    (
+      active-indicator-color: #2ca003,
+    )
+  );
+}
+
+.ratings-bar-4 {
+  @include mat.progress-bar-overrides(
+    (
+      active-indicator-color: #95cf81,
+    )
+  );
+}
+
+.ratings-bar-3 {
+  @include mat.progress-bar-overrides(
+    (
+      active-indicator-color: #ffc780,
+    )
+  );
+}
+
+.ratings-bar-2 {
+  @include mat.progress-bar-overrides(
+    (
+      active-indicator-color: #ed9c99,
+    )
+  );
+}
+
+.ratings-bar-1 {
+  @include mat.progress-bar-overrides(
+    (
+      active-indicator-color: #c0332e,
+    )
+  );
+}
+
+@media (max-width: 1024px) {
+  .preview-image-section {
+    width: 60%;
+  }
+}
+
+@media (max-width: 700px) and (min-width: 600px) {
+  .preview-image-section {
+    width: 90%;
+  }
+}
+
+@media (max-width: 600px) {
+  .preview-image-section {
+    width: 100%;
+  }
+
+  .preview-pics {
+    width: 2rem;
+    height: 2rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .cart-button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 350px) {
+  .preview-pics-button {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 100%;
+    padding: 0;
+    margin-right: 0.2;
+  }
+
+  .preview-pics {
+    width: 0;
+    height: 0;
+  }
+}

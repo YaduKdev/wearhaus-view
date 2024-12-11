@@ -1,1 +1,183 @@
-<p>product-details works!</p>
+<div class="px-5 lg:px-10 pb-32">
+  <p class="text-gray-500 pb-10">Products/Men/Hoodies</p>
+  <section class="lg:grid grid-cols-2 lg:gap-10">
+    <div class="col-span-1 flex items-center flex-col">
+      <div class="preview-image-section relative w-[64%]">
+        <img
+          (click)="handleImagePreview()"
+          [src]="currentImage"
+          class="w-full cursor-pointer h-auto object-cover"
+        />
+        <div
+          class="absolute bottom-0 left-0 right-0 flex justify-center items-center bg-gray-800 bg-opacity-50 p-2"
+        >
+          <button
+            *ngFor="let image of previewImages"
+            class="mr-2 border border-gray-300 p-1 preview-pics-button"
+            [class.border-yellow-500]="image === currentImage"
+            (click)="setImage(image)"
+          >
+            <img [src]="image" class="preview-pics w-12 h-12 object-cover" />
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-span-1 space-y-4 lg:space-y-10 mt-10 lg:mt-0">
+      <div class="space-y-0">
+        <p class="text-lg lg:text-xl">
+          Men's Orange Offline Typography Oversized Hoodies
+        </p>
+      </div>
+      <div class="flex items-center space-x-5">
+        <p class="text-sm lg:text-lg">₹999</p>
+        <p
+          class="text-sm lg:text-lg text-gray-500 line-through decoration-red-700"
+        >
+          ₹2,599
+        </p>
+        <p class="text-green-400 font-semibold text-sm lg:text-lg">61% OFF</p>
+      </div>
+      <div>
+        <p class="text-sm lg:text-lg font-semibold">Size</p>
+        <mat-radio-group
+          class="space-x-5"
+          aria-label="Select an option"
+          [(ngModel)]="selectedSize"
+        >
+          <mat-radio-button value="S"
+            ><span class="text-gray-500">S</span></mat-radio-button
+          >
+          <mat-radio-button value="M"
+            ><span class="text-gray-500">M</span></mat-radio-button
+          >
+          <mat-radio-button value="L"
+            ><span class="text-gray-500">L</span></mat-radio-button
+          >
+          <mat-radio-button value="XL"
+            ><span class="text-gray-500">XL</span></mat-radio-button
+          >
+        </mat-radio-group>
+      </div>
+      <div></div>
+      <div class="py-5 lg:pt-0">
+        <button
+          style="background-color: #ffd232; color: black"
+          class="cart-button w-80 p-4 lg:p-5 text-lg flex justify-center items-center gap-2"
+          (click)="handleAddToCart()"
+          mat-raised-button
+        >
+          <mat-icon>shopping_bag</mat-icon>Add To Bag
+        </button>
+      </div>
+      <div class="w-full lg:w-3/4">
+        <mat-tab-group class="review-tab">
+          <mat-tab label="Ratings">
+            <div class="w-full p-7 flex justify-between align-center">
+              <div class="w-1/3 flex flex-col justify-center items-center">
+                <h1 class="text-4xl font-semibold">4.5</h1>
+                <p class="opacity-60">431 ratings</p>
+                <p>star</p>
+              </div>
+              <div class="w-2/3 flex flex-col gap-2">
+                <div class="flex justify-between items-center gap-1">
+                  <p class="w-12 text-sm font-semibold">5 ★</p>
+                  <mat-progress-bar
+                    class="ratings-bar-5"
+                    mode="determinate"
+                    value="60"
+                  ></mat-progress-bar>
+                  <p class="w-12 text-xs font-thin justify-self-end text-right">
+                    (232)
+                  </p>
+                </div>
+                <div class="flex justify-center items-center gap-1">
+                  <p class="w-12 text-sm font-semibold">4 ★</p>
+                  <mat-progress-bar
+                    class="ratings-bar-4"
+                    mode="determinate"
+                    value="80"
+                  ></mat-progress-bar>
+                  <p class="w-12 text-xs font-thin text-right">(142)</p>
+                </div>
+                <div class="flex justify-center items-center gap-1">
+                  <p class="w-12 text-sm font-semibold">3 ★</p>
+                  <mat-progress-bar
+                    class="ratings-bar-3"
+                    mode="determinate"
+                    value="40"
+                  ></mat-progress-bar>
+                  <p class="w-12 text-xs font-thin text-right">(103)</p>
+                </div>
+                <div class="flex justify-center items-center gap-1">
+                  <p class="w-12 text-sm font-semibold">2 ★</p>
+                  <mat-progress-bar
+                    class="ratings-bar-2"
+                    mode="determinate"
+                    value="10"
+                  ></mat-progress-bar>
+                  <p class="w-12 text-xs font-thin text-right">(61)</p>
+                </div>
+                <div class="flex justify-center items-center gap-1">
+                  <p class="w-12 text-sm font-semibold">1 ★</p>
+                  <mat-progress-bar
+                    class="ratings-bar-1"
+                    mode="determinate"
+                    value="0"
+                  ></mat-progress-bar>
+                  <p class="w-12 text-xs font-thin text-right">(0)</p>
+                </div>
+              </div>
+            </div>
+          </mat-tab>
+          <mat-tab label="Reviews">
+            <div class="p-7 flex flex-col justify-center">
+              <ng-container *ngFor="let item of reviews">
+                <app-product-review-card />
+              </ng-container>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+  </section>
+  <section class="mt-10 lg:mt-24">
+    <h1 class="py-5 lg:py-8 text-3xl font-bold text-gray-500">
+      You May Also Like
+    </h1>
+    <div class="flex justify-around gap-4 flex-wrap lg:flex-nowrap">
+      <div *ngFor="let product of relatedProducts">
+        <app-product-preview-card [productData]="product" />
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- Image Preview Modal -->
+<div
+  *ngIf="showPreview"
+  class="z-50 fixed -top-20 left-0 w-full h-[120%] flex flex-col justify-center items-center bg-black bg-opacity-95"
+>
+  <div
+    (click)="handleImagePreview()"
+    class="fixed cursor-pointer top-2 right-2 text-white"
+  >
+    <mat-icon>close</mat-icon>
+  </div>
+  <div class="w-[30%]">
+    <img
+      *ngIf="currentImage"
+      [src]="currentImage"
+      class="w-full h-auto object-cover"
+    />
+    <div class="mt-5 flex justify-center items-center p-2">
+      <button
+        *ngFor="let image of previewImages"
+        class="mr-2 border border-gray-300 p-1"
+        [class.border-yellow-500]="image === currentImage"
+        (click)="setImage(image)"
+      >
+        <img [src]="image" class="w-12 h-12 object-cover" />
+      </button>
+    </div>
+  </div>
+</div>
