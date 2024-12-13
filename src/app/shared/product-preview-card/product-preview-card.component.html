@@ -3,7 +3,10 @@
     [routerLink]="productData.path"
     class="product-preview-item overflow-hidden cursor-pointer"
   >
-    <div class="w-full overflow-hidden">
+    <div
+      (click)="navigate('/product-details/productData.id')"
+      class="w-full overflow-hidden"
+    >
       <img
         [src]="productData.imageUrl"
         class="product-preview-image"

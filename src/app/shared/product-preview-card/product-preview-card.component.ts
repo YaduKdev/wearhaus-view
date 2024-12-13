@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-preview-card',
@@ -9,4 +9,10 @@ import { RouterModule } from '@angular/router';
 })
 export class ProductPreviewCardComponent {
   @Input() productData: any;
+
+  constructor(private router: Router) {}
+
+  navigate(path: string) {
+    this.router.navigate([path]);
+  }
 }

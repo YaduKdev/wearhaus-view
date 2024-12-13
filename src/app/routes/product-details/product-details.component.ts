@@ -8,6 +8,8 @@ import { ProductReviewCardComponent } from './product-review-card/product-review
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { ProductPreviewCardComponent } from '../../shared/product-preview-card/product-preview-card.component';
 import oversized_tshirts from '../../../Data/Men/oversized_tshirts.json';
+import { StarRatingComponent } from '../../shared/star-rating/star-rating.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-details',
@@ -20,6 +22,7 @@ import oversized_tshirts from '../../../Data/Men/oversized_tshirts.json';
     ProductReviewCardComponent,
     MatProgressBarModule,
     ProductPreviewCardComponent,
+    StarRatingComponent,
   ],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.scss',
@@ -39,6 +42,8 @@ export class ProductDetailsComponent {
   currentImage: any;
   relatedProducts: any;
 
+  constructor(private router: Router) {}
+
   handleImagePreview() {
     this.showPreview = !this.showPreview;
   }
@@ -54,5 +59,7 @@ export class ProductDetailsComponent {
 
   handleAddToCart() {
     console.log('SELECTED SIZE', this.selectedSize);
+
+    this.router.navigate(['cart']);
   }
 }
