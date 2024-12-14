@@ -24,6 +24,18 @@
       <button class="search-icon">
         <mat-icon>search</mat-icon>
       </button>
+      <button *ngIf="true" class="user-icon">
+        <mat-icon mat-button [matMenuTriggerFor]="userMenuMobile"
+          >account_circle</mat-icon
+        >
+      </button>
+      <mat-menu #userMenuMobile="matMenu">
+        <button (click)="navigateTo('user/orders')" mat-menu-item>
+          Orders
+        </button>
+        <button mat-menu-item>Profile</button>
+        <button mat-menu-item>Logout</button>
+      </mat-menu>
       <button class="wishlist-icon">
         <mat-icon>favorite_border</mat-icon>
       </button>
@@ -41,8 +53,7 @@
           <mat-icon>close</mat-icon>
         </button>
         <div class="mobile-menu-login">
-          <button>Login</button>
-          <button>Sign Up</button>
+          <button *ngIf="false">Login</button>
         </div>
       </div>
 
@@ -110,14 +121,16 @@
           </button>
         </div>
         <div class="user-actions">
-          <button *ngIf="true" class="login-button">Login</button>
-          <button *ngIf="false" class="user-icon">
+          <button *ngIf="false" class="login-button">Login</button>
+          <button *ngIf="true" class="user-icon">
             <mat-icon mat-button [matMenuTriggerFor]="userMenu"
               >account_circle</mat-icon
             >
           </button>
           <mat-menu #userMenu="matMenu">
-            <button mat-menu-item>Orders</button>
+            <button (click)="navigateTo('user/orders')" mat-menu-item>
+              Orders
+            </button>
             <button mat-menu-item>Profile</button>
             <button mat-menu-item>Logout</button>
           </mat-menu>

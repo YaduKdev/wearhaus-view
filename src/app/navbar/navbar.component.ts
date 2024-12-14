@@ -18,7 +18,7 @@ import {
   HostListener,
 } from '@angular/core';
 import { isPlatformBrowser, CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { NavContentComponent } from './nav-content/nav-content.component';
@@ -46,7 +46,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
   selectedCategory: any;
   private resizeListener: (() => void) | null = null;
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.checkScreenSize();
@@ -123,33 +126,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.activeCategory = null;
   }
 
-  // Sample categories data
-  // categories = [
-  //   {
-  //     name: 'Men',
-  //     subcategories: [
-  //       'T-Shirts',
-  //       'Shirts',
-  //       'Pants',
-  //       'Shorts',
-  //       'Jackets',
-  //       'Sweatshirts & Hoodies',
-  //     ],
-  //   },
-  //   {
-  //     name: 'Women',
-  //     subcategories: [
-  //       'Tops',
-  //       'Dresses',
-  //       'Shirts',
-  //       'Pants',
-  //       'Skirts',
-  //       'Jumpsuits',
-  //     ],
-  //   },
-  //   {
-  //     name: 'Sneakers',
-  //     subcategories: ['Bags', 'Caps', 'Socks', 'Masks', 'Phone Cases'],
-  //   },
-  // ];
+  navigateTo(path: any) {
+    this.router.navigate([path]);
+  }
 }

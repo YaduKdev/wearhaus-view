@@ -1,1 +1,33 @@
-<p>orders works!</p>
+<div class="py-20 px-5 lg:px-20">
+  <h1 class="text-2xl font-bold text-center py-10">Orders</h1>
+  <div class="lg:grid grid-cols-4 gap-5">
+    <div class="col-span-1">
+      <h2 class="font-semibold mb-2 text-center lg:text-left">Filters</h2>
+      <div class="flex justify-center lg:flex-col mb-2 lg:mb-0">
+        <div *ngFor="let option of orderFilters">
+          <div class="flex items-center">
+            <mat-checkbox
+              class="order-filter-checkbox"
+              id="option.value"
+              [value]="option.value"
+            >
+              <span class="option-label text-sm text-gray-500">
+                {{ option.label }}
+              </span>
+            </mat-checkbox>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-span-3 space-y-5">
+      <div class="space-y-5" *ngFor="let item of orders">
+        <div *ngFor="let orderItem of item">
+          <app-order-card
+            (click)="navigateToOrderDetails(6)"
+            class="cursor-pointer"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

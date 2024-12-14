@@ -1,0 +1,40 @@
+<div class="hidden lg:flex justify-center space-x-5 w-full">
+  <div
+    *ngFor="let step of steps; let index = index; let last = last"
+    class="flex justify-between items-center space-x-5"
+  >
+    <div
+      [ngClass]="{
+        'bg-green-500': activeStep.id >= step.id,
+        'bg-gray-500': activeStep.id < step.id
+      }"
+      class="h-8 w-8 rounded-full flex justify-center items-center"
+    >
+      <mat-icon>check_circle_outline</mat-icon>
+    </div>
+    <span
+      [ngClass]="{
+        'text-green-500': activeStep.id >= step.id,
+        'text-gray-500': activeStep.id < step.id
+      }"
+      class="text-sm"
+      >{{ step.title }}</span
+    >
+    <div *ngIf="!last" class="w-[10vw]">
+      <mat-divider
+        [ngClass]="{
+          'divider-complete': activeStep.id > step.id,
+          'divider-incomplete': activeStep.id < step.id
+        }"
+      ></mat-divider>
+    </div>
+  </div>
+</div>
+<div class="flex lg:hidden justify-center items-center gap-4 mt-10 w-full">
+  <div
+    class="bg-green-500 h-8 w-8 rounded-full flex justify-center items-center"
+  >
+    <mat-icon>check_circle_outline</mat-icon>
+  </div>
+  <span class="text-green-500 text-lg">ORDER {{ activeStep.title }}</span>
+</div>

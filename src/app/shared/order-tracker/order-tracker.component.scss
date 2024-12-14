@@ -1,0 +1,18 @@
+@use "@angular/material" as mat;
+
+// Customize the entire app. Change :root to your selector if you want to scope the styles.
+.divider-complete {
+  @include mat.divider-overrides(
+    (
+      color: green,
+    )
+  );
+}
+
+.divider-incomplete {
+  @include mat.divider-overrides(
+    (
+      color: gray,
+    )
+  );
+}

@@ -1,0 +1,31 @@
+.order-filter-checkbox {
+  --mdc-checkbox-unselected-icon-color: rgba(var(--text), 0.6) !important;
+  --mdc-checkbox-unselected-hover-icon-color: rgba(var(--text)) !important;
+  --mdc-checkbox-unselected-focus-icon-color: rgba(var(--text), 0.6) !important;
+}
+
+@media (max-width: 474px) {
+  .option-label {
+    font-size: small;
+  }
+
+  .order-filter-checkbox {
+    margin-right: 3px;
+    --mdc-checkbox-state-layer-size: 20px;
+    --mdc-checkbox-touch-target: 20px;
+  }
+
+  ::ng-deep .mdc-checkbox {
+    flex: 0 0 12px;
+  }
+
+  ::ng-deep .mat-mdc-checkbox-touch-target {
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  ::ng-deep .mdc-checkbox__background {
+    width: 15px !important;
+    height: 15px !important;
+  }
+}
