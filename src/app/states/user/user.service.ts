@@ -4,7 +4,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Store } from '@ngrx/store';
 import { catchError, map, of } from 'rxjs';
 import {
-  getUserProfile,
   getUserProfileSuccess,
   getUserProfileFailure,
   logoutSuccess,

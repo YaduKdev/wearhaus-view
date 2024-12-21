@@ -12,6 +12,8 @@ import { provideStore } from '@ngrx/store';
 import { authReducer } from './states/auth/auth.reducer';
 import { userReducer } from './states/user/user.reducer';
 import { provideHttpClient, withFetch } from '@angular/common/http';
+import { productReducer } from './states/product/product.reducer';
+import { cartReducer } from './states/cart/cart.reducer';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -24,6 +26,11 @@ export const appConfig: ApplicationConfig = {
       useValue: { appearance: 'outline' },
     },
     provideHttpClient(withFetch()),
-    provideStore({ auth: authReducer, user: userReducer }),
+    provideStore({
+      auth: authReducer,
+      user: userReducer,
+      product: productReducer,
+      cart: cartReducer,
+    }),
   ],
 };
