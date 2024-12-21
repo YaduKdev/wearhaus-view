@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { MainCarouselComponent } from './main-carousel/main-carousel.component';
 import { HomeProductSliderComponent } from './home-product-slider/home-product-slider.component';
-import men_sweaters from '../../../Data/Men/men_sweaters.json';
-import women_sweaters from '../../../Data/Women/women_sweaters.json';
-import women_dress from '../../../Data/Women/women_dress.json';
-import women_top from '../../../Data/Women/women_top.json';
-import sneakers from '../../../Data/sneakers.json';
-import oversized_tshirts from '../../../Data/Men/oversized_tshirts.json';
+import men_sweaters from '../../../../Data/Men/men_sweaters.json';
+import women_sweaters from '../../../../Data/Women/women_sweaters.json';
+import women_dress from '../../../../Data/Women/women_dress.json';
+import women_top from '../../../../Data/Women/women_top.json';
+import sneakers from '../../../../Data/sneakers.json';
+import oversized_tshirts from '../../../../Data/Men/oversized_tshirts.json';
 
 @Component({
   selector: 'app-home',

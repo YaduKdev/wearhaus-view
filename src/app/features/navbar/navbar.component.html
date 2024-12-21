@@ -24,7 +24,7 @@
       <button class="search-icon">
         <mat-icon>search</mat-icon>
       </button>
-      <button *ngIf="true" class="user-icon">
+      <button *ngIf="userProfile" class="user-icon">
         <mat-icon mat-button [matMenuTriggerFor]="userMenuMobile"
           >account_circle</mat-icon
         >
@@ -34,7 +34,7 @@
           Orders
         </button>
         <button mat-menu-item>Profile</button>
-        <button mat-menu-item>Logout</button>
+        <button mat-menu-item (click)="handleLogout()">Logout</button>
       </mat-menu>
       <button class="wishlist-icon">
         <mat-icon>favorite_border</mat-icon>
@@ -53,7 +53,9 @@
           <mat-icon>close</mat-icon>
         </button>
         <div class="mobile-menu-login">
-          <button *ngIf="false">Login</button>
+          <button (click)="handleMobileLoginModal()" *ngIf="!userProfile">
+            Login
+          </button>
         </div>
       </div>
 
@@ -121,8 +123,14 @@
           </button>
         </div>
         <div class="user-actions">
-          <button *ngIf="false" class="login-button">Login</button>
-          <button *ngIf="true" class="user-icon">
+          <button
+            (click)="handleLoginModal()"
+            *ngIf="!userProfile"
+            class="login-button"
+          >
+            Login
+          </button>
+          <button *ngIf="userProfile" class="user-icon">
             <mat-icon mat-button [matMenuTriggerFor]="userMenu"
               >account_circle</mat-icon
             >
@@ -132,7 +140,7 @@
               Orders
             </button>
             <button mat-menu-item>Profile</button>
-            <button mat-menu-item>Logout</button>
+            <button mat-menu-item (click)="handleLogout()">Logout</button>
           </mat-menu>
           <button class="wishlist-icon">
             <mat-icon>favorite_border</mat-icon>

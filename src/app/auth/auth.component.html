@@ -1,0 +1,22 @@
+<div class="relative bg-[rgba(var(--background))]">
+  <div class="absolute right-3 top-3">
+    <button
+      mat-icon-button
+      (click)="closeDialog()"
+      [attr.aria-label]="'Close Dialog'"
+    >
+      <mat-icon class="text-[rgba(var(--text))]">close</mat-icon>
+    </button>
+  </div>
+  <ng-container *ngIf="isLoggedIn; else registerComponent">
+    <app-signin />
+  </ng-container>
+  <ng-template #registerComponent>
+    <app-signup />
+  </ng-template>
+  <div class="mt-7 pb-10 text-center w-full">
+    <button (click)="changeTemplate()" class="bg-none hover:text-yellow-500">
+      {{ isLoggedIn ? "Create New Account" : "Back To Login" }}
+    </button>
+  </div>
+</div>

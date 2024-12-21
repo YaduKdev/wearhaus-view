@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
 import { ProductReviewCardComponent } from './product-review-card/product-review-card.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { ProductPreviewCardComponent } from '../../shared/product-preview-card/product-preview-card.component';
-import oversized_tshirts from '../../../Data/Men/oversized_tshirts.json';
+import oversized_tshirts from '../../../../Data/Men/oversized_tshirts.json';
 import { StarRatingComponent } from '../../shared/star-rating/star-rating.component';
 import { Router } from '@angular/router';
 

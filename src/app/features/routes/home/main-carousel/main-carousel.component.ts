@@ -6,7 +6,7 @@ import {
   ViewChild,
   NgZone,
 } from '@angular/core';
-import { homeCarouselData } from '../../../../Data/mainCarousel';
+import { homeCarouselData } from '../../../../../Data/mainCarousel';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 

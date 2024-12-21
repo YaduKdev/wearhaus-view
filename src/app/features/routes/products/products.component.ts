@@ -9,7 +9,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
 import { MatRadioModule } from '@angular/material/radio';
 import { ProductPreviewCardComponent } from '../../shared/product-preview-card/product-preview-card.component';
-import men_sweaters from '../../../Data/Men/men_sweaters.json';
+import men_sweaters from '../../../../Data/Men/men_sweaters.json';
 
 @Component({
   selector: 'app-products',

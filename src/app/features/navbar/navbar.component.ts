@@ -22,7 +22,12 @@ import { Router, RouterLink } from '@angular/router';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { NavContentComponent } from './nav-content/nav-content.component';
-import { navigation } from '../../Data/Navigation';
+import { navigation } from '../../../Data/Navigation';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { AuthComponent } from '../../auth/auth.component';
+import { UserService } from '../../states/user/user.service';
+import { select, Store } from '@ngrx/store';
+import { AppState } from '../../models/AppState';
 
 @Component({
   selector: 'app-navbar',
@@ -32,6 +37,7 @@ import { navigation } from '../../Data/Navigation';
     MatIconModule,
     MatMenuModule,
     NavContentComponent,
+    MatDialogModule,
   ],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
@@ -44,11 +50,15 @@ export class NavbarComponent implements OnInit, OnDestroy {
   isNavbarContentOpen = false;
   categories: any[] = [];
   selectedCategory: any;
+  userProfile: any;
   private resizeListener: (() => void) | null = null;
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog,
+    private store: Store<AppState>,
+    private userService: UserService
   ) {}
 
   ngOnInit() {
@@ -56,6 +66,20 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.addResizeListener();
 
     this.categories = navigation.categories;
+
+    if (typeof window !== 'undefined' && window.localStorage) {
+      if (localStorage.getItem('jwt')) {
+        this.userService.getUserProfile();
+      }
+    }
+
+    this.store.pipe(select((store) => store.user)).subscribe((user) => {
+      this.userProfile = user.userProfile;
+
+      if (user.userProfile) {
+        this.dialog.closeAll();
+      }
+    });
   }
 
   ngOnDestroy() {
@@ -91,6 +115,25 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   closeNavContent() {
     this.isNavbarContentOpen = false;
+  }
+
+  handleLoginModal() {
+    this.dialog.open(AuthComponent, {
+      width: '400px',
+      disableClose: false,
+    });
+  }
+
+  handleMobileLoginModal() {
+    this.dialog.open(AuthComponent, {
+      width: '100svw',
+      height: '100%',
+      disableClose: true,
+    });
+  }
+
+  handleLogout() {
+    this.userService.logout();
   }
 
   @HostListener('document: click', [`$event`])
