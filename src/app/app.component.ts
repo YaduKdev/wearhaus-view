@@ -4,7 +4,7 @@ import { NavbarComponent } from './features/navbar/navbar.component';
 import { FooterComponent } from './features/footer/footer.component';
 import { select, Store } from '@ngrx/store';
 import { UserService } from './states/user/user.service';
-import { AppState } from './models/AppState';
+import { AppState } from './models/appState';
 
 @Component({
   selector: 'app-root',

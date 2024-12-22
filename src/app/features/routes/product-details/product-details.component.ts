@@ -9,7 +9,11 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { ProductPreviewCardComponent } from '../../shared/product-preview-card/product-preview-card.component';
 import oversized_tshirts from '../../../../Data/Men/oversized_tshirts.json';
 import { StarRatingComponent } from '../../shared/star-rating/star-rating.component';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ProductService } from '../../../states/product/product.service';
+import { select, Store } from '@ngrx/store';
+import { AppState } from '../../../models/appState';
+import { CartService } from '../../../states/cart/cart.service';
 
 @Component({
   selector: 'app-product-details',
@@ -31,26 +35,43 @@ export class ProductDetailsComponent {
   selectedSize: any;
   showPreview: boolean = false;
   reviews = [1, 1, 1, 1];
-  previewImages: any[] = [
-    'https://images.bewakoof.com/t1080/men-s-orange-offline-typography-oversized-hoodies-597129-1726228295-1.jpg',
-    'https://images.bewakoof.com/t1080/men-s-orange-offline-typography-oversized-hoodies-597129-1703689163-2.jpg',
-    'https://images.bewakoof.com/t1080/men-s-orange-offline-typography-oversized-hoodies-597129-1703689168-3.jpg',
-    'https://images.bewakoof.com/t1080/men-s-orange-offline-typography-oversized-hoodies-597129-1703689173-4.jpg',
-    'https://images.bewakoof.com/t1080/men-s-orange-offline-typography-oversized-hoodies-597129-1703689178-5.jpg',
-    'https://images.bewakoof.com/t1080/men-s-orange-offline-typography-oversized-hoodies-597129-1703689183-6.jpg',
-  ];
+  previewImages: any;
   currentImage: any;
   relatedProducts: any;
+  product: any;
+  productId: any;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private productService: ProductService,
+    private store: Store<AppState>,
+    private activatedRoute: ActivatedRoute,
+    private cartService: CartService
+  ) {}
 
   handleImagePreview() {
     this.showPreview = !this.showPreview;
   }
 
   ngOnInit() {
-    this.currentImage = this.previewImages[0];
     this.relatedProducts = oversized_tshirts.slice(0, 4);
+
+    const id = this.activatedRoute.snapshot.params['id'];
+
+    this.productService.findProductsById(id);
+
+    this.productId = id;
+
+    this.store
+      .pipe(select((store: AppState) => store.product))
+      .subscribe((data) => {
+        this.product = data?.product;
+        this.previewImages = [
+          this.product?.imageUrl,
+          ...(this.product?.samplePics || []),
+        ];
+        this.currentImage = this.product?.imageUrl;
+      });
   }
 
   setImage(imageUrl: string) {
@@ -58,7 +79,12 @@ export class ProductDetailsComponent {
   }
 
   handleAddToCart() {
-    console.log('SELECTED SIZE', this.selectedSize);
+    const data = {
+      size: this.selectedSize,
+      productId: this.productId,
+    };
+
+    this.cartService.addItemToCart(data);
 
     this.router.navigate(['cart']);
   }

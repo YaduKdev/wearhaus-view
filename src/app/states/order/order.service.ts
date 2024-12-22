@@ -31,7 +31,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Injectable({
   providedIn: 'root',
 })
-export class ProductService {
+export class OrderService {
   private API_BASE_URL = BASE_API_URL;
 
   constructor(

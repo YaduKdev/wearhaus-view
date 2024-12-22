@@ -12,7 +12,7 @@ export class ProductPreviewCardComponent {
 
   constructor(private router: Router) {}
 
-  navigate(path: string) {
-    this.router.navigate([path]);
+  navigate() {
+    this.router.navigate([`/product-details/${this.productData._id}`]);
   }
 }

@@ -12,13 +12,22 @@
             Sort By: &nbsp;<span class="font-semibold">{{ sortOption }}</span>
           </button>
           <mat-menu #sortMenu="matMenu" xPosition="before">
-            <button (click)="onClickSort('Popularity')" mat-menu-item>
+            <button
+              (click)="onClickSort('Popularity', 'popularity')"
+              mat-menu-item
+            >
               Popularity
             </button>
-            <button (click)="onClickSort('Price: High To Low')" mat-menu-item>
+            <button
+              (click)="onClickSort('Price: High To Low', 'price_high')"
+              mat-menu-item
+            >
               Price: High To Low
             </button>
-            <button (click)="onClickSort('Price: Low To High')" mat-menu-item>
+            <button
+              (click)="onClickSort('Price: Low To High', 'price_low')"
+              mat-menu-item
+            >
               Price: Low To High
             </button>
           </mat-menu>

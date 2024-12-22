@@ -18,7 +18,7 @@ import {
 @Injectable({
   providedIn: 'root',
 })
-export class cartReducer {
+export class CartService {
   API_BASE_URL = BASE_API_URL;
 
   constructor(

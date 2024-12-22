@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -10,4 +10,10 @@ import { CommonModule } from '@angular/common';
 })
 export class NavContentComponent {
   @Input() category: any;
+
+  constructor(private router: Router) {}
+
+  handleNavigate(path: any) {
+    this.router.navigate([path]);
+  }
 }

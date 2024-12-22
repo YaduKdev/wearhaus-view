@@ -27,7 +27,7 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { AuthComponent } from '../../auth/auth.component';
 import { UserService } from '../../states/user/user.service';
 import { select, Store } from '@ngrx/store';
-import { AppState } from '../../models/AppState';
+import { AppState } from '../../models/appState';
 
 @Component({
   selector: 'app-navbar',

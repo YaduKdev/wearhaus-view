@@ -18,9 +18,17 @@ export class ProductService {
   API_BASE_URL = BASE_API_URL;
 
   private getHeader(): HttpHeaders {
-    const token = localStorage.getItem('jwt');
+    if (
+      typeof window !== 'undefined' &&
+      window.localStorage &&
+      localStorage.getItem('jwt')
+    ) {
+      const token = localStorage.getItem('jwt');
 
-    return new HttpHeaders().set('Authorization', `Bearer ${token}`);
+      return new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    } else {
+      return new HttpHeaders().set('Authorization', `Bearer null`);
+    }
   }
 
   constructor(
@@ -46,7 +54,7 @@ export class ProductService {
 
     let params = new HttpParams()
       .set('color', colors)
-      .set('size', sizes)
+      .set('sizes', sizes)
       .set('minPrice', minPrice)
       .set('maxPrice', maxPrice)
       .set('minDiscount', minDiscount)

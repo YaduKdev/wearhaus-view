@@ -4,7 +4,12 @@
       <div class="flex flex-col">
         <h1 class="mb-5 text-xl font-bold">Categories</h1>
         <div class="flex flex-col items-start">
-          <button mat-button *ngFor="let item of category">
+          <button
+            (click)="handleNavigate('/products/' + category.id + '/' + item.id)"
+            mat-button
+            *ngFor="let item of category.sections"
+            class="hover:text-yellow-500"
+          >
             {{ item.name }}
           </button>
         </div>

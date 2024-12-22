@@ -17,9 +17,10 @@ export const filters = [
     id: 'size',
     name: 'Size',
     options: [
-      { value: 'S', label: 'S' },
       { value: 'M', label: 'M' },
       { value: 'L', label: 'L' },
+      { value: 'XL', label: 'XL' },
+      { value: 'XXL', label: 'XXL' },
     ],
   },
 ];
@@ -56,12 +57,6 @@ export const singleFilter = [
     options: [
       { value: 'in_stock', label: 'In Stock' },
       { value: 'out_of_stock', label: 'Out Of Stock' },
-      { value: '30', label: '30% And Above' },
-      { value: '40', label: '40% And Above' },
-      { value: '50', label: '50% And Above' },
-      { value: '60', label: '60% And Above' },
-      { value: '70', label: '70% And Above' },
-      { value: '80', label: '80% And Above' },
     ],
   },
 ];

@@ -22,20 +22,25 @@
         </div>
       </div>
     </div>
-    <div class="col-span-1 space-y-4 lg:space-y-10 mt-10 lg:mt-0">
+    <div
+      *ngIf="product"
+      class="col-span-1 space-y-4 lg:space-y-10 mt-10 lg:mt-0"
+    >
       <div class="space-y-0">
         <p class="text-lg lg:text-xl">
-          Men's Orange Offline Typography Oversized Hoodies
+          {{ product.title }}
         </p>
       </div>
       <div class="flex items-center space-x-5">
-        <p class="text-sm lg:text-lg">₹999</p>
+        <p class="text-sm lg:text-lg">₹{{ product.discountedPrice }}</p>
         <p
           class="text-sm lg:text-lg text-gray-500 line-through decoration-red-700"
         >
-          ₹2,599
+          ₹{{ product.price }}
         </p>
-        <p class="text-green-400 font-semibold text-sm lg:text-lg">61% OFF</p>
+        <p class="text-green-400 font-semibold text-sm lg:text-lg">
+          {{ product.discountPercent }}% OFF
+        </p>
       </div>
       <div>
         <p class="text-sm lg:text-lg font-semibold">Size</p>
@@ -44,17 +49,12 @@
           aria-label="Select an option"
           [(ngModel)]="selectedSize"
         >
-          <mat-radio-button value="S"
-            ><span class="text-gray-500">S</span></mat-radio-button
-          >
-          <mat-radio-button value="M"
-            ><span class="text-gray-500">M</span></mat-radio-button
-          >
-          <mat-radio-button value="L"
-            ><span class="text-gray-500">L</span></mat-radio-button
-          >
-          <mat-radio-button value="XL"
-            ><span class="text-gray-500">XL</span></mat-radio-button
+          <mat-radio-button
+            *ngFor="let size of product.sizes"
+            [value]="size.name"
+            ><span class="text-gray-500">{{
+              size.name
+            }}</span></mat-radio-button
           >
         </mat-radio-group>
       </div>
