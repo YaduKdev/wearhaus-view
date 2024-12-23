@@ -5,6 +5,7 @@ import { FooterComponent } from './features/footer/footer.component';
 import { select, Store } from '@ngrx/store';
 import { UserService } from './states/user/user.service';
 import { AppState } from './models/appState';
+import { CartService } from './states/cart/cart.service';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +18,8 @@ export class AppComponent {
 
   constructor(
     private store: Store<AppState>,
-    private userService: UserService
+    private userService: UserService,
+    private cartService: CartService
   ) {}
 
   ngOnInit() {
@@ -25,11 +27,13 @@ export class AppComponent {
       const jwt = localStorage.getItem('jwt');
       if (jwt) {
         this.userService.getUserProfile();
+        this.cartService.getCart();
       }
     }
 
     this.store.pipe(select((store) => store.auth)).subscribe((user) => {
       this.userService.getUserProfile();
+      this.cartService.getCart();
     });
   }
 }

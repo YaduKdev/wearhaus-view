@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
+import { CartService } from '../../../states/cart/cart.service';
 
 @Component({
   selector: 'app-cart-item',
@@ -10,11 +11,19 @@ import { CommonModule } from '@angular/common';
   styleUrl: './cart-item.component.scss',
 })
 export class CartItemComponent {
+  @Input() cartItem: any;
   @Input() showButtons: any;
 
+  constructor(private cartService: CartService) {}
+
   updateItemNumber(num: Number) {
-    console.log('NUMBER', num);
+    this.cartService.updateCartItem({
+      cartItemId: this.cartItem._id,
+      data: { quantity: num + this.cartItem.quantity },
+    });
   }
 
-  removeCartItem() {}
+  removeCartItem() {
+    this.cartService.removeCartItem(this.cartItem.product._id);
+  }
 }

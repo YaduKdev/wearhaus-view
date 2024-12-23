@@ -58,33 +58,42 @@ export class CartService {
 
   getCart() {
     const url = `${this.API_BASE_URL}/api/cart/`;
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${localStorage.getItem('jwt')}`,
-      'Content-Type': 'application/json',
-    });
 
-    return this.http
-      .get(url, { headers })
-      .pipe(
-        map((data: any) => {
-          console.log('GET CART', data);
+    if (
+      typeof window !== 'undefined' &&
+      window.localStorage &&
+      localStorage.getItem('jwt')
+    ) {
+      const headers = new HttpHeaders({
+        Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+        'Content-Type': 'application/json',
+      });
 
-          return getCartSuccess({ payload: data });
-        }),
-        catchError((error: any) => {
-          return of(
-            getCartFailure(
-              error.response && error.response.data.message
-                ? error.response.data.message
-                : error.message
-            )
-          );
-        })
-      )
-      .subscribe((action) => this.store.dispatch(action));
+      return this.http
+        .get(url, { headers })
+        .pipe(
+          map((data: any) => {
+            console.log('GET CART', data);
+
+            return getCartSuccess({ payload: data });
+          }),
+          catchError((error: any) => {
+            return of(
+              getCartFailure(
+                error.response && error.response.data.message
+                  ? error.response.data.message
+                  : error.message
+              )
+            );
+          })
+        )
+        .subscribe((action) => this.store.dispatch(action));
+    } else {
+      return;
+    }
   }
 
-  removeCartItem(cartItemId: Number) {
+  removeCartItem(cartItemId: any) {
     const url = `${this.API_BASE_URL}/api/cart_items/${cartItemId}`;
     const headers = new HttpHeaders({
       Authorization: `Bearer ${localStorage.getItem('jwt')}`,

@@ -12,6 +12,7 @@ import {
 } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { OrderService } from '../../../../states/order/order.service';
 
 @Component({
   selector: 'app-address-form',
@@ -32,7 +33,10 @@ export class AddressFormComponent {
   addresses = [1, 1, 1];
   myForm: FormGroup = new FormGroup({});
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private orderService: OrderService
+  ) {}
 
   ngOnInit() {
     this.myForm = this.formBuilder.group({
@@ -50,7 +54,7 @@ export class AddressFormComponent {
 
   handleSubmit() {
     const formValue = this.myForm.value;
-
+    this.orderService.createOrder(formValue);
     console.log('FORM VALUES======>', formValue);
   }
 }

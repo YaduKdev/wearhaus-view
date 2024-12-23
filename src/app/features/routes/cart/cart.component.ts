@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 import { CartItemComponent } from '../../shared/cart-item/cart-item.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { Router } from '@angular/router';
+import { CartService } from '../../../states/cart/cart.service';
+import { select, Store } from '@ngrx/store';
+import { AppState } from '../../../models/appState';
 
 @Component({
   selector: 'app-cart',
@@ -12,8 +15,24 @@ import { Router } from '@angular/router';
 })
 export class CartComponent {
   cart = [1, 1, 1];
+  cartItems: any;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private cartService: CartService,
+    private store: Store<AppState>
+  ) {}
+
+  ngOnInit() {
+    this.cartService.getCart();
+
+    this.store
+      .pipe(select((store: AppState) => store.cart))
+      .subscribe((data) => {
+        this.cartItems = data?.cartItems;
+        // this.cart = data.cart;
+      });
+  }
 
   navigateToCheckout() {
     this.router.navigate(['checkout']);

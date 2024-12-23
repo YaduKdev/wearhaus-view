@@ -5,19 +5,21 @@
     <div class="w-[5rem] h-[5rem] lg:w-[9rem] lg:h-[9rem]">
       <img
         class="w-full h-full object-cover object-top"
-        src="https://images.bewakoof.com/t1080/men-s-orange-offline-typography-oversized-hoodies-597129-1726228295-1.jpg"
+        [src]="cartItem.product.imageUrl"
         alt=""
       />
     </div>
     <div class="ml-5 space-y-1">
       <p class="font-semibold">
-        Men's Orange Offline Typography Oversized Hoodies
+        {{ cartItem.product.title }}
       </p>
-      <p class="text-gray-500">Size: M</p>
+      <p class="text-gray-500">Size: {{ cartItem.size }}</p>
       <div class="flex space-x-2 items-center pt-3">
-        <p class="font-semibold text-lg">₹999</p>
-        <p class="text-gray-500 line-through">₹2,599</p>
-        <p class="text-green-500 font-semibold">61% OFF</p>
+        <p class="font-semibold text-lg">₹{{ cartItem.discountedPrice }}</p>
+        <p class="text-gray-500 line-through">₹{{ cartItem.price }}</p>
+        <p class="text-green-500 font-semibold">
+          {{ cartItem.product.discountPercent }}% OFF
+        </p>
       </div>
     </div>
   </div>
@@ -31,12 +33,14 @@
           mat-mini-fab
           class="item-number-button"
           (click)="updateItemNumber(-1)"
-          [disabled]="false"
+          [disabled]="cartItem.quantity == 1"
         >
           <mat-icon>remove</mat-icon>
         </button>
       </div>
-      <span class="py-1 px-7 border border-gray-800 rounded-sm">1</span>
+      <span class="py-1 px-7 border border-gray-800 rounded-sm">{{
+        cartItem.quantity
+      }}</span>
       <div class="cart-page-button-container">
         <button
           mat-mini-fab
