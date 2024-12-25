@@ -1,20 +1,23 @@
 <div class="mt-24 space-y-5 px-5 lg:px-20">
-  <ng-container>
+  <ng-container *ngIf="order">
     <div class="p-5 shadow-lg border border-gray-400 dark:border-gray-700 my-5">
-      <app-address-card />
+      <app-address-card [address]="order.shippingAddress" />
     </div>
     <div
       class="grid grid-cols-1 gap-5 lg:grid-cols-3 relative justify-between py-5"
     >
       <div class="col-span-2">
-        <div class="space-y-3 border-gray-400 dark:border-gray-700">
-          <div *ngFor="let product of products; let last = last">
-            <app-cart-item [showButtons]="false" />
+        <div
+          *ngIf="order"
+          class="space-y-3 border-gray-400 dark:border-gray-700"
+        >
+          <div *ngFor="let product of order.orderItems; let last = last">
+            <app-cart-item [cartItem]="product" [showButtons]="false" />
           </div>
         </div>
       </div>
       <section class="col-span-1 px-5 sticky top-0 h-[100vh] mt-5 lg:mt-0">
-        <ng-container>
+        <ng-container *ngIf="order">
           <div
             class="border p-5 border-gray-400 dark:border-gray-700 rounded-md"
           >
@@ -23,11 +26,11 @@
             <div class="space-y-3">
               <div class="flex justify-between pt-3">
                 <span>Total Price</span>
-                <span>₹6,599</span>
+                <span>₹{{ order.totalPrice }}</span>
               </div>
               <div class="flex justify-between pt-3">
                 <span>Discount</span>
-                <span class="text-green-500">-₹3,999</span>
+                <span class="text-green-500">-₹{{ order.discount }}</span>
               </div>
               <div class="flex justify-between pt-3">
                 <span>Delivery Charges</span>
@@ -35,7 +38,7 @@
               </div>
               <div class="flex justify-between pt-3 font-semibold text-lg">
                 <span>Total Amount</span>
-                <span>₹2,598</span>
+                <span>₹{{ order.totalDiscountedPrice }}</span>
               </div>
             </div>
             <button

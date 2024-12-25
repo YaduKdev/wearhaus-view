@@ -14,7 +14,7 @@ import { AppState } from '../../../models/appState';
   styleUrl: './cart.component.scss',
 })
 export class CartComponent {
-  cart = [1, 1, 1];
+  cart: any;
   cartItems: any;
 
   constructor(
@@ -30,7 +30,7 @@ export class CartComponent {
       .pipe(select((store: AppState) => store.cart))
       .subscribe((data) => {
         this.cartItems = data?.cartItems;
-        // this.cart = data.cart;
+        this.cart = data.cart;
       });
   }
 

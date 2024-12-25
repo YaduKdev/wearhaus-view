@@ -17,11 +17,11 @@
           <div class="space-y-3">
             <div class="flex justify-between pt-3">
               <span>Total Price</span>
-              <span>₹6,599</span>
+              <span>₹{{ cart.totalPrice }}</span>
             </div>
             <div class="flex justify-between pt-3">
               <span>Discount</span>
-              <span class="text-green-500">-₹3,999</span>
+              <span class="text-green-500">-₹{{ cart.discount }}</span>
             </div>
             <div class="flex justify-between pt-3">
               <span>Delivery Charges</span>
@@ -29,7 +29,7 @@
             </div>
             <div class="flex justify-between pt-3 font-semibold text-lg">
               <span>Total Amount</span>
-              <span>₹2,598</span>
+              <span>₹{{ cart.totalDiscountedPrice }}</span>
             </div>
           </div>
           <button

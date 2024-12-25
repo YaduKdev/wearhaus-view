@@ -51,13 +51,11 @@ export class OrderService {
       .post(`${this.API_BASE_URL}/api/orders/`, reqData, { headers })
       .pipe(
         map((data: any) => {
-          if (data.id) {
-            this.router.navigate([`/checkout/payment/${data.id}`], {
-              queryParams: { step: '3', orderId: data.id },
+          if (data._id) {
+            this.router.navigate([`/checkout/payment/${data._id}`], {
+              queryParams: { step: '3', orderId: data._id },
             });
           }
-
-          console.log('CREATED ORDER', data);
 
           return createOrderSuccess({ order: data });
         }),
@@ -75,30 +73,38 @@ export class OrderService {
   }
 
   getOrderById(orderId: string) {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${localStorage.getItem('jwt')}`,
-    });
+    if (
+      typeof window !== 'undefined' &&
+      window.localStorage &&
+      localStorage.getItem('jwt')
+    ) {
+      const headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+      });
 
-    return this.http
-      .get(`${this.API_BASE_URL}/api/orders/${orderId}`, { headers })
-      .pipe(
-        map((data: any) => {
-          console.log('ORDER BY ID', data);
+      return this.http
+        .get(`${this.API_BASE_URL}/api/orders/${orderId}`, { headers })
+        .pipe(
+          map((data: any) => {
+            console.log('ORDER BY ID', data);
 
-          return getOrderByIdSuccess({ order: data });
-        }),
-        catchError((error: any) => {
-          return of(
-            getOrderByIdFailure(
-              error.response && error.response.data.message
-                ? error.response.data.message
-                : error.message
-            )
-          );
-        })
-      )
-      .subscribe((action) => this.store.dispatch(action));
+            return getOrderByIdSuccess({ order: data });
+          }),
+          catchError((error: any) => {
+            return of(
+              getOrderByIdFailure(
+                error.response && error.response.data.message
+                  ? error.response.data.message
+                  : error.message
+              )
+            );
+          })
+        )
+        .subscribe((action) => this.store.dispatch(action));
+    } else {
+      return;
+    }
   }
 
   getOrderHistory() {

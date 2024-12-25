@@ -1,9 +1,9 @@
 <div class="pb-3 space-y-3">
-  <p class="font-semibold">John Doe</p>
-  <p>Mumbai, Sion, New Shivam Building</p>
-
+  <p class="font-semibold">{{ address.firstName }} {{ address.lastName }}</p>
+  <p>{{ address.streetAddress }}</p>
+  <p>{{ address.city }} - {{ address.zipCode }}, {{ address.state }}</p>
   <div class="space-y-1">
     <p class="font-semibold">Contact Number</p>
-    <p>+9156739409</p>
+    <p>{{ address.contactNo }}</p>
   </div>
 </div>

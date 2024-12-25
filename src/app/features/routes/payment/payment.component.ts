@@ -3,6 +3,10 @@ import { Component } from '@angular/core';
 import { AddressCardComponent } from '../../shared/address-card/address-card.component';
 import { CartItemComponent } from '../../shared/cart-item/cart-item.component';
 import { MatDividerModule } from '@angular/material/divider';
+import { ActivatedRoute } from '@angular/router';
+import { OrderService } from '../../../states/order/order.service';
+import { select, Store } from '@ngrx/store';
+import { AppState } from '../../../models/appState';
 
 @Component({
   selector: 'app-payment',
@@ -16,5 +20,23 @@ import { MatDividerModule } from '@angular/material/divider';
   styleUrl: './payment.component.scss',
 })
 export class PaymentComponent {
-  products = [1, 1, 1];
+  order: any;
+
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private orderService: OrderService,
+    private store: Store<AppState>
+  ) {}
+
+  ngOnInit() {
+    let id = this.activatedRoute.snapshot.params['id'];
+
+    if (id) {
+      this.orderService.getOrderById(id);
+    }
+
+    this.store.pipe(select((store) => store.order)).subscribe((data) => {
+      this.order = data.order;
+    });
+  }
 }

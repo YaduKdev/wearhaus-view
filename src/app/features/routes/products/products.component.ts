@@ -35,7 +35,12 @@ export class ProductsComponent {
   filterData: any;
   singleFilterData: any;
   productData: any;
+  pageNumber: any = 1;
+  initialPageSize: any = 9;
+  pageSize: any = 9;
+  totalPages: any = 0;
   levelTwo: any;
+  levelOne: any;
 
   constructor(
     private router: Router,
@@ -48,8 +53,11 @@ export class ProductsComponent {
     this.filterData = filters;
     this.singleFilterData = singleFilter;
 
+    this.router.navigate([], { queryParams: { pageSize: 9 } });
+
     this.activatedRoute.params.subscribe((params) => {
       this.levelTwo = params['levelTwo'];
+      this.levelOne = params['levelOne'];
       let reqData = {
         category: params['levelTwo'],
         colors: [],
@@ -59,6 +67,7 @@ export class ProductsComponent {
         minDiscount: 0,
         pageNumber: 1,
         pageSize: 9,
+        sort: 'popularity',
         stock: null,
       };
 
@@ -73,6 +82,7 @@ export class ProductsComponent {
       const stock = params['stock'];
       const sort = params['sort'];
       const pageNumber = params['pageNumber'];
+      const pageSize = params['pageSize'];
       const minPrice = price?.split('-')[0];
       const maxPrice = price?.split('-')[1];
 
@@ -84,7 +94,7 @@ export class ProductsComponent {
         maxPrice: maxPrice ? maxPrice : 100000,
         minDiscount: discount ? discount : 0,
         pageNumber: pageNumber ? pageNumber : 1,
-        pageSize: 9,
+        pageSize: pageSize ? pageSize : 9,
         stock: stock ? stock : null,
         sort: sort ? sort : 'popularity',
       };
@@ -96,7 +106,20 @@ export class ProductsComponent {
       .pipe(select((store: AppState) => store.product))
       .subscribe((data) => {
         this.productData = data.products.content;
+        this.totalPages = data.products.totalPages;
       });
+  }
+
+  resetFilters() {
+    this.router.navigate([], { queryParams: { pageSize: 9 } });
+    window.location.reload();
+  }
+
+  viewMore() {
+    if (this.pageSize <= this.totalPages * this.initialPageSize) {
+      this.pageSize = this.pageSize + 9;
+      this.handleSingleSelectFilter(this.pageSize, 'pageSize');
+    }
   }
 
   handleMultipleSelectFilter(value: string, sectionId: string) {

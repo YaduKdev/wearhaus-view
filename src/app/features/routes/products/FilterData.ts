@@ -1,29 +1,59 @@
-export const filters = [
-  {
-    id: 'color',
-    name: 'Color',
-    options: [
-      { value: 'white', label: 'White' },
-      { value: 'beige', label: 'Beige' },
-      { value: 'blue', label: 'Blue' },
-      { value: 'brown', label: 'Brown' },
-      { value: 'green', label: 'Green' },
-      { value: 'purple', label: 'Purple' },
-      { value: 'yellow', label: 'Yellow' },
-      { value: 'black', label: 'Black' },
-    ],
-  },
-  {
-    id: 'size',
-    name: 'Size',
-    options: [
-      { value: 'M', label: 'M' },
-      { value: 'L', label: 'L' },
-      { value: 'XL', label: 'XL' },
-      { value: 'XXL', label: 'XXL' },
-    ],
-  },
-];
+export const filters = {
+  clothes: [
+    {
+      id: 'color',
+      name: 'Color',
+      options: [
+        { value: 'white', label: 'White' },
+        { value: 'beige', label: 'Beige' },
+        { value: 'blue', label: 'Blue' },
+        { value: 'brown', label: 'Brown' },
+        { value: 'green', label: 'Green' },
+        { value: 'purple', label: 'Purple' },
+        { value: 'yellow', label: 'Yellow' },
+        { value: 'black', label: 'Black' },
+      ],
+    },
+    {
+      id: 'size',
+      name: 'Size',
+      options: [
+        { value: 'M', label: 'M' },
+        { value: 'L', label: 'L' },
+        { value: 'XL', label: 'XL' },
+        { value: 'XXL', label: 'XXL' },
+      ],
+    },
+  ],
+  footwear: [
+    {
+      id: 'color',
+      name: 'Color',
+      options: [
+        { value: 'white', label: 'White' },
+        { value: 'beige', label: 'Beige' },
+        { value: 'blue', label: 'Blue' },
+        { value: 'brown', label: 'Brown' },
+        { value: 'green', label: 'Green' },
+        { value: 'purple', label: 'Purple' },
+        { value: 'yellow', label: 'Yellow' },
+        { value: 'black', label: 'Black' },
+      ],
+    },
+    {
+      id: 'size',
+      name: 'Size',
+      options: [
+        { value: 'UK 6', label: 'UK 6' },
+        { value: 'UK 7', label: 'UK 7' },
+        { value: 'UK 8', label: 'UK 8' },
+        { value: 'UK 9', label: 'UK 9' },
+        { value: 'UK 10', label: 'UK 10' },
+        { value: 'UK 11', label: 'UK 11' },
+      ],
+    },
+  ],
+};
 
 export const singleFilter = [
   {

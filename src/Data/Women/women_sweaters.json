@@ -6,22 +6,22 @@
     "discountedPrice": 799,
     "price": 2049,
     "discountPercent": 61,
-    "size": [
+    "sizes": [
       {
-        "name": "S",
-        "quantity": 20
-      },
-      {
-        "name": "M",
+        "name": "L",
         "quantity": 30
       },
       {
-        "name": "L",
-        "quantity": 50
+        "name": "XL",
+        "quantity": 45
+      },
+      {
+        "name": "XXL",
+        "quantity": 25
       }
     ],
     "quantity": 100,
-    "topLevelCategory": "Women",
+    "topLevelCategory": "women",
     "secondLevelCategory": "women_sweaters",
     "samplePics": [
       "https://i.ibb.co/DLWFsmp/women-s-blue-floral-printed-sweater-641012-1730875732-5.webp",
@@ -37,22 +37,22 @@
     "discountedPrice": 999,
     "price": 3149,
     "discountPercent": 68,
-    "size": [
+    "sizes": [
       {
-        "name": "S",
+        "name": "M",
         "quantity": 20
       },
       {
-        "name": "M",
+        "name": "L",
         "quantity": 30
       },
       {
-        "name": "L",
+        "name": "XL",
         "quantity": 50
       }
     ],
     "quantity": 100,
-    "topLevelCategory": "Women",
+    "topLevelCategory": "women",
     "secondLevelCategory": "women_sweaters",
     "samplePics": [
       "https://i.ibb.co/D4pwBF7/women-s-crystal-rose-oversized-crochet-sweater-641010-1728999321-5.webp",
@@ -69,22 +69,22 @@
     "discountedPrice": 999,
     "price": 3149,
     "discountPercent": 68,
-    "size": [
+    "sizes": [
       {
-        "name": "S",
-        "quantity": 20
-      },
-      {
-        "name": "M",
+        "name": "L",
         "quantity": 30
       },
       {
-        "name": "L",
-        "quantity": 50
+        "name": "XL",
+        "quantity": 45
+      },
+      {
+        "name": "XXL",
+        "quantity": 25
       }
     ],
     "quantity": 100,
-    "topLevelCategory": "Women",
+    "topLevelCategory": "women",
     "secondLevelCategory": "women_sweaters",
     "samplePics": [
       "https://i.ibb.co/5BPkNyv/women-s-black-oversized-sweater-641011-1728912891-5.webp",
@@ -100,22 +100,22 @@
     "discountedPrice": 899,
     "price": 2599,
     "discountPercent": 65,
-    "size": [
+    "sizes": [
       {
-        "name": "S",
+        "name": "M",
         "quantity": 20
       },
       {
-        "name": "M",
+        "name": "L",
         "quantity": 30
       },
       {
-        "name": "L",
+        "name": "XL",
         "quantity": 50
       }
     ],
     "quantity": 100,
-    "topLevelCategory": "Women",
+    "topLevelCategory": "women",
     "secondLevelCategory": "women_sweaters",
     "samplePics": [
       "https://i.ibb.co/pd1VKdd/women-s-pink-orange-typography-super-loose-fit-sweater-641020-1725341566-5.webp",
@@ -133,22 +133,26 @@
     "discountedPrice": 1299,
     "price": 3149,
     "discountPercent": 58,
-    "size": [
+    "sizes": [
       {
-        "name": "S",
+        "name": "M",
         "quantity": 20
       },
       {
-        "name": "M",
+        "name": "L",
         "quantity": 30
       },
       {
-        "name": "L",
-        "quantity": 50
+        "name": "XL",
+        "quantity": 25
+      },
+      {
+        "name": "XXL",
+        "quantity": 25
       }
     ],
     "quantity": 100,
-    "topLevelCategory": "Women",
+    "topLevelCategory": "women",
     "secondLevelCategory": "women_sweaters",
     "samplePics": [
       "https://i.ibb.co/RBf7bFM/women-s-blue-white-graphic-printed-oversized-sweater-641018-1729000230-2.webp",
@@ -165,22 +169,22 @@
     "discountedPrice": 699,
     "price": 1899,
     "discountPercent": 63,
-    "size": [
+    "sizes": [
       {
-        "name": "S",
+        "name": "M",
         "quantity": 20
       },
       {
-        "name": "M",
+        "name": "L",
         "quantity": 30
       },
       {
-        "name": "L",
+        "name": "XL",
         "quantity": 50
       }
     ],
     "quantity": 100,
-    "topLevelCategory": "Women",
+    "topLevelCategory": "women",
     "secondLevelCategory": "women_sweaters",
     "samplePics": [
       "https://i.ibb.co/qnf7Fct/women-s-rolling-hills-striped-oversized-sweater-497687-1703751517-2.webp",
@@ -198,22 +202,22 @@
     "discountedPrice": 1049,
     "price": 2999,
     "discountPercent": 65,
-    "size": [
+    "sizes": [
       {
-        "name": "S",
+        "name": "M",
         "quantity": 20
       },
       {
-        "name": "M",
+        "name": "L",
         "quantity": 30
       },
       {
-        "name": "L",
+        "name": "XL",
         "quantity": 50
       }
     ],
     "quantity": 100,
-    "topLevelCategory": "Women",
+    "topLevelCategory": "women",
     "secondLevelCategory": "women_sweaters",
     "samplePics": [
       "https://i.ibb.co/2SdzYxC/women-s-pink-orange-striped-oversized-plus-size-sweater-641048-1732019833-2.webp",
@@ -229,22 +233,22 @@
     "discountedPrice": 999,
     "price": 2599,
     "discountPercent": 61,
-    "size": [
+    "sizes": [
       {
-        "name": "S",
+        "name": "M",
         "quantity": 20
       },
       {
-        "name": "M",
+        "name": "L",
         "quantity": 30
       },
       {
-        "name": "L",
+        "name": "XL",
         "quantity": 50
       }
     ],
     "quantity": 100,
-    "topLevelCategory": "Women",
+    "topLevelCategory": "women",
     "secondLevelCategory": "women_sweaters",
     "samplePics": [
       "https://i.ibb.co/M8hSqYw/women-s-red-pink-typography-super-loose-fit-sweater-641022-1725341603-2.webp",
@@ -260,22 +264,26 @@
     "discountedPrice": 799,
     "price": 1899,
     "discountPercent": 57,
-    "size": [
+    "sizes": [
       {
-        "name": "S",
+        "name": "M",
         "quantity": 20
       },
       {
-        "name": "M",
+        "name": "L",
         "quantity": 30
       },
       {
-        "name": "L",
-        "quantity": 50
+        "name": "XL",
+        "quantity": 25
+      },
+      {
+        "name": "XXL",
+        "quantity": 25
       }
     ],
     "quantity": 100,
-    "topLevelCategory": "Women",
+    "topLevelCategory": "women",
     "secondLevelCategory": "women_sweaters",
     "samplePics": [
       "https://i.ibb.co/z8kHFKN/women-s-black-sweater-497715-1692769270-2.webp",
@@ -292,22 +300,26 @@
     "discountedPrice": 999,
     "price": 2599,
     "discountPercent": 61,
-    "size": [
+    "sizes": [
       {
-        "name": "S",
+        "name": "M",
         "quantity": 20
       },
       {
-        "name": "M",
+        "name": "L",
         "quantity": 30
       },
       {
-        "name": "L",
-        "quantity": 50
+        "name": "XL",
+        "quantity": 25
+      },
+      {
+        "name": "XXL",
+        "quantity": 25
       }
     ],
     "quantity": 100,
-    "topLevelCategory": "Women",
+    "topLevelCategory": "women",
     "secondLevelCategory": "women_sweaters",
     "samplePics": [
       "https://i.ibb.co/h8pg6z3/women-s-white-black-striped-oversized-sweater-641017-1725341595-6.webp",
@@ -324,22 +336,22 @@
     "discountedPrice": 699,
     "price": 2399,
     "discountPercent": 70,
-    "size": [
+    "sizes": [
       {
-        "name": "S",
-        "quantity": 20
-      },
-      {
-        "name": "M",
+        "name": "L",
         "quantity": 30
       },
       {
-        "name": "L",
-        "quantity": 50
+        "name": "XL",
+        "quantity": 45
+      },
+      {
+        "name": "XXL",
+        "quantity": 25
       }
     ],
     "quantity": 100,
-    "topLevelCategory": "Women",
+    "topLevelCategory": "women",
     "secondLevelCategory": "women_sweaters",
     "samplePics": [
       "https://i.ibb.co/dGwzzMr/women-s-bridal-rose-solid-sweater-497688-1661350937-7.webp",
@@ -357,22 +369,22 @@
     "discountedPrice": 899,
     "price": 2499,
     "discountPercent": 64,
-    "size": [
+    "sizes": [
       {
-        "name": "S",
+        "name": "M",
         "quantity": 20
       },
       {
-        "name": "M",
+        "name": "L",
         "quantity": 30
       },
       {
-        "name": "L",
+        "name": "XL",
         "quantity": 50
       }
     ],
     "quantity": 100,
-    "topLevelCategory": "Women",
+    "topLevelCategory": "women",
     "secondLevelCategory": "women_sweaters",
     "samplePics": [
       "https://i.ibb.co/g9Fy6Xs/women-s-blue-slim-fit-sweater-641016-1725341666-6.webp",
@@ -388,22 +400,22 @@
     "discountedPrice": 1299,
     "price": 2499,
     "discountPercent": 48,
-    "size": [
+    "sizes": [
       {
-        "name": "S",
+        "name": "M",
         "quantity": 20
       },
       {
-        "name": "M",
+        "name": "L",
         "quantity": 30
       },
       {
-        "name": "L",
+        "name": "XL",
         "quantity": 50
       }
     ],
     "quantity": 100,
-    "topLevelCategory": "Women",
+    "topLevelCategory": "women",
     "secondLevelCategory": "women_sweaters",
     "samplePics": [
       "https://i.ibb.co/PQBP6v7/women-s-black-all-over-printed-oversized-sweater-597229-1703693378-6.webp",
@@ -419,22 +431,22 @@
     "discountedPrice": 999,
     "price": 3099,
     "discountPercent": 65,
-    "size": [
+    "sizes": [
       {
-        "name": "S",
+        "name": "M",
         "quantity": 20
       },
       {
-        "name": "M",
+        "name": "L",
         "quantity": 30
       },
       {
-        "name": "L",
+        "name": "XL",
         "quantity": 50
       }
     ],
     "quantity": 100,
-    "topLevelCategory": "Women",
+    "topLevelCategory": "women",
     "secondLevelCategory": "women_sweaters",
     "samplePics": [
       "https://i.ibb.co/yYB4jyk/women-s-pink-orange-typography-super-loose-fit-plus-size-sweater-641041-1725621762-6.webp",
@@ -450,22 +462,22 @@
     "discountedPrice": 999,
     "price": 2749,
     "discountPercent": 63,
-    "size": [
+    "sizes": [
       {
-        "name": "S",
+        "name": "M",
         "quantity": 20
       },
       {
-        "name": "M",
+        "name": "L",
         "quantity": 30
       },
       {
-        "name": "L",
+        "name": "XL",
         "quantity": 50
       }
     ],
     "quantity": 100,
-    "topLevelCategory": "Women",
+    "topLevelCategory": "women",
     "secondLevelCategory": "women_sweaters",
     "samplePics": [
       "https://i.ibb.co/PmydXfx/women-s-black-all-over-printed-oversized-sweater-641019-1725341766-6.webp",
@@ -481,22 +493,26 @@
     "discountedPrice": 1199,
     "price": 2799,
     "discountPercent": 57,
-    "size": [
+    "sizes": [
       {
-        "name": "S",
+        "name": "M",
         "quantity": 20
       },
       {
-        "name": "M",
+        "name": "L",
         "quantity": 30
       },
       {
-        "name": "L",
-        "quantity": 50
+        "name": "XL",
+        "quantity": 25
+      },
+      {
+        "name": "XXL",
+        "quantity": 25
       }
     ],
     "quantity": 100,
-    "topLevelCategory": "Women",
+    "topLevelCategory": "women",
     "secondLevelCategory": "women_sweaters",
     "samplePics": [
       "https://i.ibb.co/bXtNMbv/women-s-pink-mission-league-graphic-printed-super-loose-fit-flatknit-sweater-597191-1703846274-5.webp",
@@ -511,22 +527,26 @@
     "discountedPrice": 799,
     "price": 1899,
     "discountPercent": 57,
-    "size": [
+    "sizes": [
       {
-        "name": "S",
+        "name": "M",
         "quantity": 20
       },
       {
-        "name": "M",
+        "name": "L",
         "quantity": 30
       },
       {
-        "name": "L",
-        "quantity": 50
+        "name": "XL",
+        "quantity": 25
+      },
+      {
+        "name": "XXL",
+        "quantity": 25
       }
     ],
     "quantity": 100,
-    "topLevelCategory": "Women",
+    "topLevelCategory": "women",
     "secondLevelCategory": "women_sweaters",
     "samplePics": [
       "https://i.ibb.co/SdfRpKn/women-s-black-striped-oversized-sweater-497679-1703686247-2.webp",
@@ -544,22 +564,26 @@
     "discountedPrice": 899,
     "price": 2299,
     "discountPercent": 60,
-    "size": [
+    "sizes": [
       {
-        "name": "S",
+        "name": "M",
         "quantity": 20
       },
       {
-        "name": "M",
+        "name": "L",
         "quantity": 30
       },
       {
-        "name": "L",
-        "quantity": 50
+        "name": "XL",
+        "quantity": 25
+      },
+      {
+        "name": "XXL",
+        "quantity": 25
       }
     ],
     "quantity": 100,
-    "topLevelCategory": "Women",
+    "topLevelCategory": "women",
     "secondLevelCategory": "women_sweaters",
     "samplePics": [
       "https://i.ibb.co/cNXG09L/women-s-purple-stay-weird-graphic-printed-super-loose-fit-sweater-597240-1703688387-5.webp",
@@ -575,22 +599,22 @@
     "discountedPrice": 799,
     "price": 2299,
     "discountPercent": 65,
-    "size": [
+    "sizes": [
       {
-        "name": "S",
-        "quantity": 20
-      },
-      {
-        "name": "M",
+        "name": "L",
         "quantity": 30
       },
       {
-        "name": "L",
-        "quantity": 50
+        "name": "XL",
+        "quantity": 45
+      },
+      {
+        "name": "XXL",
+        "quantity": 25
       }
     ],
     "quantity": 100,
-    "topLevelCategory": "Women",
+    "topLevelCategory": "women",
     "secondLevelCategory": "women_sweaters",
     "samplePics": [
       "https://i.ibb.co/Qpbw7XG/women-s-pink-who-needs-people-graphic-printed-super-loose-fit-sweater-597239-1703688529-6.webp",
@@ -607,22 +631,22 @@
     "discountedPrice": 999,
     "price": 2499,
     "discountPercent": 60,
-    "size": [
+    "sizes": [
       {
-        "name": "S",
+        "name": "M",
         "quantity": 20
       },
       {
-        "name": "M",
+        "name": "L",
         "quantity": 30
       },
       {
-        "name": "L",
+        "name": "XL",
         "quantity": 50
       }
     ],
     "quantity": 100,
-    "topLevelCategory": "Women",
+    "topLevelCategory": "women",
     "secondLevelCategory": "women_sweaters",
     "samplePics": [
       "https://i.ibb.co/PwcPxNh/women-s-black-gradenia-super-loose-fit-sweater-608088-1703687008-6.webp",
@@ -638,22 +662,22 @@
     "discountedPrice": 699,
     "price": 2199,
     "discountPercent": 68,
-    "size": [
+    "sizes": [
       {
-        "name": "S",
+        "name": "M",
         "quantity": 20
       },
       {
-        "name": "M",
+        "name": "L",
         "quantity": 30
       },
       {
-        "name": "L",
+        "name": "XL",
         "quantity": 50
       }
     ],
     "quantity": 100,
-    "topLevelCategory": "Women",
+    "topLevelCategory": "women",
     "secondLevelCategory": "women_sweaters",
     "samplePics": [
       "https://i.ibb.co/yp2SPvg/women-s-pink-oversized-flatknit-sweater-597230-1703688676-6.webp",
@@ -669,22 +693,22 @@
     "discountedPrice": 1199,
     "price": 2299,
     "discountPercent": 47,
-    "size": [
+    "sizes": [
       {
-        "name": "S",
+        "name": "M",
         "quantity": 20
       },
       {
-        "name": "M",
+        "name": "L",
         "quantity": 30
       },
       {
-        "name": "L",
+        "name": "XL",
         "quantity": 50
       }
     ],
     "quantity": 100,
-    "topLevelCategory": "Women",
+    "topLevelCategory": "women",
     "secondLevelCategory": "women_sweaters",
     "samplePics": [
       "https://i.ibb.co/bvPQfh2/women-s-black-white-oversized-sweater-608093-1703690616-6.webp",
@@ -700,22 +724,22 @@
     "discountedPrice": 899,
     "price": 2299,
     "discountPercent": 60,
-    "size": [
+    "sizes": [
       {
-        "name": "S",
-        "quantity": 20
-      },
-      {
-        "name": "M",
+        "name": "L",
         "quantity": 30
       },
       {
-        "name": "L",
-        "quantity": 50
+        "name": "XL",
+        "quantity": 45
+      },
+      {
+        "name": "XXL",
+        "quantity": 25
       }
     ],
     "quantity": 100,
-    "topLevelCategory": "Women",
+    "topLevelCategory": "women",
     "secondLevelCategory": "women_sweaters",
     "samplePics": [
       "https://i.ibb.co/9Yr6vTk/women-s-black-graphic-printed-oversized-flatknit-sweater-597233-1703688839-5.webp",
@@ -731,22 +755,26 @@
     "discountedPrice": 799,
     "price": 2199,
     "discountPercent": 63,
-    "size": [
+    "sizes": [
       {
-        "name": "S",
+        "name": "M",
         "quantity": 20
       },
       {
-        "name": "M",
+        "name": "L",
         "quantity": 30
       },
       {
-        "name": "L",
-        "quantity": 50
+        "name": "XL",
+        "quantity": 25
+      },
+      {
+        "name": "XXL",
+        "quantity": 25
       }
     ],
     "quantity": 100,
-    "topLevelCategory": "Women",
+    "topLevelCategory": "women",
     "secondLevelCategory": "women_sweaters",
     "samplePics": [
       "https://i.ibb.co/3TQy6qt/women-s-pink-flatknit-sweater-54-597227-1698910485-2.webp",
@@ -762,22 +790,22 @@
     "discountedPrice": 699,
     "price": 2399,
     "discountPercent": 70,
-    "size": [
+    "sizes": [
       {
-        "name": "S",
+        "name": "M",
         "quantity": 20
       },
       {
-        "name": "M",
+        "name": "L",
         "quantity": 30
       },
       {
-        "name": "L",
+        "name": "XL",
         "quantity": 50
       }
     ],
     "quantity": 100,
-    "topLevelCategory": "Women",
+    "topLevelCategory": "women",
     "secondLevelCategory": "women_sweaters",
     "samplePics": [
       "https://i.ibb.co/Zx4fmsk/women-s-green-sweater-608087-1702036573-4.webp",
@@ -793,22 +821,22 @@
     "discountedPrice": 1299,
     "price": 2799,
     "discountPercent": 53,
-    "size": [
+    "sizes": [
       {
-        "name": "S",
+        "name": "M",
         "quantity": 20
       },
       {
-        "name": "M",
+        "name": "L",
         "quantity": 30
       },
       {
-        "name": "L",
+        "name": "XL",
         "quantity": 50
       }
     ],
     "quantity": 100,
-    "topLevelCategory": "Women",
+    "topLevelCategory": "women",
     "secondLevelCategory": "women_sweaters",
     "samplePics": [
       "https://i.ibb.co/ZGZYgwP/women-s-black-imagine-graphic-printed-super-loose-fit-flatknit-sweater-597190-1703846311-7.webp",
@@ -825,22 +853,22 @@
     "discountedPrice": 999,
     "price": 2549,
     "discountPercent": 60,
-    "size": [
+    "sizes": [
       {
-        "name": "S",
+        "name": "M",
         "quantity": 20
       },
       {
-        "name": "M",
+        "name": "L",
         "quantity": 30
       },
       {
-        "name": "L",
+        "name": "XL",
         "quantity": 50
       }
     ],
     "quantity": 100,
-    "topLevelCategory": "Women",
+    "topLevelCategory": "women",
     "secondLevelCategory": "women_sweaters",
     "samplePics": [
       "https://i.ibb.co/mR4n3jr/women-s-pink-orange-striped-oversized-sweater-641014-1727100352-6.webp",
@@ -856,22 +884,26 @@
     "discountedPrice": 799,
     "price": 2199,
     "discountPercent": 63,
-    "size": [
+    "sizes": [
       {
-        "name": "S",
+        "name": "M",
         "quantity": 20
       },
       {
-        "name": "M",
+        "name": "L",
         "quantity": 30
       },
       {
-        "name": "L",
-        "quantity": 50
+        "name": "XL",
+        "quantity": 25
+      },
+      {
+        "name": "XXL",
+        "quantity": 25
       }
     ],
     "quantity": 100,
-    "topLevelCategory": "Women",
+    "topLevelCategory": "women",
     "secondLevelCategory": "women_sweaters",
     "samplePics": [
       "https://i.ibb.co/9Tn12KC/women-s-pink-flatknit-sweater-55-597231-1695384623-5.webp",
@@ -887,22 +919,22 @@
     "discountedPrice": 699,
     "price": 1899,
     "discountPercent": 63,
-    "size": [
+    "sizes": [
       {
-        "name": "S",
-        "quantity": 20
-      },
-      {
-        "name": "M",
+        "name": "L",
         "quantity": 30
       },
       {
-        "name": "L",
-        "quantity": 50
+        "name": "XL",
+        "quantity": 45
+      },
+      {
+        "name": "XXL",
+        "quantity": 25
       }
     ],
     "quantity": 100,
-    "topLevelCategory": "Women",
+    "topLevelCategory": "women",
     "secondLevelCategory": "women_sweaters",
     "samplePics": [
       "https://i.ibb.co/f0y5pQp/women-s-pastel-lilac-high-neck-oversized-crop-sweater-497716-1703750881-2.webp",
@@ -920,22 +952,22 @@
     "discountedPrice": 699,
     "price": 1899,
     "discountPercent": 63,
-    "size": [
+    "sizes": [
       {
-        "name": "S",
+        "name": "M",
         "quantity": 20
       },
       {
-        "name": "M",
+        "name": "L",
         "quantity": 30
       },
       {
-        "name": "L",
+        "name": "XL",
         "quantity": 50
       }
     ],
     "quantity": 100,
-    "topLevelCategory": "Women",
+    "topLevelCategory": "women",
     "secondLevelCategory": "women_sweaters",
     "samplePics": [
       "https://i.ibb.co/26MvNsP/women-s-sage-high-neck-oversized-crop-sweater-497709-1703750524-2.webp",
@@ -953,22 +985,26 @@
     "discountedPrice": 999,
     "price": 3099,
     "discountPercent": 67,
-    "size": [
+    "sizes": [
       {
-        "name": "S",
+        "name": "M",
         "quantity": 20
       },
       {
-        "name": "M",
+        "name": "L",
         "quantity": 30
       },
       {
-        "name": "L",
-        "quantity": 50
+        "name": "XL",
+        "quantity": 25
+      },
+      {
+        "name": "XXL",
+        "quantity": 25
       }
     ],
     "quantity": 100,
-    "topLevelCategory": "Women",
+    "topLevelCategory": "women",
     "secondLevelCategory": "women_sweaters",
     "samplePics": [
       "https://i.ibb.co/rt8MVQX/women-s-red-pink-typography-super-loose-fit-plus-size-sweater-641047-1725543011-5.webp",

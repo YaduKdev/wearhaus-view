@@ -40,35 +40,73 @@
         <div>
           <div class="hidden lg:flex items-center justify-between">
             <p class="text-lg">Filters</p>
-            <mat-icon>filter_list</mat-icon>
+            <button
+              mat-icon-button
+              (click)="resetFilters()"
+              class="text-[rgba(var(--text))]"
+            >
+              <mat-icon class="text-[rgba(var(--text))]"
+                >filter_alt_off</mat-icon
+              >
+            </button>
           </div>
           <form class="hidden lg:block">
-            <div *ngFor="let item of filterData">
-              <div class="py-6">
-                <span class="font-medium">{{ item.name }}</span>
-                <div class="pt-6" id="filter-section-0">
-                  <div class="scroll-py-4">
-                    <div *ngFor="let option of item.options">
-                      <div class="flex items-center">
-                        <mat-checkbox
-                          id="'filter - '+ option.value"
-                          [name]="item.id"
-                          [value]="option.value"
-                          (click)="
-                            handleMultipleSelectFilter(option.value, item.id)
-                          "
-                        >
-                          <span class="text-sm text-gray-500">{{
-                            option.label
-                          }}</span>
-                        </mat-checkbox>
+            <ng-container *ngIf="levelOne && levelOne !== 'footwear'">
+              <div *ngFor="let item of filterData.clothes">
+                <div class="py-6">
+                  <span class="font-medium">{{ item.name }}</span>
+                  <div class="pt-6" id="filter-section-0">
+                    <div class="scroll-py-4">
+                      <div *ngFor="let option of item.options">
+                        <div class="flex items-center">
+                          <mat-checkbox
+                            id="'filter - '+ option.value"
+                            [name]="item.id"
+                            [value]="option.value"
+                            (click)="
+                              handleMultipleSelectFilter(option.value, item.id)
+                            "
+                          >
+                            <span class="text-sm text-gray-500">{{
+                              option.label
+                            }}</span>
+                          </mat-checkbox>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
+                <mat-divider></mat-divider>
               </div>
-              <mat-divider></mat-divider>
-            </div>
+            </ng-container>
+            <ng-container *ngIf="levelOne && levelOne === 'footwear'">
+              <div *ngFor="let item of filterData.footwear">
+                <div class="py-6">
+                  <span class="font-medium">{{ item.name }}</span>
+                  <div class="pt-6" id="filter-section-0">
+                    <div class="scroll-py-4">
+                      <div *ngFor="let option of item.options">
+                        <div class="flex items-center">
+                          <mat-checkbox
+                            id="'filter - '+ option.value"
+                            [name]="item.id"
+                            [value]="option.value"
+                            (click)="
+                              handleMultipleSelectFilter(option.value, item.id)
+                            "
+                          >
+                            <span class="text-sm text-gray-500">{{
+                              option.label
+                            }}</span>
+                          </mat-checkbox>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <mat-divider></mat-divider>
+              </div>
+            </ng-container>
             <div *ngFor="let item of singleFilterData; let last = last">
               <div class="py-6">
                 <span class="font-medium">{{ item.name }}</span>
@@ -97,12 +135,35 @@
             </div>
           </form>
         </div>
-        <div class="lg:col-span-3">
+        <div
+          *ngIf="productData && productData.length > 0"
+          class="lg:col-span-3"
+        >
           <div class="preview-card-container">
-            <ng-container *ngFor="let product of productData">
+            <ng-container *ngFor="let product of productData; let last = last">
               <app-product-preview-card [productData]="product" />
             </ng-container>
           </div>
+          <div *ngIf="productData" class="my-10 text-center">
+            <button
+              *ngIf="
+                pageSize <= this.totalPages * initialPageSize &&
+                productData.length > 8
+              "
+              (click)="viewMore()"
+              class="px-6 py-4 bg-yellow-500 hover:bg-yellow-300 text-black"
+            >
+              View More
+            </button>
+          </div>
+        </div>
+        <div
+          *ngIf="productData && productData.length === 0"
+          class="lg:col-span-3 text-center"
+        >
+          <p class="mt-20 font-semibold text-2xl">
+            No products available for your selected Filter
+          </p>
         </div>
       </div>
     </section>

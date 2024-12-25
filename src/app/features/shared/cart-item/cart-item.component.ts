@@ -24,6 +24,6 @@ export class CartItemComponent {
   }
 
   removeCartItem() {
-    this.cartService.removeCartItem(this.cartItem.product._id);
+    this.cartService.removeCartItem(this.cartItem._id);
   }
 }
