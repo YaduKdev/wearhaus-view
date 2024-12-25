@@ -85,7 +85,5 @@ export class ProductDetailsComponent {
     };
 
     this.cartService.addItemToCart(data);
-
-    this.router.navigate(['cart']);
   }
 }

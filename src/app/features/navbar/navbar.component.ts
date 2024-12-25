@@ -28,6 +28,8 @@ import { AuthComponent } from '../../auth/auth.component';
 import { UserService } from '../../states/user/user.service';
 import { select, Store } from '@ngrx/store';
 import { AppState } from '../../models/appState';
+import { MatButtonModule } from '@angular/material/button';
+import { MatBadgeModule } from '@angular/material/badge';
 
 @Component({
   selector: 'app-navbar',
@@ -38,6 +40,8 @@ import { AppState } from '../../models/appState';
     MatMenuModule,
     NavContentComponent,
     MatDialogModule,
+    MatButtonModule,
+    MatBadgeModule,
   ],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
@@ -51,6 +55,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   categories: any[] = [];
   selectedCategory: any;
   userProfile: any;
+  cartItems: any[] = [];
   private resizeListener: (() => void) | null = null;
 
   constructor(
@@ -80,6 +85,12 @@ export class NavbarComponent implements OnInit, OnDestroy {
         this.dialog.closeAll();
       }
     });
+
+    this.store
+      .pipe(select((store: AppState) => store.cart))
+      .subscribe((data) => {
+        this.cartItems = data?.cartItems;
+      });
   }
 
   ngOnDestroy() {
@@ -117,6 +128,12 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.isNavbarContentOpen = false;
   }
 
+  handleMobileNavigate(path: any) {
+    this.router.navigate([path]);
+
+    this.closeMobileMenu();
+  }
+
   handleLoginModal() {
     this.dialog.open(AuthComponent, {
       width: '400px',
@@ -130,10 +147,13 @@ export class NavbarComponent implements OnInit, OnDestroy {
       height: '100%',
       disableClose: true,
     });
+
+    this.closeMobileMenu();
   }
 
   handleLogout() {
     this.userService.logout();
+    this.cartItems = [];
   }
 
   @HostListener('document: click', [`$event`])
@@ -171,5 +191,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   navigateTo(path: any) {
     this.router.navigate([path]);
+  }
+
+  goToCart() {
+    this.router.navigate(['cart']);
   }
 }

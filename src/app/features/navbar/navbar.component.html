@@ -36,8 +36,16 @@
         <button mat-menu-item>Profile</button>
         <button mat-menu-item (click)="handleLogout()">Logout</button>
       </mat-menu>
-      <button class="cart-icon">
-        <mat-icon>shopping_bag</mat-icon>
+      <button *ngIf="cartItems.length === 0" mat-icon-button class="cart-icon">
+        <mat-icon class="text-[rgba(var(--text))]">shopping_bag</mat-icon>
+      </button>
+      <button
+        *ngIf="cartItems.length > 0"
+        mat-icon-button
+        [matBadge]="cartItems.length"
+        class="cart-icon"
+      >
+        <mat-icon class="text-[rgba(var(--text))]">shopping_bag</mat-icon>
       </button>
     </div>
   </div>
@@ -73,9 +81,18 @@
           <div *ngIf="activeCategory === category.name" class="subcategories">
             <div
               *ngFor="let subcategory of category.sections"
-              class="subcategory-item"
+              class="subcategory-item cursor-pointer"
             >
-              {{ subcategory.name }}
+              <button
+                class="hover:text-yellow-500"
+                (click)="
+                  handleMobileNavigate(
+                    '/products/' + category.id + '/' + subcategory.id
+                  )
+                "
+              >
+                {{ subcategory.name }}
+              </button>
             </div>
           </div>
         </div>
@@ -97,11 +114,7 @@
       <nav class="main-navigation">
         <div class="nav-categories open-button">
           <div class="nav-category" *ngFor="let category of categories">
-            <button
-              class="menu-button"
-              (click)="openNavContent(category)"
-              mat-button
-            >
+            <button class="menu-button" (click)="openNavContent(category)">
               {{ category.name }}
             </button>
           </div>
@@ -139,9 +152,49 @@
             <button mat-menu-item>Profile</button>
             <button mat-menu-item (click)="handleLogout()">Logout</button>
           </mat-menu>
-          <button class="cart-icon">
-            <mat-icon>shopping_bag</mat-icon>
+          <button
+            *ngIf="cartItems.length === 0"
+            mat-icon-button
+            class="cart-icon"
+          >
+            <mat-icon class="text-[rgba(var(--text))]">shopping_bag</mat-icon>
           </button>
+          <button
+            *ngIf="cartItems.length > 0"
+            mat-icon-button
+            [matBadge]="cartItems.length"
+            [matMenuTriggerFor]="cartMenu"
+            class="cart-icon"
+          >
+            <mat-icon class="text-[rgba(var(--text))]">shopping_bag</mat-icon>
+          </button>
+          <mat-menu #cartMenu="matMenu" class="cart-menu-container">
+            <div class="p-5 flex flex-col text-center justify-center">
+              <div
+                *ngFor="let item of cartItems"
+                class="mb-10 flex justify-between"
+              >
+                <img
+                  class="h-20"
+                  [src]="item.product.imageUrl"
+                  [alt]="item.product.title"
+                />
+                <div class="w-72 flex flex-col items-start">
+                  <p class="text-left mb-2">
+                    <span>{{ item.product.title }}</span>
+                    &nbsp;&nbsp; x {{ item.quantity }}
+                  </p>
+                  <p class="font-semibold">₹{{ item.discountedPrice }}</p>
+                </div>
+              </div>
+              <button
+                class="px-4 py-2 w-full bg-yellow-500 hover:bg-yellow-300 text-black"
+                (click)="goToCart()"
+              >
+                Checkout
+              </button>
+            </div>
+          </mat-menu>
         </div>
       </div>
     </div>

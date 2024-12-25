@@ -11,6 +11,11 @@
   height: 3.5rem;
 }
 
+::ng-deep .mat-mdc-menu-panel.cart-menu-container {
+  max-width: none !important;
+  width: 500px !important;
+}
+
 ::ng-deep .mat-mdc-menu-panel {
   background: rgba(var(--background)) !important;
 }

@@ -65,6 +65,7 @@
           class="cart-button w-80 p-4 lg:p-5 text-lg flex justify-center items-center gap-2"
           (click)="handleAddToCart()"
           mat-raised-button
+          [disabled]="!selectedSize"
         >
           <mat-icon>shopping_bag</mat-icon>Add To Bag
         </button>
