@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { BASE_API_URL } from '../../config/api';
 import { Store } from '@ngrx/store';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -14,12 +14,14 @@ import {
   updateCartItemFailure,
   updateCartItemSuccess,
 } from './cart.actions';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
   API_BASE_URL = BASE_API_URL;
+  private _snackBar = inject(MatSnackBar);
 
   constructor(
     private store: Store,
@@ -41,6 +43,13 @@ export class CartService {
         map((data: any) => {
           console.log('ADDED ITEM', data);
 
+          this._snackBar.open('Item Added To Cart', '', {
+            duration: 2000,
+            horizontalPosition: 'right',
+            verticalPosition: 'top',
+            panelClass: 'success-snackbar',
+          });
+
           return addItemToCartSuccess({ payload: data });
         }),
         catchError((error: any) => {
@@ -48,6 +57,8 @@ export class CartService {
             addItemToCartFailure(
               error.response && error.response.data.message
                 ? error.response.data.message
+                : error.error
+                ? error.error
                 : error.message
             )
           );

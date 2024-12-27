@@ -16,6 +16,7 @@ import {
   Inject,
   PLATFORM_ID,
   HostListener,
+  inject,
 } from '@angular/core';
 import { isPlatformBrowser, CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
@@ -30,6 +31,8 @@ import { select, Store } from '@ngrx/store';
 import { AppState } from '../../models/appState';
 import { MatButtonModule } from '@angular/material/button';
 import { MatBadgeModule } from '@angular/material/badge';
+import { CartService } from '../../states/cart/cart.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-navbar',
@@ -56,6 +59,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   selectedCategory: any;
   userProfile: any;
   cartItems: any[] = [];
+  private _snackBar = inject(MatSnackBar);
   private resizeListener: (() => void) | null = null;
 
   constructor(
@@ -63,7 +67,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
     private router: Router,
     private dialog: MatDialog,
     private store: Store<AppState>,
-    private userService: UserService
+    private userService: UserService,
+    private cartService: CartService
   ) {}
 
   ngOnInit() {
@@ -75,6 +80,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     if (typeof window !== 'undefined' && window.localStorage) {
       if (localStorage.getItem('jwt')) {
         this.userService.getUserProfile();
+        this.cartService.getCart();
       }
     }
 
@@ -89,7 +95,16 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.store
       .pipe(select((store: AppState) => store.cart))
       .subscribe((data) => {
-        this.cartItems = data?.cartItems;
+        if (data.error) {
+          this._snackBar.open(data.error, '', {
+            duration: 2000,
+            horizontalPosition: 'right',
+            verticalPosition: 'top',
+            panelClass: 'warning-snackbar',
+          });
+        } else {
+          this.cartItems = data?.cartItems;
+        }
       });
   }
 

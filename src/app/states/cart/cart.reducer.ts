@@ -56,13 +56,13 @@ export const cartReducer = createReducer(
   on(removeCartItemSuccess, (state, action) => ({
     ...state,
     loading: false,
-    cartItems: state.cartItems.filter((item) => item.id !== action.cartItemId),
+    cartItems: state.cartItems.filter((item) => item._id !== action.cartItemId),
   })),
   on(updateCartItemSuccess, (state, action) => ({
     ...state,
     loading: false,
     cartItems: state.cartItems.map((item) =>
-      item.id == action.payload.id ? action.payload : item
+      item._id === action.payload._id ? action.payload : item
     ),
   })),
 

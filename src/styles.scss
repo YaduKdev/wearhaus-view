@@ -1,3 +1,5 @@
+@use "@angular/material" as mat;
+
 /* You can add global styles to this file, and also import other style files */
 @tailwind base;
 @tailwind components;
@@ -7,6 +9,34 @@
   --background: 255, 255, 255;
   --text: 0, 0, 0;
   --shadow: 0, 0, 0, 0.1;
+}
+
+// MAT SNACKBAR
+.success-snackbar {
+  @include mat.snack-bar-overrides(
+    (
+      container-color: #198754,
+      supporting-text-color: white,
+    )
+  );
+}
+
+.error-snackbar {
+  @include mat.snack-bar-overrides(
+    (
+      container-color: #ed4337,
+      supporting-text-color: white,
+    )
+  );
+}
+
+.warning-snackbar {
+  @include mat.snack-bar-overrides(
+    (
+      container-color: #ffc107,
+      supporting-text-color: black,
+    )
+  );
 }
 
 @media (prefers-color-scheme: dark) {

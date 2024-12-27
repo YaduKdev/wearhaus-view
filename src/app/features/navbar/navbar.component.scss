@@ -11,6 +11,10 @@
   height: 3.5rem;
 }
 
+.success-snackbar {
+  background: green;
+}
+
 ::ng-deep .mat-mdc-menu-panel.cart-menu-container {
   max-width: none !important;
   width: 500px !important;

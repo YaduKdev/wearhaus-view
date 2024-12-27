@@ -3,7 +3,7 @@
     <div
       class="rounded-md shadow-md h-[32.2rem] overflow-y-scroll hide-scrollbar border border-gray-500 dark:border-gray-700 py-5"
     >
-      <div class="p-5 py-7 cursor-pointer">
+      <div *ngIf="addresses" class="p-5 py-7 cursor-pointer">
         <div
           *ngFor="let item of addresses; let last = last"
           class="py-2 space-y-2"

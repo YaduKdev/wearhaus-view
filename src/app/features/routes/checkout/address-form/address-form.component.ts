@@ -13,6 +13,9 @@ import {
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { OrderService } from '../../../../states/order/order.service';
+import { UserService } from '../../../../states/user/user.service';
+import { select, Store } from '@ngrx/store';
+import { AppState } from '../../../../models/appState';
 
 @Component({
   selector: 'app-address-form',
@@ -30,12 +33,14 @@ import { OrderService } from '../../../../states/order/order.service';
   styleUrl: './address-form.component.scss',
 })
 export class AddressFormComponent {
-  addresses = [1, 1, 1];
+  addresses: any;
   myForm: FormGroup = new FormGroup({});
 
   constructor(
     private formBuilder: FormBuilder,
-    private orderService: OrderService
+    private orderService: OrderService,
+    private userService: UserService,
+    private store: Store<AppState>
   ) {}
 
   ngOnInit() {
@@ -48,9 +53,21 @@ export class AddressFormComponent {
       zipCode: ['', Validators.required],
       contactNo: ['', Validators.required],
     });
+
+    if (typeof window !== 'undefined' && window.localStorage) {
+      if (localStorage.getItem('jwt')) {
+        this.userService.getUserProfile();
+      }
+    }
+
+    this.store.pipe(select((store) => store.user)).subscribe((user) => {
+      this.addresses = user.userProfile?.addresses;
+    });
   }
 
-  handleCreateOrder(item: any) {}
+  handleCreateOrder(item: any) {
+    this.orderService.createOrder(item);
+  }
 
   handleSubmit() {
     const formValue = this.myForm.value;

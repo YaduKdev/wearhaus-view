@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { BASE_API_URL } from '../../config/api';
 import { HttpClient } from '@angular/common/http';
 import { Store } from '@ngrx/store';
@@ -9,12 +9,14 @@ import {
   registerFailure,
   registerSuccess,
 } from './auth.actions';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   private apiUrl = BASE_API_URL + '/auth';
+  private _snackBar = inject(MatSnackBar);
 
   constructor(private http: HttpClient, private store: Store) {}
 
@@ -26,6 +28,13 @@ export class AuthService {
           console.log('login user', user);
           if (user.jwt) {
             localStorage.setItem('jwt', user.jwt);
+
+            this._snackBar.open('Logged In Successfully!', '', {
+              duration: 2000,
+              horizontalPosition: 'right',
+              verticalPosition: 'top',
+              panelClass: 'success-snackbar',
+            });
           }
           return loginSuccess({ user });
         }),
@@ -50,6 +59,13 @@ export class AuthService {
           console.log('register user', user);
           if (user.jwt) {
             localStorage.setItem('jwt', user.jwt);
+
+            this._snackBar.open('Registered Successfully!', '', {
+              duration: 2000,
+              horizontalPosition: 'right',
+              verticalPosition: 'top',
+              panelClass: 'success-snackbar',
+            });
           }
           return registerSuccess({ user });
         }),

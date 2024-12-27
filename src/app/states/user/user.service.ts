@@ -31,7 +31,6 @@ export class UserService {
         })
         .pipe(
           map((user: any) => {
-            console.log('USER PROFILE');
             console.log('User profile', user);
 
             return getUserProfileSuccess({ userProfile: user });
