@@ -7,6 +7,7 @@ import women_dress from '../../../../Data/Women/women_dress.json';
 import women_top from '../../../../Data/Women/women_top.json';
 import sneakers from '../../../../Data/sneakers.json';
 import oversized_tshirts from '../../../../Data/Men/oversized_tshirts.json';
+import men_cargos from '../../../../Data/Men/men_cargos.json';
 
 @Component({
   selector: 'app-home',
@@ -21,6 +22,7 @@ export class HomeComponent {
   tops: any;
   sneakers: any;
   oversizedTshirts: any;
+  menCargos: any;
 
   ngOnInit() {
     this.menSweaters = men_sweaters.slice(0, 9);
@@ -29,5 +31,6 @@ export class HomeComponent {
     this.tops = women_top.slice(0, 9);
     this.sneakers = sneakers.slice(0, 9);
     this.oversizedTshirts = oversized_tshirts.slice(0, 9);
+    this.menCargos = men_cargos.slice(0, 9);
   }
 }

@@ -1,6 +1,125 @@
-<div class="flex items-center h-screen">
-  <div class="h-full w-[20%] border-r border-r-gray-500">navigation</div>
-  <div class="w-[80%]">
+<div class="flex flex-col lg:flex-row h-screen">
+  <div
+    class="h-auto lg:h-full w-full lg:w-[20%] border-b border-r-0 lg:border-b-0 lg:border-r border-b-gray-300 lg:border-r-gray-300 dark:border-b-gray-700 lg:dark:border-r-gray-700"
+  >
+    <mat-sidenav-container class="h-full">
+      <mat-sidenav-content>
+        <div
+          class="mt-2 lg:mt-6 flex flex-col ml-4 items-center lg:items-start"
+        >
+          <button (click)="navigateTo('admin')">
+            <div
+              class="flex justify-center items-center gap-3 hover:text-yellow-500"
+            >
+              <mat-icon>dashboard</mat-icon>
+              <p class="text-lg lg:text-2xl font-bold font-[Montserrat]">
+                Dashboard
+              </p>
+            </div>
+          </button>
+        </div>
+        <div
+          class="my-3 lg:my-10 flex flex-row lg:flex-col ml-0 lg:ml-6 items-center justify-around lg:justify-start lg:items-start gap-3"
+        >
+          <button
+            class="mb-0 lg:mb-5 active:text-yellow-500 focus:text-yellow-500"
+            (click)="navigateTo('admin/products')"
+          >
+            <div
+              class="flex justify-center items-center gap-3 hover:text-yellow-500"
+              [class]="
+                isActiveRoute('/admin/products')
+                  ? 'text-yellow-500'
+                  : 'text-[rgba(var(--text))]'
+              "
+            >
+              <div class="hidden lg:flex gap-3 justify-center items-center">
+                <mat-icon>styler</mat-icon>
+                <p class="text-xl font-semibold font-[Montserrat]">Products</p>
+              </div>
+              <p
+                class="visible lg:hidden text-sm font-semibold font-[Montserrat]"
+              >
+                Products
+              </p>
+            </div>
+          </button>
+          <button
+            class="mb-0 lg:mb-5 active:text-yellow-500 focus:text-yellow-500"
+            (click)="navigateTo('admin/customers')"
+          >
+            <div
+              class="flex justify-center items-center gap-3 hover:text-yellow-500"
+              [class]="
+                isActiveRoute('/admin/customers')
+                  ? 'text-yellow-500'
+                  : 'text-[rgba(var(--text))]'
+              "
+            >
+              <div class="hidden lg:flex gap-3 justify-center items-center">
+                <mat-icon>shop_two</mat-icon>
+                <p class="text-xl font-semibold font-[Montserrat]">Customers</p>
+              </div>
+              <p
+                class="visible lg:hidden text-sm font-semibold font-[Montserrat]"
+              >
+                Customers
+              </p>
+            </div>
+          </button>
+          <button
+            class="mb-0 lg:mb-5 active:text-yellow-500 focus:text-yellow-500"
+            (click)="navigateTo('admin/orders')"
+          >
+            <div
+              class="flex justify-center items-center gap-3 hover:text-yellow-500"
+              [class]="
+                isActiveRoute('/admin/orders')
+                  ? 'text-yellow-500'
+                  : 'text-[rgba(var(--text))]'
+              "
+            >
+              <div class="hidden lg:flex gap-3 justify-center items-center">
+                <mat-icon>toc</mat-icon>
+                <p class="text-xl font-semibold font-[Montserrat]">Orders</p>
+              </div>
+              <p
+                class="visible lg:hidden text-sm font-semibold font-[Montserrat]"
+              >
+                Orders
+              </p>
+            </div>
+          </button>
+          <button
+            class="mb-0 lg:mb-5 active:text-yellow-500 focus:text-yellow-500"
+            (click)="navigateTo('admin/products/add')"
+          >
+            <div
+              class="flex justify-center items-center gap-3 hover:text-yellow-500"
+              [class]="
+                isActiveRoute('/admin/products/add')
+                  ? 'text-yellow-500'
+                  : 'text-[rgba(var(--text))]'
+              "
+            >
+              <div class="hidden lg:flex gap-3 justify-center items-center">
+                <mat-icon>add_circle</mat-icon>
+                <p class="text-xl font-semibold font-[Montserrat]">
+                  Add Product
+                </p>
+              </div>
+              <p
+                class="visible lg:hidden text-sm font-semibold font-[Montserrat]"
+              >
+                Add
+              </p>
+            </div>
+          </button>
+        </div>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>
+  <div class="py-4 lg:py-0 px-5 lg:px-7 w-full lg:w-[80%]">
     <router-outlet />
   </div>
 </div>

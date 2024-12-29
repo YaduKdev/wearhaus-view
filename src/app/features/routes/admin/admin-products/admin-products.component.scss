@@ -1,0 +1,50 @@
+@use "@angular/material" as mat;
+
+.admin-products-table {
+  @include mat.table-overrides(
+    (
+      background-color: #eaf0f1,
+      header-headline-weight: 900,
+      header-headline-color: rgba(var(--text)),
+      header-headline-size: 18px,
+      row-item-label-text-color: rgba(var(--text)),
+      row-item-container-height: 5rem,
+    )
+  );
+}
+
+.product-delete-button {
+  color: white;
+  @include mat.fab-overrides(
+    (
+      small-container-color: #c70039,
+    )
+  );
+}
+
+.admin-products-paginator {
+  @include mat.paginator-overrides(
+    (
+      container-text-color: rgba(var(--text)),
+      container-background-color: #eaf0f1,
+    )
+  );
+}
+
+@media (prefers-color-scheme: dark) {
+  .admin-products-table {
+    @include mat.table-overrides(
+      (
+        background-color: #2c3335,
+      )
+    );
+  }
+
+  .admin-products-paginator {
+    @include mat.paginator-overrides(
+      (
+        container-background-color: #2c3335,
+      )
+    );
+  }
+}
