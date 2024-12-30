@@ -27,6 +27,8 @@
     (
       container-text-color: rgba(var(--text)),
       container-background-color: #eaf0f1,
+      enabled-icon-color: rgba(var(--text)),
+      disabled-icon-color: grey,
     )
   );
 }

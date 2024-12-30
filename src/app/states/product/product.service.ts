@@ -4,6 +4,8 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Store } from '@ngrx/store';
 import { ActivatedRoute, Router } from '@angular/router';
 import {
+  deleteProductFailure,
+  deleteProductSuccess,
   findProductsByCategoryFailure,
   findProductsByCategorySuccess,
   findProductsByIdFailure,
@@ -101,6 +103,56 @@ export class ProductService {
         catchError((error: any) => {
           return of(
             findProductsByIdFailure(
+              error.response && error.response.data.message
+                ? error.response.data.message
+                : error.message
+            )
+          );
+        })
+      )
+      .subscribe((action) => this.store.dispatch(action));
+  }
+
+  deleteProduct(productId: any) {
+    const headers = this.getHeader();
+
+    return this.http
+      .delete(`${this.API_BASE_URL}/api/admin/products/${productId}`, {
+        headers,
+      })
+      .pipe(
+        map((data: any) => {
+          console.log('Deleted Product', data);
+
+          return deleteProductSuccess({ payload: data.deletedProductId });
+        }),
+        catchError((error: any) => {
+          return of(
+            deleteProductFailure(
+              error.response && error.response.data.message
+                ? error.response.data.message
+                : error.message
+            )
+          );
+        })
+      )
+      .subscribe((action) => this.store.dispatch(action));
+  }
+
+  createProduct(reqData: any) {
+    const headers = this.getHeader();
+
+    return this.http
+      .post(`${this.API_BASE_URL}/api/admin/products`, reqData, { headers })
+      .pipe(
+        map((data: any) => {
+          console.log('Created Product', data);
+
+          return deleteProductSuccess({ payload: data });
+        }),
+        catchError((error: any) => {
+          return of(
+            deleteProductFailure(
               error.response && error.response.data.message
                 ? error.response.data.message
                 : error.message

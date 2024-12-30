@@ -23,3 +23,27 @@ export const findProductsByIdFailure = createAction(
   '[Product] Find Products By Id Failure',
   props<{ error: any }>()
 );
+
+export const deleteProductRequest = createAction(
+  '[Product] Delete Product Request'
+);
+export const deleteProductSuccess = createAction(
+  '[Product] Delete Product Success',
+  props<{ payload: any }>()
+);
+export const deleteProductFailure = createAction(
+  '[Product] Delete Product Failure',
+  props<{ error: any }>()
+);
+
+export const createProductRequest = createAction(
+  '[Product] Create Product Request'
+);
+export const createProductSuccess = createAction(
+  '[Product] Create Product Success',
+  props<{ payload: any }>()
+);
+export const createProductFailure = createAction(
+  '[Product] Create Product Failure',
+  props<{ error: any }>()
+);

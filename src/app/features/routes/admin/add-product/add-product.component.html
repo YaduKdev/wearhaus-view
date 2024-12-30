@@ -1,1 +1,162 @@
-<p>add-product works!</p>
+<div class="grid grid-cols-1 gap-4 lg:grid-cols-12 px-5 lg:px-20">
+  <div class="col-span-1 lg:col-span-12">
+    <p class="text-2xl font-bold text-center my-6">Add Product</p>
+  </div>
+  <div class="col-span-1 lg:col-span-12">
+    <div
+      class="rounded-md shadow-md p-5 border border-gray-500 dark:border-gray-700"
+    >
+      <form [formGroup]="myForm" (ngSubmit)="handleSubmit()">
+        <div class="grid grid-cols-1 gap-3 lg:grid-cols-2">
+          <div class="col-span-2">
+            <mat-form-field class="w-full delivery-input-field">
+              <mat-label>Title</mat-label>
+              <input
+                matInput
+                formControlName="title"
+                placeholder="Title"
+                autocomplete="given-name"
+                type="text"
+              />
+              <mat-error>Title Name is <strong>required</strong></mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-span-2">
+            <mat-form-field class="w-full delivery-input-field">
+              <mat-label>Image URL</mat-label>
+              <input
+                matInput
+                formControlName="imageUrl"
+                placeholder="Image URL"
+                autocomplete="given-name"
+                type="text"
+              />
+              <mat-error>Image URL is <strong>required</strong></mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-span-2 lg:col-span-1">
+            <mat-form-field class="w-full delivery-input-field">
+              <mat-label>Color</mat-label>
+              <input
+                matInput
+                formControlName="color"
+                placeholder="Color"
+                autocomplete="given-name"
+                type="text"
+              />
+              <mat-error>Color is <strong>required</strong></mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-span-2 lg:col-span-1">
+            <mat-form-field class="w-full delivery-input-field">
+              <mat-label>Discounted Price</mat-label>
+              <span matTextPrefix>₹ &nbsp;</span>
+              <input
+                matInput
+                formControlName="discountedPrice"
+                placeholder="Discounted Price"
+                autocomplete="given-name"
+                type="number"
+              />
+              <mat-error
+                >Discounted Price is <strong>required</strong></mat-error
+              >
+            </mat-form-field>
+          </div>
+          <div class="col-span-2 lg:col-span-1">
+            <mat-form-field class="w-full delivery-input-field">
+              <mat-label>Price</mat-label>
+              <span matTextPrefix>₹ &nbsp;</span>
+              <input
+                matInput
+                formControlName="price"
+                placeholder="Price"
+                autocomplete="given-name"
+                type="number"
+              />
+              <mat-error>Price is <strong>required</strong></mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-span-2 lg:col-span-1">
+            <mat-form-field class="w-full delivery-input-field">
+              <mat-label>Discount Percent</mat-label>
+              <span matTextSuffix>% &nbsp;</span>
+              <input
+                matInput
+                formControlName="discountPercent"
+                placeholder="Discount Percent"
+                autocomplete="given-name"
+                type="number"
+              />
+              <mat-error
+                >Discount Percent is <strong>required</strong></mat-error
+              >
+            </mat-form-field>
+          </div>
+          <div class="col-span-2 lg:col-span-1">
+            <mat-form-field class="w-full delivery-input-field">
+              <mat-label>Top Level Category</mat-label>
+              <mat-select formControlName="topLevelCategory">
+                <mat-option value="men">Men</mat-option>
+                <mat-option value="women">Women</mat-option>
+                <mat-option value="footwear">Footwear</mat-option>
+              </mat-select>
+              <mat-error
+                >Top Level Category is <strong>required</strong></mat-error
+              >
+            </mat-form-field>
+          </div>
+          <div class="col-span-2 lg:col-span-1">
+            <mat-form-field class="w-full delivery-input-field">
+              <mat-label>Second Level Category</mat-label>
+              <input
+                matInput
+                formControlName="secondLevelCategory"
+                placeholder="Example: men_oversized_tshirts"
+                autocomplete="given-name"
+                type="text"
+              />
+              <mat-error
+                >Second Level Category is <strong>required</strong></mat-error
+              >
+            </mat-form-field>
+          </div>
+          <div class="col-span-2">
+            <p class="text-lg font-semibold">Sizes</p>
+          </div>
+          <div formArrayName="sizes" class="col-span-2">
+            <div class="grid grid-cols-2 gap-4">
+              <div
+                class="col-span-2 lg:col-span-1"
+                *ngFor="let size of getSizeControls(); let i = index"
+                [formGroupName]="i"
+              >
+                <mat-form-field class="w-full delivery-input-field">
+                  <mat-label
+                    >{{ size.get("name")?.value }} Size Quantity</mat-label
+                  >
+                  <input
+                    matInput
+                    formControlName="quantity"
+                    placeholder="Quantity"
+                    type="number"
+                  />
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div class="col-span-2">SAMPLEPICS</div>
+          <div class="col-span-2">
+            <button
+              class="w-full bg-yellow-500 text-black hover:bg-yellow-400 font-semibold text-lg lg:text-xl"
+              style="padding: 1.4rem"
+              type="submit"
+            >
+              ADD PRODUCT
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

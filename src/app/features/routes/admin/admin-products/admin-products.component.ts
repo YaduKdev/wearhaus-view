@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { ProductService } from '../../../../states/product/product.service';
 import { select, Store } from '@ngrx/store';
 import { AppState } from '../../../../models/appState';
@@ -21,6 +21,8 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrl: './admin-products.component.scss',
 })
 export class AdminProductsComponent {
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+
   displayedColumns: string[] = [
     'image',
     'title',
@@ -30,6 +32,8 @@ export class AdminProductsComponent {
     'delete',
   ];
   productData: any;
+  totalProducts: any;
+  currentPage = 1;
 
   constructor(
     private productService: ProductService,
@@ -43,8 +47,8 @@ export class AdminProductsComponent {
       minPrice: 0,
       maxPrice: 100000,
       minDiscount: 0,
-      pageNumber: 7,
-      pageSize: 9,
+      pageNumber: 1,
+      pageSize: 10,
       sort: 'popularity',
       stock: null,
     };
@@ -55,8 +59,32 @@ export class AdminProductsComponent {
       .pipe(select((store: AppState) => store.product))
       .subscribe((data) => {
         this.productData = data.products.content;
+        this.totalProducts = 10 * data.products.totalPages;
       });
   }
 
-  deleteProduct() {}
+  deleteProduct(productId: any) {
+    this.productService.deleteProduct(productId);
+  }
+
+  pageChanged(event: any) {
+    this.currentPage = event.pageIndex;
+    this.loadData(this.currentPage);
+  }
+
+  loadData(page: number) {
+    let reqData = {
+      colors: [],
+      sizes: [],
+      minPrice: 0,
+      maxPrice: 100000,
+      minDiscount: 0,
+      pageNumber: page + 1,
+      pageSize: 10,
+      sort: 'popularity',
+      stock: null,
+    };
+
+    this.productService.findProductsByCategory(reqData);
+  }
 }
