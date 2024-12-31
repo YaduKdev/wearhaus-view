@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { BASE_API_URL } from '../../config/api';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Store } from '@ngrx/store';
@@ -12,12 +12,14 @@ import {
   findProductsByIdSuccess,
 } from './product.actions';
 import { catchError, map, of } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductService {
   API_BASE_URL = BASE_API_URL;
+  private _snackBar = inject(MatSnackBar);
 
   private getHeader(): HttpHeaders {
     if (
@@ -124,6 +126,13 @@ export class ProductService {
         map((data: any) => {
           console.log('Deleted Product', data);
 
+          this._snackBar.open('Product Deleted Successfully!', '', {
+            duration: 2000,
+            horizontalPosition: 'right',
+            verticalPosition: 'top',
+            panelClass: 'success-snackbar',
+          });
+
           return deleteProductSuccess({ payload: data.deletedProductId });
         }),
         catchError((error: any) => {
@@ -147,6 +156,21 @@ export class ProductService {
       .pipe(
         map((data: any) => {
           console.log('Created Product', data);
+
+          this._snackBar.open(
+            'Product Created Successfully! Reloading Page, Please Wait...',
+            '',
+            {
+              duration: 3000,
+              horizontalPosition: 'right',
+              verticalPosition: 'top',
+              panelClass: 'success-snackbar',
+            }
+          );
+
+          setTimeout(() => {
+            window.location.reload();
+          }, 3500);
 
           return deleteProductSuccess({ payload: data });
         }),

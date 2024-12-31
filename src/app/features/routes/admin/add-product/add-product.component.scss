@@ -1,3 +1,13 @@
+@use "@angular/material" as mat;
+
+.topLevel {
+  @include mat.select-overrides(
+    (
+      enabled-trigger-text-color: rgba(var(--text)),
+    )
+  );
+}
+
 ::ng-deep .mdc-notched-outline__notch {
   border-right: none !important;
 }

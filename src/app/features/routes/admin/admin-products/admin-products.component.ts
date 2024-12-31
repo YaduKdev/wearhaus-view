@@ -59,7 +59,7 @@ export class AdminProductsComponent {
       .pipe(select((store: AppState) => store.product))
       .subscribe((data) => {
         this.productData = data.products.content;
-        this.totalProducts = 10 * data.products.totalPages;
+        this.totalProducts = data.products.totalProducts;
       });
   }
 
