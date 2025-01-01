@@ -1,5 +1,20 @@
+@use "@angular/material" as mat;
+
 .logo-text {
   font-family: "Bagel Fat One", system-ui;
   font-weight: 400;
   font-style: normal;
+}
+
+.admin-products-table {
+  @include mat.table-overrides(
+    (
+      background-color: rgba(var(--background)),
+      header-headline-weight: 900,
+      header-headline-color: rgba(var(--text)),
+      header-headline-size: 18px,
+      row-item-label-text-color: rgba(var(--text)),
+      row-item-container-height: 5rem,
+    )
+  );
 }

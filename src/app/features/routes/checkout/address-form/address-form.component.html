@@ -18,6 +18,9 @@
           <mat-divider *ngIf="!last"></mat-divider>
         </div>
       </div>
+      <div *ngIf="addresses && addresses.length === 0">
+        <p class="text-center text-xl font-bold">No Saved Addresses</p>
+      </div>
     </div>
   </div>
   <div class="col-span-1 lg:col-span-7">

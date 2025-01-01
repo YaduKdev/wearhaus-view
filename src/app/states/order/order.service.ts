@@ -135,30 +135,38 @@ export class OrderService {
   }
 
   getAllOrders() {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${localStorage.getItem('jwt')}`,
-    });
+    if (
+      typeof window !== 'undefined' &&
+      window.localStorage &&
+      localStorage.getItem('jwt')
+    ) {
+      const headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+      });
 
-    return this.http
-      .get(`${this.API_BASE_URL}/api/admin/orders/`, { headers })
-      .pipe(
-        map((data: any) => {
-          console.log('ALL ORDERS', data);
+      return this.http
+        .get(`${this.API_BASE_URL}/api/admin/orders/`, { headers })
+        .pipe(
+          map((data: any) => {
+            console.log('ALL ORDERS', data);
 
-          return getAllOrdersSuccess({ payload: data });
-        }),
-        catchError((error: any) => {
-          return of(
-            getAllOrdersFailure(
-              error.response && error.response.data.message
-                ? error.response.data.message
-                : error.message
-            )
-          );
-        })
-      )
-      .subscribe((action) => this.store.dispatch(action));
+            return getAllOrdersSuccess({ payload: data });
+          }),
+          catchError((error: any) => {
+            return of(
+              getAllOrdersFailure(
+                error.response && error.response.data.message
+                  ? error.response.data.message
+                  : error.message
+              )
+            );
+          })
+        )
+        .subscribe((action) => this.store.dispatch(action));
+    } else {
+      return;
+    }
   }
 
   placeOrder(orderId: Number) {
@@ -332,7 +340,7 @@ export class OrderService {
         map((data: any) => {
           console.log('DELETED ORDER', data);
 
-          return deleteOrderSuccess({ payload: orderId });
+          return deleteOrderSuccess({ payload: data._id });
         }),
         catchError((error: any) => {
           return of(

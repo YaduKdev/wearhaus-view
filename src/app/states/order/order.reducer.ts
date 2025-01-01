@@ -89,7 +89,7 @@ export const orderReducer = createReducer(
   on(placeOrderSuccess, cancelOrderSuccess, (state, { payload }) => ({
     ...state,
     loading: false,
-    orders: state.orders.filter((order) => order.id === payload),
+    orders: state.orders.filter((order) => order._id === payload._id),
   })),
   on(
     confirmOrderSuccess,
@@ -99,14 +99,14 @@ export const orderReducer = createReducer(
       ...state,
       loading: false,
       orders: state.orders.map((order) =>
-        order.id === payload.id ? payload : order
+        order._id === payload._id ? payload : order
       ),
     })
   ),
   on(deleteOrderSuccess, (state, { payload }) => ({
     ...state,
     loading: false,
-    orders: state.orders.filter((order) => order.id !== payload),
+    orders: state.orders.filter((order) => order._id !== payload),
   })),
 
   on(
