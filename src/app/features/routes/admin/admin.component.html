@@ -1,6 +1,6 @@
 <div class="flex flex-col lg:flex-row h-full">
   <div
-    class="h-auto lg:h-screen w-full lg:w-[20%] border-b border-r-0 lg:border-b-0 lg:border-r border-b-gray-300 lg:border-r-gray-300 dark:border-b-gray-700 lg:dark:border-r-gray-700"
+    class="h-auto w-full lg:w-[20%] border-b border-r-0 lg:border-b-0 lg:border-r border-b-gray-300 lg:border-r-gray-300 dark:border-b-gray-700 lg:dark:border-r-gray-700"
   >
     <mat-sidenav-container class="h-full">
       <mat-sidenav-content>
@@ -41,29 +41,6 @@
                 class="visible lg:hidden text-sm font-semibold font-[Montserrat]"
               >
                 Products
-              </p>
-            </div>
-          </button>
-          <button
-            class="mb-0 lg:mb-5 active:text-yellow-500 focus:text-yellow-500"
-            (click)="navigateTo('admin/customers')"
-          >
-            <div
-              class="flex justify-center items-center gap-3 hover:text-yellow-500"
-              [class]="
-                isActiveRoute('/admin/customers')
-                  ? 'text-yellow-500'
-                  : 'text-[rgba(var(--text))]'
-              "
-            >
-              <div class="hidden lg:flex gap-3 justify-center items-center">
-                <mat-icon>shop_two</mat-icon>
-                <p class="text-xl font-semibold font-[Montserrat]">Customers</p>
-              </div>
-              <p
-                class="visible lg:hidden text-sm font-semibold font-[Montserrat]"
-              >
-                Customers
               </p>
             </div>
           </button>

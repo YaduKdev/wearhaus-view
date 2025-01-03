@@ -9,14 +9,16 @@
         />
         <div class="ml-5">
           <p class="font-semibold text-sm lg:text-lg">
-            Men's Brown Standard Typography Super Loose Fit Flat Knit Sweater
+            {{ item.product.title }}&nbsp;x&nbsp;{{ item.quantity }}
           </p>
-          <p class="text-xs lg:text-sm text-gray-500">Size: M</p>
+          <p class="text-xs lg:text-sm text-gray-500">Size: {{ item.size }}</p>
         </div>
       </div>
     </div>
     <div class="col-span-1">
-      <p class="font-semibold text-sm lg:text-lg">₹999</p>
+      <p class="font-semibold text-sm lg:text-lg">
+        ₹{{ item.discountedPrice }}
+      </p>
     </div>
     <div class="col-span-2">
       <p class="text-sm lg:text-lg font-semibold mb-2">

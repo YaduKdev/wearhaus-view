@@ -12,7 +12,6 @@ import { AdminComponent } from './features/routes/admin/admin.component';
 import { DashboardComponent } from './features/routes/admin/dashboard/dashboard.component';
 import { AdminProductsComponent } from './features/routes/admin/admin-products/admin-products.component';
 import { OrdersListComponent } from './features/routes/admin/orders-list/orders-list.component';
-import { CustomersComponent } from './features/routes/admin/customers/customers.component';
 import { AddProductComponent } from './features/routes/admin/add-product/add-product.component';
 
 export const routes: Routes = [
@@ -22,7 +21,7 @@ export const routes: Routes = [
   { path: 'product-details/:id', component: ProductDetailsComponent },
   { path: 'checkout', component: CheckoutComponent },
   { path: 'checkout/payment/:id', component: PaymentComponent },
-  { path: 'payment-success', component: PaymentSuccessComponent },
+  { path: 'payments/:orderId', component: PaymentSuccessComponent },
   { path: 'user/orders', component: OrdersComponent },
   { path: 'order/:id', component: OrderDetailsComponent },
   {
@@ -32,7 +31,6 @@ export const routes: Routes = [
       { path: '', component: DashboardComponent },
       { path: 'products', component: AdminProductsComponent },
       { path: 'orders', component: OrdersListComponent },
-      { path: 'customers', component: CustomersComponent },
       { path: 'products/add', component: AddProductComponent },
     ],
   },

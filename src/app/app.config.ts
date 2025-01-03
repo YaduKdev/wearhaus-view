@@ -15,6 +15,7 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
 import { productReducer } from './states/product/product.reducer';
 import { cartReducer } from './states/cart/cart.reducer';
 import { orderReducer } from './states/order/order.reducer';
+import { paymentReducer } from './states/payment/payment.reducer';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -33,6 +34,7 @@ export const appConfig: ApplicationConfig = {
       product: productReducer,
       cart: cartReducer,
       order: orderReducer,
+      payment: paymentReducer,
     }),
   ],
 };

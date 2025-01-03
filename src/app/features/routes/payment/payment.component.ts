@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { OrderService } from '../../../states/order/order.service';
 import { select, Store } from '@ngrx/store';
 import { AppState } from '../../../models/appState';
+import { PaymentService } from '../../../states/payment/payment.service';
 
 @Component({
   selector: 'app-payment',
@@ -25,7 +26,8 @@ export class PaymentComponent {
   constructor(
     private activatedRoute: ActivatedRoute,
     private orderService: OrderService,
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    private paymentService: PaymentService
   ) {}
 
   ngOnInit() {
@@ -38,5 +40,9 @@ export class PaymentComponent {
     this.store.pipe(select((store) => store.order)).subscribe((data) => {
       this.order = data.order;
     });
+  }
+
+  proceedToPayment() {
+    this.paymentService.createPayment(this.order._id);
   }
 }

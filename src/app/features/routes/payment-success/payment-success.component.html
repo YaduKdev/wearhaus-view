@@ -1,1 +1,4 @@
-<p>payment-success works!</p>
+<div *ngIf="order && order.length > 0">
+  <p>{{ order.totalDiscountedPrice }}</p>
+  <app-order-details [order]="order" />
+</div>

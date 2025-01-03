@@ -1,4 +1,4 @@
-<div class="px-5 lg:px-20 py-20">
+<div *ngIf="order && order.length > 0" class="px-5 lg:px-20 py-20">
   <div class="py-5">
     <h1 class="text-center py-2 font-semibold text-lg">Order Status</h1>
     <app-order-tracker [activeStep]="steps[1]" [steps]="steps" />
@@ -6,11 +6,11 @@
   <div class="space-y-10 p-0 lg:p-10">
     <div class="border border-gray-400 dark:border-gray-700 px-10 py-5">
       <h1 class="text-lg font-semibold py-5">Shipping Address</h1>
-      <app-address-card />
+      <app-address-card [address]="order.shippingAddress" />
     </div>
     <div class="space-y-6 mt-20">
-      <div *ngFor="let orderItem of orders">
-        <app-order-card />
+      <div *ngFor="let orderItem of order.orderItems">
+        <app-order-card [item]="orderItem" />
       </div>
     </div>
   </div>

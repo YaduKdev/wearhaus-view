@@ -2,10 +2,10 @@
   class="my-12 lg:my-0 w-full h-full flex flex-col justify-center items-center"
 >
   <div
-    class="w-full mb-4 h-full flex flex-col lg:flex-row justify-center items-center gap-4"
+    class="w-full mb-4 h-full flex dash-sections justify-center items-center gap-4"
   >
     <div
-      class="p-4 w-full h-full lg:w-[30%] flex justify-between items-center border rounded-md border-[rgba(var(--text))] box"
+      class="p-4 w-full section-width h-full lg:w-[30%] flex justify-between items-center border rounded-md border-[rgba(var(--text))] box"
     >
       <div class="flex flex-col justify-center items-center gap-5">
         <p class="logo-text text-xl font-semibold">WEARHAUS</p>
@@ -21,7 +21,7 @@
       </div>
     </div>
     <div
-      class="p-7 w-full h-full lg:w-[70%] flex items-start border rounded-md border-[rgba(var(--text))] box"
+      class="p-7 w-full section-width h-full lg:w-[70%] flex items-start border rounded-md border-[rgba(var(--text))] box"
     >
       <div
         class="w-full h-full flex flex-col justify-between items-start gap-5"
@@ -88,17 +88,103 @@
     </div>
   </div>
   <div
-    class="w-full mb-4 flex flex-col lg:flex-row justify-center items-center gap-4"
+    class="w-full mb-4 h-full flex dash-sections justify-center items-center gap-4"
   >
     <div
-      class="p-4 w-full h-full lg:w-[50%] flex flex-col justify-between items-center border rounded-md border-[rgba(var(--text))] box"
+      class="p-4 w-full section-width h-full lg:w-[50%] flex justify-between items-center border rounded-md border-[rgba(var(--text))] box"
+    >
+      <div class="flex flex-col w-full">
+        <p class="text-xl font-semibold">Profit & Expenses</p>
+        <apx-chart
+          [series]="profitExpanceChart.series"
+          [dataLabels]="profitExpanceChart.dataLabels"
+          [chart]="profitExpanceChart.chart"
+          [legend]="profitExpanceChart.legend"
+          [xaxis]="profitExpanceChart.xaxis"
+          [yaxis]="profitExpanceChart.yaxis"
+          [grid]="profitExpanceChart.grid"
+          [stroke]="profitExpanceChart.stroke"
+          [tooltip]="profitExpanceChart.tooltip"
+          [plotOptions]="profitExpanceChart.plotOptions"
+        ></apx-chart>
+      </div>
+    </div>
+    <div
+      class="w-full h-full section-width lg:w-[50%] flex flex-col justify-between items-center"
+    >
+      <div
+        class="w-full p-4 flex flex-col border rounded-md border-[rgba(var(--text))] box"
+      >
+        <p class="text-xl font-semibold">Traffic Distribution</p>
+        <div class="flex justify-between">
+          <div class="flex flex-col">
+            <p class="text-xl font-bold mt-4">₹36,358</p>
+            <div class="flex items-center mt-4">
+              <mat-icon class="text-green-500">trending_up</mat-icon>
+              <div class="ml-1">+9% last year</div>
+            </div>
+            <div class="flex items-center mt-3">
+              <div class="flex items-center">
+                <mat-icon class="text-[#2697E0]">radio_button_checked</mat-icon>
+                <div class="ml-1">Oragnic</div>
+              </div>
+              <div class="flex items-center ml-4">
+                <mat-icon class="text-[#FCA690]">radio_button_checked</mat-icon>
+                <div class="ml-1">Refferal</div>
+              </div>
+            </div>
+          </div>
+          <div class="flex items-start">
+            <apx-chart
+              [series]="trafficdistributionChart.series"
+              [labels]="trafficdistributionChart.labels"
+              [dataLabels]="trafficdistributionChart.dataLabels"
+              [chart]="trafficdistributionChart.chart"
+              [legend]="trafficdistributionChart.legend"
+              [colors]="trafficdistributionChart.colors"
+              [stroke]="trafficdistributionChart.stroke"
+              [tooltip]="trafficdistributionChart.tooltip"
+              [plotOptions]="trafficdistributionChart.plotOptions"
+              [responsive]="trafficdistributionChart.responsive"
+            ></apx-chart>
+          </div>
+        </div>
+      </div>
+      <div
+        class="w-full flex p-4 flex-col border rounded-md border-[rgba(var(--text))] box"
+      >
+        <p class="text-xl font-semibold">Product Sales</p>
+        <div class="mt-3 mb-4">
+          <p class="text-xl font-bold">₹6,820</p>
+          <div class="flex items-center mt-4">
+            <mat-icon class="text-red-500">trending_down</mat-icon>
+            <div class="ml-1">-9% last year</div>
+          </div>
+        </div>
+        <apx-chart
+          [series]="productsalesChart.series"
+          [dataLabels]="productsalesChart.dataLabels"
+          [chart]="productsalesChart.chart"
+          [legend]="productsalesChart.legend"
+          [colors]="productsalesChart.colors"
+          [stroke]="productsalesChart.stroke"
+          [tooltip]="productsalesChart.tooltip"
+          [plotOptions]="productsalesChart.plotOptions"
+          [responsive]="productsalesChart.responsive"
+        ></apx-chart>
+      </div>
+    </div>
+  </div>
+  <div class="w-full mb-4 flex dash-sections justify-center items-center gap-4">
+    <div
+      class="p-4 w-full h-full section-width lg:w-[50%] flex flex-col justify-between items-center border rounded-md border-[rgba(var(--text))] box"
     >
       <!-- ORDERS -->
       <div
         *ngIf="ordersData && ordersData.length > 0"
         class="w-full flex flex-col mat-elevation-z8"
       >
-        <p class="my-6 text-2xl font-semibold text-center">Recent Orders</p>
+        <p class="my-6 text-xl font-semibold text-center">Recent Orders</p>
         <table mat-table [dataSource]="ordersData" class="admin-products-table">
           <ng-container matColumnDef="image">
             <th mat-header-cell *matHeaderCellDef>Orders</th>
@@ -143,22 +229,29 @@
         </table>
       </div>
       <button
+        *ngIf="ordersData && ordersData.length > 0"
         class="text-center px-4 py-2 text-white bg-purple-700 hover:bg-purple-600 mt-3"
         (click)="navigateTo('/admin/orders')"
       >
         View All
       </button>
+      <p
+        class="text-xl font-semibold"
+        *ngIf="ordersData && ordersData.length === 0"
+      >
+        No Orders To Display
+      </p>
       <!-- ORDERS -->
     </div>
     <div
-      class="p-4 w-full h-full lg:w-[50%] flex flex-col items-center border rounded-md border-[rgba(var(--text))] box"
+      class="p-4 w-full section-width h-full lg:w-[50%] flex flex-col items-center border rounded-md border-[rgba(var(--text))] box"
     >
       <!-- PRODUCTS -->
       <div
         *ngIf="productData && productData.length > 0"
         class="w-full flex flex-col mat-elevation-z8"
       >
-        <p class="my-6 text-2xl font-semibold text-center">Latest Products</p>
+        <p class="my-6 text-xl font-semibold text-center">Latest Products</p>
         <table
           mat-table
           [dataSource]="productData"
@@ -195,11 +288,18 @@
         </table>
       </div>
       <button
+        *ngIf="productData && productData.length > 0"
         class="text-center px-4 py-2 text-white bg-purple-700 hover:bg-purple-600 mt-3"
         (click)="navigateTo('/admin/products')"
       >
         View All
       </button>
+      <p
+        class="text-xl font-semibold"
+        *ngIf="productData && productData.length === 0"
+      >
+        No Products To Display
+      </p>
       <!-- PRODUCTS -->
     </div>
   </div>

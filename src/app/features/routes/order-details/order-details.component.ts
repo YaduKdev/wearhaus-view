@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { AddressCardComponent } from '../../shared/address-card/address-card.component';
 import { CommonModule } from '@angular/common';
 import { OrderCardComponent } from '../../shared/order-card/order-card.component';
@@ -16,7 +16,8 @@ import { OrderTrackerComponent } from '../../shared/order-tracker/order-tracker.
   styleUrl: './order-details.component.scss',
 })
 export class OrderDetailsComponent {
-  orders = [1, 1, 1];
+  @Input() order: any;
+
   steps = [
     { id: 0, title: 'PLACED', isCompleted: true },
     { id: 1, title: 'CONFIRMED', isCompleted: true },
