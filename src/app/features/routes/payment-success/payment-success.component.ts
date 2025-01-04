@@ -6,6 +6,7 @@ import { select, Store } from '@ngrx/store';
 import { AppState } from '../../../models/appState';
 import { OrderDetailsComponent } from '../order-details/order-details.component';
 import { CommonModule } from '@angular/common';
+import { CartService } from '../../../states/cart/cart.service';
 
 @Component({
   selector: 'app-payment-success',
@@ -20,6 +21,7 @@ export class PaymentSuccessComponent {
     private paymentService: PaymentService,
     private activatedRoute: ActivatedRoute,
     private orderService: OrderService,
+    private cartService: CartService,
     private store: Store<AppState>
   ) {}
 
@@ -27,15 +29,6 @@ export class PaymentSuccessComponent {
     const orderId = this.activatedRoute.snapshot.params['orderId'];
 
     let paymentId: any;
-
-    if (orderId) {
-      this.orderService.getOrderById(orderId);
-
-      this.store.pipe(select((store) => store.order)).subscribe((data) => {
-        console.log('DATA', data);
-        this.order = data.order;
-      });
-    }
 
     this.activatedRoute.queryParams.subscribe((params) => {
       paymentId = params['razorpay_payment_id'];
@@ -47,5 +40,19 @@ export class PaymentSuccessComponent {
     };
 
     this.paymentService.updatePaymentInfo(reqData);
+
+    this.store.pipe(select((store) => store.payment)).subscribe((data) => {
+      if (data?.paymentInfo?.status) {
+        if (orderId) {
+          this.orderService.getOrderById(orderId);
+
+          this.store.pipe(select((store) => store.order)).subscribe((data) => {
+            this.order = data.order;
+          });
+
+          this.cartService.getCart();
+        }
+      }
+    });
   }
 }

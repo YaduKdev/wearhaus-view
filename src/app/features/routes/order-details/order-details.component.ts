@@ -17,6 +17,7 @@ import { OrderTrackerComponent } from '../../shared/order-tracker/order-tracker.
 })
 export class OrderDetailsComponent {
   @Input() order: any;
+  step: any;
 
   steps = [
     { id: 0, title: 'PLACED', isCompleted: true },
@@ -24,4 +25,10 @@ export class OrderDetailsComponent {
     { id: 2, title: 'SHIPPED', isCompleted: false },
     { id: 3, title: 'DELIVERED', isCompleted: false },
   ];
+
+  ngOnInit() {
+    this.steps.map((step) => {
+      if (step.title === this.order.orderStatus) this.step = step.id;
+    });
+  }
 }
