@@ -21,19 +21,39 @@
       />
     </div>
     <div class="mobile-header-right">
-      <button class="search-icon">
-        <mat-icon>search</mat-icon>
+      <button mat-icon-button class="search-icon">
+        <mat-icon class="text-[rgba(var(--text))]">search</mat-icon>
       </button>
-      <button *ngIf="userProfile" class="user-icon">
-        <mat-icon mat-button [matMenuTriggerFor]="userMenuMobile"
-          >account_circle</mat-icon
-        >
+      <button
+        *ngIf="userProfile"
+        mat-icon-button
+        [matMenuTriggerFor]="userMenuMobile"
+        class="user-icon"
+      >
+        <mat-icon class="text-[rgba(var(--text))]">account_circle</mat-icon>
       </button>
       <mat-menu #userMenuMobile="matMenu">
-        <button (click)="navigateTo('user/orders')" mat-menu-item>
+        <button
+          *ngIf="userProfile?.role === 'CUSTOMER'"
+          (click)="navigateTo('user/orders')"
+          mat-menu-item
+        >
           Orders
         </button>
-        <button mat-menu-item>Profile</button>
+        <button
+          *ngIf="userProfile?.role === 'CUSTOMER'"
+          (click)="navigateTo('user/profile')"
+          mat-menu-item
+        >
+          Profile
+        </button>
+        <button
+          *ngIf="userProfile?.role === 'ADMIN'"
+          (click)="navigateTo('admin')"
+          mat-menu-item
+        >
+          Admin Panel
+        </button>
         <button mat-menu-item (click)="handleLogout()">Logout</button>
       </mat-menu>
       <button *ngIf="cartItems.length === 0" mat-icon-button class="cart-icon">
@@ -180,10 +200,27 @@
             <mat-icon class="text-[rgba(var(--text))]">account_circle</mat-icon>
           </button>
           <mat-menu #userMenu="matMenu">
-            <button (click)="navigateTo('user/orders')" mat-menu-item>
+            <button
+              *ngIf="userProfile?.role === 'CUSTOMER'"
+              (click)="navigateTo('user/orders')"
+              mat-menu-item
+            >
               Orders
             </button>
-            <button mat-menu-item>Profile</button>
+            <button
+              *ngIf="userProfile?.role === 'CUSTOMER'"
+              (click)="navigateTo('user/profile')"
+              mat-menu-item
+            >
+              Profile
+            </button>
+            <button
+              *ngIf="userProfile?.role === 'ADMIN'"
+              (click)="navigateTo('admin')"
+              mat-menu-item
+            >
+              Admin Panel
+            </button>
             <button mat-menu-item (click)="handleLogout()">Logout</button>
           </mat-menu>
           <button

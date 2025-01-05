@@ -1,0 +1,43 @@
+<div *ngIf="userProfile" class="w-full flex flex-col items-center p-10">
+  <img class="w-48 lg:w-72" src="account.png" alt="Account Icon" />
+  <p class="text-2xl font-bold text-center pb-5">User Information</p>
+  <div
+    class="w-full lg:w-[75%] grid grid-cols-2 border rounded-md p-6 border-[rgba(var(--text))]"
+  >
+    <div class="mb-5 col-span-2 lg:col-span-1">
+      <div class="flex flex-col items-center">
+        <p class="font-bold">First Name</p>
+        <p>{{ userProfile.firstName }}</p>
+      </div>
+    </div>
+    <div class="mb-5 col-span-2 lg:col-span-1">
+      <div class="flex flex-col items-center">
+        <p class="font-bold">Last Name</p>
+        <p>{{ userProfile.lastName }}</p>
+      </div>
+    </div>
+    <div class="mb-5 col-span-2 lg:col-span-1">
+      <div class="flex flex-col items-center">
+        <p class="font-bold">Email ID</p>
+        <p>{{ userProfile.email }}</p>
+      </div>
+    </div>
+    <div class="mb-5 col-span-2 lg:col-span-1">
+      <div class="flex flex-col items-center">
+        <p class="font-bold">User Since</p>
+        <p>{{ formatDate(userProfile.createdAt) }}</p>
+      </div>
+    </div>
+    <div class="mb-5 col-span-2">
+      <p class="text-lg font-bold text-center my-5">Saved Addresses</p>
+      <div class="flex flex-wrap justify-center items-center gap-14">
+        <div
+          *ngFor="let address of userProfile.addresses"
+          class="border rounded border-[rgba(var(--text))] p-3"
+        >
+          <app-address-card [address]="address" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

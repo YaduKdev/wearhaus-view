@@ -21,10 +21,17 @@
       </p>
     </div>
     <div class="col-span-2">
-      <p class="text-sm lg:text-lg font-semibold mb-2">
-        Expected Delivery On March 03
+      <p
+        [class.text-purple-500]="orderStatus === 'PENDING'"
+        [class.text-orange-500]="orderStatus === 'PLACED'"
+        [class.text-yellow-500]="orderStatus === 'CONFIRMED'"
+        [class.text-lime-500]="orderStatus === 'SHIPPED'"
+        [class.text-green-500]="orderStatus === 'DELIVERED'"
+        [class.text-red-500]="orderStatus === 'CANCELLED'"
+        class="text-xs lg:text-sm text-right"
+      >
+        {{ orderStatus }}
       </p>
-      <p class="text-xs lg:text-sm">Your Item Has Been Delivered</p>
     </div>
   </div>
 </div>

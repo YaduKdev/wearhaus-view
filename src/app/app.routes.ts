@@ -13,6 +13,8 @@ import { DashboardComponent } from './features/routes/admin/dashboard/dashboard.
 import { AdminProductsComponent } from './features/routes/admin/admin-products/admin-products.component';
 import { OrdersListComponent } from './features/routes/admin/orders-list/orders-list.component';
 import { AddProductComponent } from './features/routes/admin/add-product/add-product.component';
+import { ProfileComponent } from './features/routes/profile/profile.component';
+import { AuthGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -22,16 +24,52 @@ export const routes: Routes = [
   { path: 'checkout', component: CheckoutComponent },
   { path: 'checkout/payment/:id', component: PaymentComponent },
   { path: 'payments/:orderId', component: PaymentSuccessComponent },
-  { path: 'user/orders', component: OrdersComponent },
-  { path: 'order/:id', component: OrderDetailsComponent },
+  {
+    path: 'user/orders',
+    canActivate: [AuthGuard],
+    data: { roles: ['CUSTOMER'] },
+    component: OrdersComponent,
+  },
+  {
+    path: 'user/profile',
+    canActivate: [AuthGuard],
+    data: { roles: ['CUSTOMER'] },
+    component: ProfileComponent,
+  },
+  {
+    path: 'order/:id',
+    canActivate: [AuthGuard],
+    data: { roles: ['CUSTOMER'] },
+    component: OrderDetailsComponent,
+  },
   {
     path: 'admin',
     component: AdminComponent,
     children: [
-      { path: '', component: DashboardComponent },
-      { path: 'products', component: AdminProductsComponent },
-      { path: 'orders', component: OrdersListComponent },
-      { path: 'products/add', component: AddProductComponent },
+      {
+        path: '',
+        canActivate: [AuthGuard],
+        data: { roles: ['ADMIN'] },
+        component: DashboardComponent,
+      },
+      {
+        path: 'products',
+        canActivate: [AuthGuard],
+        data: { roles: ['ADMIN'] },
+        component: AdminProductsComponent,
+      },
+      {
+        path: 'orders',
+        canActivate: [AuthGuard],
+        data: { roles: ['ADMIN'] },
+        component: OrdersListComponent,
+      },
+      {
+        path: 'products/add',
+        canActivate: [AuthGuard],
+        data: { roles: ['ADMIN'] },
+        component: AddProductComponent,
+      },
     ],
   },
 ];

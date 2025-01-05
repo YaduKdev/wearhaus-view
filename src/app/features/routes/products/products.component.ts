@@ -53,13 +53,6 @@ export class ProductsComponent {
     this.filterData = filters;
     this.singleFilterData = singleFilter;
 
-    console.log(
-      'FILTERDATA',
-      this.filterData,
-      'SINGLE FILTER DATA',
-      this.singleFilterData
-    );
-
     this.router.navigate([], { queryParams: { pageSize: 9 } });
 
     this.activatedRoute.params.subscribe((params) => {

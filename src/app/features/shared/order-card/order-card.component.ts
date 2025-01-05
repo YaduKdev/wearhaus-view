@@ -8,4 +8,5 @@ import { Component, Input } from '@angular/core';
 })
 export class OrderCardComponent {
   @Input() item: any;
+  @Input() orderStatus: any;
 }
