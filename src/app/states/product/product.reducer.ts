@@ -12,6 +12,9 @@ import {
   findProductsByIdFailure,
   findProductsByIdRequest,
   findProductsByIdSuccess,
+  searchProductsFailure,
+  searchProductsRequest,
+  searchProductsSuccess,
 } from './product.actions';
 
 export interface ProductState {
@@ -23,6 +26,7 @@ export interface ProductState {
   loading: boolean;
   error: any | null;
   product: any | null;
+  searchResults: any;
 }
 
 const initialState: ProductState = {
@@ -34,6 +38,7 @@ const initialState: ProductState = {
   loading: false,
   error: null,
   product: null,
+  searchResults: [],
 };
 
 export const productReducer = createReducer(
@@ -43,6 +48,7 @@ export const productReducer = createReducer(
     findProductsByIdRequest,
     deleteProductRequest,
     createProductRequest,
+    searchProductsRequest,
     (state) => ({
       ...state,
       loading: true,
@@ -76,11 +82,17 @@ export const productReducer = createReducer(
     product: payload,
     loading: false,
   })),
+  on(searchProductsSuccess, (state, { payload }) => ({
+    ...state,
+    searchResults: payload,
+    loading: false,
+  })),
   on(
     findProductsByCategoryFailure,
     findProductsByIdFailure,
     deleteProductFailure,
     createProductFailure,
+    searchProductsFailure,
     (state, { error }) => ({
       ...state,
       error: error,

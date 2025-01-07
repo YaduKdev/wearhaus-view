@@ -5,20 +5,18 @@ export const navigation = {
       name: 'Men',
       featured: [
         {
-          name: 'New Arrivals',
-          id: '#',
+          name: 'Black Deadpool Typography Oversized Sweater',
+          id: '676a5d6ff268c98b0c30d406',
           imageSrc:
-            'https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg',
-          imageAlt:
-            'Drawstring top with elastic loop closure and textured interior padding.',
+            'https://i.ibb.co/r6PFn71/men-s-black-deadpool-typography-oversized-sweater-644526-1721726994-1.webp',
+          link: '/product-details/men_sweaters/676a5d6ff268c98b0c30d406',
         },
         {
-          name: 'Trending',
-          id: '#',
+          name: 'Skipper Blue Oversized Cargo Joggers',
+          id: '676ff2d814f0902b37fce3a5',
           imageSrc:
-            'https://tailwindui.com/img/ecommerce-images/category-page-02-image-card-06.jpg',
-          imageAlt:
-            'Three shirts in gray, white, and blue arranged on table with same line drawing of hands and shapes overlapping on front of shirt.',
+            'https://i.ibb.co/gJTCGHk/men-s-skipper-blue-oversized-cargo-joggers-609825-1725600125-1.webp',
+          link: '/product-details/men_cargos/676ff2d814f0902b37fce3a5',
         },
       ],
       sections: [
@@ -37,20 +35,18 @@ export const navigation = {
       name: 'Women',
       featured: [
         {
-          name: 'New Arrivals',
-          href: '/',
+          name: 'Black Graphic Printed Oversized Flatknit Sweater',
+          id: '676a5db1f268c98b0c30d561',
           imageSrc:
-            'https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg',
-          imageAlt:
-            'Models sitting back to back, wearing Basic Tee in black and bone.',
+            'https://i.ibb.co/thz9BgP/women-s-black-graphic-printed-oversized-flatknit-sweater-597233-1726058837-1.webp',
+          link: '/product-details/women_sweaters/676a5db1f268c98b0c30d561',
         },
         {
-          name: 'Trending',
-          href: '/',
+          name: 'Black Graphic Printed Oversized Flatknit Sweater',
+          id: '676a5db1f268c98b0c30d561',
           imageSrc:
-            'https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg',
-          imageAlt:
-            'Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.',
+            'https://i.ibb.co/thz9BgP/women-s-black-graphic-printed-oversized-flatknit-sweater-597233-1726058837-1.webp',
+          link: '/product-details/women_sweaters/676a5db1f268c98b0c30d561',
         },
       ],
       sections: [
@@ -71,20 +67,18 @@ export const navigation = {
       name: 'Footwear',
       featured: [
         {
-          name: 'New Arrivals',
-          id: '#',
+          name: 'White & Silver NASA Color Block High Top Sneakers',
+          id: '676a60bd0262f2acd7c719a6',
           imageSrc:
-            'https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg',
-          imageAlt:
-            'Drawstring top with elastic loop closure and textured interior padding.',
+            'https://i.ibb.co/Htqzff2/men-s-white-silver-nasa-color-block-high-top-sneakers-630676-1717834801-1.webp',
+          link: '/product-details/sneakers/676a60bd0262f2acd7c719a6',
         },
         {
-          name: 'Trending',
-          id: '#',
+          name: 'Black & Green Embellished Sliders',
+          id: '677880e976c4073f0cc81239',
           imageSrc:
-            'https://tailwindui.com/img/ecommerce-images/category-page-02-image-card-06.jpg',
-          imageAlt:
-            'Three shirts in gray, white, and blue arranged on table with same line drawing of hands and shapes overlapping on front of shirt.',
+            'https://i.ibb.co/7Sz6xNp/women-s-black-green-embellished-sliders-fr1020-614044-1692950368-1.webp',
+          link: '/product-details/sliders/677880e976c4073f0cc81239',
         },
       ],
       sections: [

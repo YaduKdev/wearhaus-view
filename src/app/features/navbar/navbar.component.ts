@@ -1,14 +1,3 @@
-// import { Component } from '@angular/core';
-
-// @Component({
-//   selector: 'app-navbar',
-//   imports: [],
-//   templateUrl: './navbar.component.html',
-//   styleUrl: './navbar.component.scss',
-// })
-// export class NavbarComponent {}
-
-// nav.component.ts
 import {
   Component,
   OnInit,
@@ -18,6 +7,7 @@ import {
   HostListener,
   inject,
 } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { isPlatformBrowser, CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { MatMenuModule } from '@angular/material/menu';
@@ -33,6 +23,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatBadgeModule } from '@angular/material/badge';
 import { CartService } from '../../states/cart/cart.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { FormControl } from '@angular/forms';
+import { ProductService } from '../../states/product/product.service';
 
 @Component({
   selector: 'app-navbar',
@@ -45,6 +38,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     MatDialogModule,
     MatButtonModule,
     MatBadgeModule,
+    ReactiveFormsModule,
   ],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
@@ -62,14 +56,36 @@ export class NavbarComponent implements OnInit, OnDestroy {
   private _snackBar = inject(MatSnackBar);
   private resizeListener: (() => void) | null = null;
 
+  searchControl = new FormControl('');
+  results: any[] = [];
+  showResults = false;
+  isSearchOpen = false;
+
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
     private router: Router,
     private dialog: MatDialog,
     private store: Store<AppState>,
     private userService: UserService,
-    private cartService: CartService
+    private cartService: CartService,
+    private productService: ProductService
   ) {}
+
+  openMobileSearch() {
+    this.isSearchOpen = true;
+    document.body.style.overflow = 'hidden';
+  }
+
+  closeMobileSearch() {
+    this.isSearchOpen = false;
+    document.body.style.overflow = '';
+  }
+
+  selectResult(result: any) {
+    this.searchControl.setValue('');
+    this.showResults = false;
+    this.router.navigate([`/product-details/${result.category}/${result.id}`]);
+  }
 
   ngOnInit() {
     this.checkScreenSize();
@@ -104,6 +120,28 @@ export class NavbarComponent implements OnInit, OnDestroy {
           });
         } else {
           this.cartItems = data?.cartItems;
+        }
+      });
+
+    this.searchControl.valueChanges
+      .pipe(debounceTime(300), distinctUntilChanged())
+      .subscribe((searchTerm) => {
+        if (searchTerm && searchTerm.length >= 2) {
+          this.productService.searchProducts(searchTerm);
+        } else {
+          this.results = [];
+        }
+      });
+
+    this.store
+      .pipe(select((store: AppState) => store.product))
+      .subscribe((data) => {
+        if (data) {
+          if (data?.searchResults?.data?.length > 0) {
+            this.results = data.searchResults.data;
+          } else {
+            this.results = [];
+          }
         }
       });
   }
@@ -189,6 +227,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
         this.closeNavContent();
       }
     });
+
+    const searchContainer = document.querySelector('.search-container');
+    if (searchContainer && !searchContainer.contains(event.target as Node)) {
+      this.showResults = false;
+    }
   }
 
   toggleMobileMenu() {

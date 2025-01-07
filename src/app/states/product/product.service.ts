@@ -10,6 +10,9 @@ import {
   findProductsByCategorySuccess,
   findProductsByIdFailure,
   findProductsByIdSuccess,
+  searchProductsFailure,
+  searchProductsRequest,
+  searchProductsSuccess,
 } from './product.actions';
 import { catchError, map, of } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -181,6 +184,75 @@ export class ProductService {
                 ? error.response.data.message
                 : error.message
             )
+          );
+        })
+      )
+      .subscribe((action) => this.store.dispatch(action));
+  }
+
+  searchProducts(searchQuery: string) {
+    const headers = this.getHeader();
+    const params = new HttpParams().set('q', searchQuery);
+
+    this.store.dispatch(searchProductsRequest({ searchQuery }));
+
+    return this.http
+      .get(`${this.API_BASE_URL}/api/products/search`, { headers, params })
+      .pipe(
+        map((data: any) => {
+          console.log('Search Results:', data);
+          return searchProductsSuccess({ payload: data });
+        }),
+        catchError((error: any) => {
+          console.error('Search Error:', error);
+          return of(
+            searchProductsFailure({
+              error: error.response?.data?.message || error.message,
+            })
+          );
+        })
+      )
+      .subscribe((action) => this.store.dispatch(action));
+  }
+
+  // Add method for advanced search with filters
+  searchProductsWithFilters(filters: {
+    search?: string;
+    category?: string;
+    minPrice?: number;
+    maxPrice?: number;
+  }) {
+    const headers = this.getHeader();
+    let params = new HttpParams();
+
+    // Add each filter to params if it exists
+    if (filters.search) params = params.set('q', filters.search);
+    if (filters.category) params = params.set('category', filters.category);
+    if (filters.minPrice)
+      params = params.set('minPrice', filters.minPrice.toString());
+    if (filters.maxPrice)
+      params = params.set('maxPrice', filters.maxPrice.toString());
+
+    this.store.dispatch(
+      searchProductsRequest({ searchQuery: filters.search || '' })
+    );
+
+    return this.http
+      .get(`${this.API_BASE_URL}/api/products/search/filters`, {
+        headers,
+        params,
+      })
+      .pipe(
+        map((data: any) => {
+          console.log('Search Results:', data);
+          return searchProductsSuccess({ payload: data });
+        }),
+        catchError((error: any) => {
+          console.error('Search Error:', error);
+          return of(
+            searchProductsFailure({
+              error: error.response?.data?.message || error.message,
+            })
           );
         })
       )

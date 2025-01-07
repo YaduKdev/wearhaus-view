@@ -8,6 +8,7 @@ import {
   getUserProfileFailure,
   logoutSuccess,
 } from './user.actions';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +16,11 @@ import {
 export class UserService {
   private apiUrl = BASE_API_URL + '/api';
 
-  constructor(private http: HttpClient, private store: Store) {}
+  constructor(
+    private http: HttpClient,
+    private store: Store,
+    private router: Router
+  ) {}
 
   getUserProfile() {
     if (
@@ -53,7 +58,10 @@ export class UserService {
 
   logout() {
     localStorage.removeItem('jwt');
+    localStorage.removeItem('role');
 
     this.store.dispatch(logoutSuccess());
+
+    this.router.navigate(['/']);
   }
 }

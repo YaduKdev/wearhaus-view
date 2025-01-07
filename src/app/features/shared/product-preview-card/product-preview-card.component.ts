@@ -13,6 +13,8 @@ export class ProductPreviewCardComponent {
   constructor(private router: Router) {}
 
   navigate() {
-    this.router.navigate([`/product-details/${this.productData._id}`]);
+    this.router.navigate([
+      `/product-details/${this.productData.category.name}/${this.productData._id}`,
+    ]);
   }
 }

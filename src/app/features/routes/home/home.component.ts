@@ -8,6 +8,10 @@ import women_top from '../../../../Data/Women/women_top.json';
 import sneakers from '../../../../Data/sneakers.json';
 import oversized_tshirts from '../../../../Data/Men/oversized_tshirts.json';
 import men_cargos from '../../../../Data/Men/men_cargos.json';
+import { AppState } from '../../../models/appState';
+import { select, Store } from '@ngrx/store';
+import { ProductService } from '../../../states/product/product.service';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -23,6 +27,11 @@ export class HomeComponent {
   sneakers: any;
   oversizedTshirts: any;
   menCargos: any;
+
+  constructor(
+    private store: Store<AppState>,
+    private productService: ProductService
+  ) {}
 
   ngOnInit() {
     this.menSweaters = men_sweaters.slice(0, 9);

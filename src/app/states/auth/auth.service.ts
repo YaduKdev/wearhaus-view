@@ -10,6 +10,7 @@ import {
   registerSuccess,
 } from './auth.actions';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -18,7 +19,11 @@ export class AuthService {
   private apiUrl = BASE_API_URL + '/auth';
   private _snackBar = inject(MatSnackBar);
 
-  constructor(private http: HttpClient, private store: Store) {}
+  constructor(
+    private http: HttpClient,
+    private store: Store,
+    private router: Router
+  ) {}
 
   login(loginData: any) {
     return this.http
@@ -28,6 +33,9 @@ export class AuthService {
           console.log('login user', user);
           if (user.jwt) {
             localStorage.setItem('jwt', user.jwt);
+            localStorage.setItem('role', user.role);
+
+            this.router.navigate(['/']);
 
             this._snackBar.open('Logged In Successfully!', '', {
               duration: 2000,
@@ -59,6 +67,9 @@ export class AuthService {
           console.log('register user', user);
           if (user.jwt) {
             localStorage.setItem('jwt', user.jwt);
+            localStorage.setItem('role', user.role);
+
+            this.router.navigate(['/']);
 
             this._snackBar.open('Registered Successfully!', '', {
               duration: 2000,

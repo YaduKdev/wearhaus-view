@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { PaymentService } from '../../../states/payment/payment.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { OrderService } from '../../../states/order/order.service';
 import { select, Store } from '@ngrx/store';
 import { AppState } from '../../../models/appState';
@@ -34,6 +34,7 @@ export class PaymentSuccessComponent {
   constructor(
     private paymentService: PaymentService,
     private activatedRoute: ActivatedRoute,
+    private router: Router,
     private orderService: OrderService,
     private cartService: CartService,
     private store: Store<AppState>
@@ -61,15 +62,15 @@ export class PaymentSuccessComponent {
 
           this.store.pipe(select((store) => store.order)).subscribe((data) => {
             this.order = data.order;
+
+            this.steps.map((step) => {
+              if (step.title === data.order?.orderStatus) this.step = step;
+            });
           });
 
           this.cartService.getCart();
         }
       }
-    });
-
-    this.steps.map((step) => {
-      if (step.title === this.order.orderStatus) this.step = step.id;
     });
   }
 }

@@ -18,21 +18,33 @@
         <h1 class="mb-5 text-xl font-bold">New Arrivals</h1>
         <div class="flex gap-5">
           <div>
-            <div>
+            <div
+              (click)="handleNavigate(category.featured[0].link)"
+              class="flex flex-col justify-center items-center cursor-pointer"
+            >
               <img
-                class="w-[19rem] h-[20rem] object-cover object-top"
-                src="https://images.bewakoof.com/t1080/women-s-brown-sugar-spice-everything-nice-graphic-printed-oversized-t-shirt-625586-1717578883-1.jpg"
-                alt=""
+                class="w-[19rem] h-[20rem] object-cover object-top mb-3"
+                [src]="category.featured[0].imageSrc"
+                [alt]="category.featured[0].name"
               />
+              <p class="text-xs font-semibold">
+                {{ category.featured[0].name }}
+              </p>
             </div>
           </div>
           <div class="hidden lg:block">
-            <div>
+            <div
+              (click)="handleNavigate(category.featured[1].link)"
+              class="flex flex-col justify-center items-center cursor-pointer"
+            >
               <img
-                class="w-[19rem] h-[20rem] object-cover object-top"
-                src="https://images.bewakoof.com/t1080/men-s-red-moon-rider-graphic-printed-oversized-t-shirt-502017-1715257498-1.jpg"
-                alt=""
+                class="w-[19rem] h-[20rem] object-cover object-top mb-3"
+                [src]="category.featured[1].imageSrc"
+                [alt]="category.featured[1].name"
               />
+              <p class="text-xs font-semibold">
+                {{ category.featured[1].name }}
+              </p>
             </div>
           </div>
         </div>

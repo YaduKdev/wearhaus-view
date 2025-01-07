@@ -21,9 +21,47 @@
       />
     </div>
     <div class="mobile-header-right">
-      <button mat-icon-button class="search-icon">
+      <button (click)="openMobileSearch()" mat-icon-button class="search-icon">
         <mat-icon class="text-[rgba(var(--text))]">search</mat-icon>
       </button>
+
+      <div *ngIf="isSearchOpen" class="mobile-search-container">
+        <button class="absolute top-2 right-2" (click)="closeMobileSearch()">
+          <mat-icon>close</mat-icon>
+        </button>
+        <div class="search-input-wrapper mt-20">
+          <input
+            type="text"
+            [formControl]="searchControl"
+            placeholder="Search by products"
+            class="search-input"
+            (focus)="showResults = true"
+          />
+          <button
+            *ngIf="searchControl.value !== ''"
+            class="search-button cursor-pointer"
+            (click)="searchControl.setValue('')"
+          >
+            <mat-icon>close</mat-icon>
+          </button>
+        </div>
+        <div
+          class="search-results hide-scrollbar p-5"
+          *ngIf="showResults && results && results.length > 0"
+        >
+          <div
+            *ngFor="let result of results; let last = last"
+            class="search-result-item flex items-center gap-4 p-4 rounded-md mb-6"
+            (click)="selectResult(result)"
+          >
+            <img class="w-[60px]" [src]="result.imageUrl" [alt]="result.name" />
+            <p>
+              {{ result.name }}
+            </p>
+          </div>
+        </div>
+      </div>
+
       <button
         *ngIf="userProfile"
         mat-icon-button
@@ -174,15 +212,49 @@
 
       <div class="header-actions">
         <div class="search-container">
-          <input
-            type="text"
-            placeholder="Search by products"
-            class="search-input"
-          />
-          <button class="search-button">
-            <mat-icon>search</mat-icon>
-          </button>
+          <div class="search-input-wrapper">
+            <input
+              type="text"
+              [formControl]="searchControl"
+              placeholder="Search by products"
+              class="search-input"
+              (focus)="showResults = true"
+            />
+            <button
+              *ngIf="searchControl.value === ''"
+              class="search-button cursor-default"
+            >
+              <mat-icon>search</mat-icon>
+            </button>
+            <button
+              *ngIf="searchControl.value !== ''"
+              class="search-button cursor-pointer"
+              (click)="searchControl.setValue('')"
+            >
+              <mat-icon>close</mat-icon>
+            </button>
+          </div>
+          <div
+            class="search-results hide-scrollbar p-5"
+            *ngIf="showResults && results && results.length > 0"
+          >
+            <div
+              *ngFor="let result of results; let last = last"
+              class="search-result-item flex items-center gap-4 p-4 rounded-md mb-6"
+              (click)="selectResult(result)"
+            >
+              <img
+                class="w-[60px]"
+                [src]="result.imageUrl"
+                [alt]="result.name"
+              />
+              <p>
+                {{ result.name }}
+              </p>
+            </div>
+          </div>
         </div>
+
         <div class="user-actions">
           <button
             (click)="handleLoginModal()"

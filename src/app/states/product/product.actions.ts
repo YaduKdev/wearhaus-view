@@ -47,3 +47,18 @@ export const createProductFailure = createAction(
   '[Product] Create Product Failure',
   props<{ error: any }>()
 );
+
+export const searchProductsRequest = createAction(
+  '[Product] Search Products Request',
+  props<{ searchQuery: string }>()
+);
+
+export const searchProductsSuccess = createAction(
+  '[Product] Search Products Success',
+  props<{ payload: any }>()
+);
+
+export const searchProductsFailure = createAction(
+  '[Product] Search Products Failure',
+  props<{ error: any }>()
+);

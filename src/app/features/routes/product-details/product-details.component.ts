@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatRadioModule } from '@angular/material/radio';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
@@ -14,6 +14,7 @@ import { ProductService } from '../../../states/product/product.service';
 import { select, Store } from '@ngrx/store';
 import { AppState } from '../../../models/appState';
 import { CartService } from '../../../states/cart/cart.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-product-details',
@@ -40,10 +41,12 @@ export class ProductDetailsComponent {
   relatedProducts: any;
   product: any;
   productId: any;
+  private _snackBar = inject(MatSnackBar);
 
   constructor(
     private router: Router,
     private productService: ProductService,
+    private route: ActivatedRoute,
     private store: Store<AppState>,
     private activatedRoute: ActivatedRoute,
     private cartService: CartService
@@ -53,25 +56,50 @@ export class ProductDetailsComponent {
     this.showPreview = !this.showPreview;
   }
 
-  ngOnInit() {
-    this.relatedProducts = oversized_tshirts.slice(0, 4);
+  loadProductData(id: string, category: string) {
+    let reqData = {
+      category: category,
+      colors: [],
+      sizes: [],
+      minPrice: 0,
+      maxPrice: 100000,
+      minDiscount: 0,
+      pageNumber: 1,
+      pageSize: 5,
+      sort: 'popularity',
+      stock: null,
+    };
 
-    const id = this.activatedRoute.snapshot.params['id'];
-
+    this.productService.findProductsByCategory(reqData);
     this.productService.findProductsById(id);
-
-    this.productId = id;
 
     this.store
       .pipe(select((store: AppState) => store.product))
       .subscribe((data) => {
+        this.relatedProducts = data?.products.content
+          .filter((item: any) => item._id !== data?.product?._id)
+          .slice(0, 4);
         this.product = data?.product;
         this.previewImages = [
-          this.product?.imageUrl,
-          ...(this.product?.samplePics || []),
+          data?.product?.imageUrl,
+          ...(data?.product?.samplePics || []),
         ];
-        this.currentImage = this.product?.imageUrl;
+        this.currentImage = data?.product?.imageUrl;
       });
+  }
+
+  ngOnInit() {
+    const id = this.activatedRoute.snapshot.params['id'];
+    const productCategory = this.activatedRoute.snapshot.params['category'];
+    this.productId = id;
+
+    this.loadProductData(id, productCategory);
+
+    this.route.params.subscribe((params) => {
+      const productId = params['id'];
+      const category = params['category'];
+      this.loadProductData(productId, category);
+    });
   }
 
   setImage(imageUrl: string) {
@@ -79,11 +107,24 @@ export class ProductDetailsComponent {
   }
 
   handleAddToCart() {
-    const data = {
-      size: this.selectedSize,
-      productId: this.productId,
-    };
+    if (
+      typeof window !== 'undefined' &&
+      window.localStorage &&
+      localStorage.getItem('jwt')
+    ) {
+      const data = {
+        size: this.selectedSize,
+        productId: this.productId,
+      };
 
-    this.cartService.addItemToCart(data);
+      this.cartService.addItemToCart(data);
+    } else {
+      this._snackBar.open('You Need To Login To Add Items To Cart!', '', {
+        duration: 1000,
+        horizontalPosition: 'right',
+        verticalPosition: 'top',
+        panelClass: 'warning-snackbar',
+      });
+    }
   }
 }

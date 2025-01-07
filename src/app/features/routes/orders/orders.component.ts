@@ -6,10 +6,16 @@ import { Router } from '@angular/router';
 import { OrderService } from '../../../states/order/order.service';
 import { select, Store } from '@ngrx/store';
 import { AppState } from '../../../models/appState';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-orders',
-  imports: [CommonModule, MatCheckboxModule, OrderCardComponent],
+  imports: [
+    CommonModule,
+    MatCheckboxModule,
+    OrderCardComponent,
+    MatProgressSpinnerModule,
+  ],
   templateUrl: './orders.component.html',
   styleUrl: './orders.component.scss',
 })
