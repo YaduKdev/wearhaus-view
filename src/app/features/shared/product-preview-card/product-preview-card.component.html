@@ -11,7 +11,10 @@
     <h3 class="font-bold lg:text-sm sm:text-xs">{{ productData.title }}</h3>
     <h4 class="font-medium lg:text-sm sm:text-xs preview-price-text">
       &#8377;{{ productData.discountedPrice }} &nbsp;
-      <span class="preview-amount">&#8377;{{ productData.price }} &nbsp;</span>
+      <span
+        class="preview-amount hidden lg:block line-through dark:text-gray-700 text-gray-500"
+        >&#8377;{{ productData.price }} &nbsp;</span
+      >
       <span class="font-extralight text-green-400"
         >&nbsp;{{ productData.discountPercent }}% OFF</span
       >

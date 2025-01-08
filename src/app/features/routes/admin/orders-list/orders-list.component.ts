@@ -34,6 +34,7 @@ export class OrdersListComponent {
     'update',
     'delete',
   ];
+  displayedColumnsMob: string[] = ['image', 'update', 'delete'];
   ordersData: any;
   totalOrders: any;
 

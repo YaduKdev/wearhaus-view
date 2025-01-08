@@ -102,6 +102,7 @@ export class DashboardComponent {
   ];
   displayedColumns: string[] = ['image', 'price', 'status'];
   displayedColumnsP: string[] = ['image', 'category', 'price', 'quantity'];
+  displayedColumnsPMob: string[] = ['image', 'price', 'quantity'];
   productData: any;
   ordersData: any;
 

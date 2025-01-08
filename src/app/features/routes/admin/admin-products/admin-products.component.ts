@@ -31,6 +31,7 @@ export class AdminProductsComponent {
     'quantity',
     'delete',
   ];
+  displayedColumnsMob: string[] = ['image', 'quantity', 'delete'];
   productData: any;
   totalProducts: any;
   currentPage = 1;

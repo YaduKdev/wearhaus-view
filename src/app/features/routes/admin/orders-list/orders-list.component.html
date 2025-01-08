@@ -1,6 +1,6 @@
 <div
   *ngIf="ordersData && ordersData.length > 0"
-  class="w-full flex flex-col mat-elevation-z8"
+  class="w-full hidden lg:flex flex-col mat-elevation-z8"
 >
   <p class="my-6 text-2xl font-semibold text-center">All Orders</p>
   <table mat-table [dataSource]="ordersData" class="admin-products-table">
@@ -104,6 +104,92 @@
   >
   </mat-paginator>
 </div>
+
+<div
+  *ngIf="ordersData && ordersData.length > 0"
+  class="lg:hidden w-full flex flex-col mat-elevation-z8"
+>
+  <p class="my-6 text-2xl font-semibold text-center">All Orders</p>
+  <table mat-table [dataSource]="ordersData" class="admin-products-table">
+    <ng-container matColumnDef="image">
+      <th mat-header-cell *matHeaderCellDef>Images</th>
+      <td mat-cell *matCellDef="let element">
+        <div class="flex gap-2 flex-wrap my-2">
+          <div
+            *ngFor="let item of element.orderItems"
+            class="w-10 h-10 overflow-hidden rounded-full"
+          >
+            <img
+              class="object-contain object-top"
+              [src]="item.product?.imageUrl"
+              alt="element.title"
+            />
+          </div>
+        </div>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef>Status</th>
+      <td mat-cell *matCellDef="let element">
+        <p
+          [class.text-purple-500]="element.orderStatus === 'PENDING'"
+          [class.text-orange-500]="element.orderStatus === 'PLACED'"
+          [class.text-yellow-500]="element.orderStatus === 'CONFIRMED'"
+          [class.text-lime-500]="element.orderStatus === 'SHIPPED'"
+          [class.text-green-500]="element.orderStatus === 'DELIVERED'"
+          [class.text-red-500]="element.orderStatus === 'CANCELLED'"
+        >
+          {{ element.orderStatus }}
+        </p>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="update">
+      <th mat-header-cell *matHeaderCellDef>Update</th>
+      <td mat-cell *matCellDef="let element">
+        <button
+          [matMenuTriggerFor]="menu"
+          class="bg-yellow-500 text-black px-2 py-1"
+        >
+          UPDATE
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="confirmOrder(element._id)">
+            CONFIRMED
+          </button>
+          <button mat-menu-item (click)="shipOrder(element._id)">
+            SHIPPED
+          </button>
+          <button mat-menu-item (click)="deliverOrder(element._id)">
+            DELIVERED
+          </button>
+        </mat-menu>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef>Delete</th>
+      <td mat-cell *matCellDef="let element">
+        <button
+          (click)="deleteOrder(element._id)"
+          class="product-delete-button"
+          mat-mini-fab
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumnsMob"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumnsMob"></tr>
+  </table>
+  <mat-paginator
+    class="admin-products-paginator"
+    showFirstLastButtons
+    [length]="totalOrders"
+    [pageSize]="10"
+    aria-label="Select page of periodic elements"
+  >
+  </mat-paginator>
+</div>
+
 <p
   class="text-xl font-semibold w-full text-center my-5"
   *ngIf="ordersData && ordersData.length === 0"

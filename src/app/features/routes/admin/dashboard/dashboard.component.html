@@ -244,7 +244,7 @@
       <!-- ORDERS -->
     </div>
     <div
-      class="p-4 w-full section-width h-full lg:w-[50%] flex flex-col items-center border rounded-md border-[rgba(var(--text))] box"
+      class="p-4 section-width h-full w-[50%] hidden lg:flex flex-col items-center border rounded-md border-[rgba(var(--text))] box"
     >
       <!-- PRODUCTS -->
       <div
@@ -301,6 +301,59 @@
         No Products To Display
       </p>
       <!-- PRODUCTS -->
+    </div>
+    <div
+      class="p-4 w-full section-width h-full lg:hidden flex flex-col items-center border rounded-md border-[rgba(var(--text))] box"
+    >
+      <!-- MOBILE PRODUCTS -->
+      <div
+        *ngIf="productData && productData.length > 0"
+        class="w-full flex flex-col mat-elevation-z8"
+      >
+        <p class="my-6 text-xl font-semibold text-center">Latest Products</p>
+        <table
+          mat-table
+          [dataSource]="productData"
+          class="admin-products-table"
+        >
+          <ng-container matColumnDef="image">
+            <th mat-header-cell *matHeaderCellDef>Image</th>
+            <td mat-cell *matCellDef="let element">
+              <div class="w-10 h-10 overflow-hidden rounded-full">
+                <img
+                  class="object-contain object-top"
+                  [src]="element.imageUrl"
+                  alt="element.title"
+                />
+              </div>
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="price">
+            <th mat-header-cell *matHeaderCellDef>Price</th>
+            <td mat-cell *matCellDef="let element">{{ element.price }}</td>
+          </ng-container>
+          <ng-container matColumnDef="quantity">
+            <th mat-header-cell *matHeaderCellDef>Quantity</th>
+            <td mat-cell *matCellDef="let element">{{ element.quantity }}</td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumnsPMob"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumnsPMob"></tr>
+        </table>
+      </div>
+      <button
+        *ngIf="productData && productData.length > 0"
+        class="text-center px-4 py-2 text-white bg-purple-700 hover:bg-purple-600 mt-3"
+        (click)="navigateTo('/admin/products')"
+      >
+        View All
+      </button>
+      <p
+        class="text-xl font-semibold"
+        *ngIf="productData && productData.length === 0"
+      >
+        No Products To Display
+      </p>
+      <!-- MOBILE PRODUCTS -->
     </div>
   </div>
 </div>
