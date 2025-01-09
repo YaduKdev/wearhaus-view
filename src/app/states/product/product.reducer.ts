@@ -12,6 +12,9 @@ import {
   findProductsByIdFailure,
   findProductsByIdRequest,
   findProductsByIdSuccess,
+  getHomeProductsFailure,
+  getHomeProductsRequest,
+  getHomeProductsSuccess,
   searchProductsFailure,
   searchProductsRequest,
   searchProductsSuccess,
@@ -27,6 +30,7 @@ export interface ProductState {
   error: any | null;
   product: any | null;
   searchResults: any;
+  homeProducts: any[];
 }
 
 const initialState: ProductState = {
@@ -39,6 +43,7 @@ const initialState: ProductState = {
   error: null,
   product: null,
   searchResults: [],
+  homeProducts: [],
 };
 
 export const productReducer = createReducer(
@@ -49,6 +54,7 @@ export const productReducer = createReducer(
     deleteProductRequest,
     createProductRequest,
     searchProductsRequest,
+    getHomeProductsRequest,
     (state) => ({
       ...state,
       loading: true,
@@ -59,6 +65,11 @@ export const productReducer = createReducer(
     ...state,
     products: payload,
     content: payload.content,
+    loading: false,
+  })),
+  on(getHomeProductsSuccess, (state, { payload }) => ({
+    ...state,
+    homeProducts: payload,
     loading: false,
   })),
   on(findProductsByIdSuccess, (state, { payload }) => ({
@@ -93,6 +104,7 @@ export const productReducer = createReducer(
     deleteProductFailure,
     createProductFailure,
     searchProductsFailure,
+    getHomeProductsFailure,
     (state, { error }) => ({
       ...state,
       error: error,

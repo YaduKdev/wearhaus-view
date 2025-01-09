@@ -1,5 +1,17 @@
 import { createAction, props } from '@ngrx/store';
 
+export const getHomeProductsRequest = createAction(
+  '[Product] Get Home Products Request'
+);
+export const getHomeProductsSuccess = createAction(
+  '[Product] Get Home Products Success',
+  props<{ payload: any }>()
+);
+export const getHomeProductsFailure = createAction(
+  '[Product] Get Home Products Failure',
+  props<{ error: any }>()
+);
+
 export const findProductsByCategoryRequest = createAction(
   '[Product] Find Products By Category Request'
 );

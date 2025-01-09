@@ -42,16 +42,16 @@ export const navigation = {
           link: '/product-details/women_sweaters/676a5db1f268c98b0c30d561',
         },
         {
-          name: 'Black Graphic Printed Oversized Flatknit Sweater',
-          id: '676a5db1f268c98b0c30d561',
+          name: 'Beige & Blue Ombre Oversized Plus Size Sweatshirt Dress',
+          id: '677f1516c3b0e53d88fc9b83',
           imageSrc:
-            'https://i.ibb.co/thz9BgP/women-s-black-graphic-printed-oversized-flatknit-sweater-597233-1726058837-1.webp',
-          link: '/product-details/women_sweaters/676a5db1f268c98b0c30d561',
+            'https://i.ibb.co/Z6jqC7k/women-s-beige-blue-oversized-plus-size-t-shirt-dress-614104-1707309773-1.webp',
+          link: '/product-details/women_dresses/677f1516c3b0e53d88fc9b83',
         },
       ],
       sections: [
-        { name: 'Tops', id: 'tops', href: `{women/clothing/tops}` },
-        { name: 'Dresses', id: 'dresses', href: '#' },
+        { name: 'Tops', id: 'women_tops', href: `{women/clothing/tops}` },
+        { name: 'Dresses', id: 'women_dresses', href: '#' },
         { name: 'Oversized T-shirts', id: 'women_oversized_tshirts' },
         { name: 'Jackets', id: 'women_jackets' },
         { name: 'Sweaters', id: 'women_sweaters' },

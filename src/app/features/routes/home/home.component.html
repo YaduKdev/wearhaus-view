@@ -2,22 +2,11 @@
   <div>
     <app-main-carousel />
   </div>
-  <div class="lg:my-40 sm:my-24">
+  <div *ngIf="productsData" class="lg:my-40 sm:my-24">
     <app-home-product-slider
-      heading="Men's Sweaters"
-      [products]="menSweaters"
+      *ngFor="let product of productsData"
+      [heading]="product.section"
+      [products]="product.content"
     />
-    <app-home-product-slider heading="Dresses" [products]="dresses" />
-    <app-home-product-slider heading="Men's Cargos" [products]="menCargos" />
-    <app-home-product-slider heading="Tops" [products]="tops" />
-    <app-home-product-slider
-      heading="Men's Oversized T-shirts"
-      [products]="oversizedTshirts"
-    />
-    <app-home-product-slider
-      heading="Women's Sweaters"
-      [products]="womenSweaters"
-    />
-    <app-home-product-slider heading="Sneakers" [products]="sneakers" />
   </div>
 </div>

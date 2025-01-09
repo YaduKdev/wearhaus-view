@@ -10,6 +10,8 @@ import {
   findProductsByCategorySuccess,
   findProductsByIdFailure,
   findProductsByIdSuccess,
+  getHomeProductsFailure,
+  getHomeProductsSuccess,
   searchProductsFailure,
   searchProductsRequest,
   searchProductsSuccess,
@@ -71,10 +73,8 @@ export class ProductService {
       .set('pageNumber', pageNumber)
       .set('pageSize', pageSize);
 
-    const headers = this.getHeader();
-
     return this.http
-      .get(`${this.API_BASE_URL}/api/products`, { headers, params })
+      .get(`${this.API_BASE_URL}/api/products`, { params })
       .pipe(
         map((data: any) => {
           console.log('Products Data', data);
@@ -94,11 +94,31 @@ export class ProductService {
       .subscribe((action) => this.store.dispatch(action));
   }
 
-  findProductsById(productId: any) {
-    const headers = this.getHeader();
-
+  getHomeProducts() {
     return this.http
-      .get(`${this.API_BASE_URL}/api/products/id/${productId}`, { headers })
+      .get(`${this.API_BASE_URL}/api/products/home`)
+      .pipe(
+        map((data: any) => {
+          console.log('Products Data', data);
+
+          return getHomeProductsSuccess({ payload: data });
+        }),
+        catchError((error: any) => {
+          return of(
+            getHomeProductsFailure(
+              error.response && error.response.data.message
+                ? error.response.data.message
+                : error.message
+            )
+          );
+        })
+      )
+      .subscribe((action) => this.store.dispatch(action));
+  }
+
+  findProductsById(productId: any) {
+    return this.http
+      .get(`${this.API_BASE_URL}/api/products/id/${productId}`)
       .pipe(
         map((data: any) => {
           console.log('Product Details', data);
@@ -191,13 +211,12 @@ export class ProductService {
   }
 
   searchProducts(searchQuery: string) {
-    const headers = this.getHeader();
     const params = new HttpParams().set('q', searchQuery);
 
     this.store.dispatch(searchProductsRequest({ searchQuery }));
 
     return this.http
-      .get(`${this.API_BASE_URL}/api/products/search`, { headers, params })
+      .get(`${this.API_BASE_URL}/api/products/search`, { params })
       .pipe(
         map((data: any) => {
           console.log('Search Results:', data);

@@ -5,7 +5,7 @@ import {
   Input,
   ViewChild,
 } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -27,6 +27,8 @@ export class HomeProductSliderComponent {
   private startX = 0;
   private scrollLeft = 0;
   private isDown = false;
+
+  constructor(private router: Router) {}
 
   startDrag(e: MouseEvent | TouchEvent) {
     // Prevent default to stop text selection during drag
@@ -83,5 +85,9 @@ export class HomeProductSliderComponent {
   @HostListener('selectstart', ['$event'])
   onSelectStart(e: Event) {
     e.preventDefault();
+  }
+
+  navigateTo(category: any, id: any) {
+    this.router.navigate([`/product-details/${category}/${id}`]);
   }
 }
