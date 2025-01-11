@@ -2,20 +2,20 @@
   <div class="w-full h-1/2 shadow-lg p-6">
     <div class="flex justify-around">
       <div class="flex flex-col">
-        <h1 class="mb-5 text-xl font-bold">Categories</h1>
+        <h1 class="mb-5 text-2xl font-bold">Categories</h1>
         <div class="flex flex-col items-start">
           <button
             (click)="handleNavigate('/products/' + category.id + '/' + item.id)"
             mat-button
             *ngFor="let item of category.sections"
-            class="hover:text-yellow-500"
+            class="hover:text-yellow-500 text-xl mb-4"
           >
             {{ item.name }}
           </button>
         </div>
       </div>
       <div class="flex flex-col mb-5 justify-center">
-        <h1 class="mb-5 text-xl font-bold">New Arrivals</h1>
+        <h1 class="mb-5 text-2xl font-bold">New Arrivals</h1>
         <div class="flex gap-5">
           <div>
             <div
