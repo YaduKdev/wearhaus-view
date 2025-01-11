@@ -6,7 +6,6 @@ import { Router } from '@angular/router';
 import { CartService } from '../../../states/cart/cart.service';
 import { select, Store } from '@ngrx/store';
 import { AppState } from '../../../models/appState';
-import { AuthComponent } from '../../../auth/auth.component';
 
 @Component({
   selector: 'app-cart',

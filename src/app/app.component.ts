@@ -6,10 +6,16 @@ import { select, Store } from '@ngrx/store';
 import { UserService } from './states/user/user.service';
 import { AppState } from './models/appState';
 import { CartService } from './states/cart/cart.service';
+import { NgxSpinnerComponent } from 'ngx-spinner';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NavbarComponent, FooterComponent],
+  imports: [
+    RouterOutlet,
+    NavbarComponent,
+    NgxSpinnerComponent,
+    FooterComponent,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

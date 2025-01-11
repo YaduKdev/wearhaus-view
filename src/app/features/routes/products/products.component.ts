@@ -1,18 +1,25 @@
-import { Component } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  HostListener,
+  Inject,
+  PLATFORM_ID,
+  ViewChild,
+} from '@angular/core';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { filters, singleFilter } from './FilterData';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DOCUMENT, isPlatformBrowser } from '@angular/common';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
 import { MatRadioModule } from '@angular/material/radio';
 import { ProductPreviewCardComponent } from '../../shared/product-preview-card/product-preview-card.component';
-import men_sweaters from '../../../../Data/Men/men_sweaters.json';
 import { ProductService } from '../../../states/product/product.service';
 import { select, Store } from '@ngrx/store';
 import { AppState } from '../../../models/appState';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-products',
@@ -26,6 +33,7 @@ import { AppState } from '../../../models/appState';
     FormsModule,
     MatRadioModule,
     ProductPreviewCardComponent,
+    MatButtonModule,
   ],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss',
@@ -41,15 +49,24 @@ export class ProductsComponent {
   totalPages: any = 0;
   levelTwo: any;
   levelOne: any;
+  isVisible = false;
+  isBrowser: boolean;
 
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private productService: ProductService,
-    private store: Store<AppState>
-  ) {}
+    private store: Store<AppState>,
+    @Inject(PLATFORM_ID) private platformId: object
+  ) {
+    this.isBrowser = isPlatformBrowser(this.platformId);
+  }
 
   ngOnInit() {
+    if (this.isBrowser) {
+      this.checkScroll();
+    }
+
     this.filterData = filters;
     this.singleFilterData = singleFilter;
 
@@ -156,5 +173,18 @@ export class ProductsComponent {
   onClickSort(option: any, value: string) {
     this.sortOption = option;
     this.handleSingleSelectFilter(value, 'sort');
+  }
+
+  @HostListener('window:scroll', [])
+  checkScroll() {
+    if (this.isBrowser) {
+      this.isVisible = window.pageYOffset > 800;
+    }
+  }
+
+  scrollToTop() {
+    if (this.isBrowser) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   }
 }

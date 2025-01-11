@@ -52,7 +52,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   categories: any[] = [];
   selectedCategory: any;
   userProfile: any;
-  cartItems: any[] = [];
+  cartItems: any;
   private _snackBar = inject(MatSnackBar);
   private resizeListener: (() => void) | null = null;
 

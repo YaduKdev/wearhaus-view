@@ -1,5 +1,8 @@
 <div class="py-5"><app-navbar /></div>
 <div class="mt-20">
   <router-outlet />
+  <ngx-spinner
+    template="<img class='animate-spin' src='loader.png' />"
+  ></ngx-spinner>
 </div>
 <div><app-footer /></div>
