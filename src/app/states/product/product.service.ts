@@ -77,8 +77,6 @@ export class ProductService {
       .get(`${this.API_BASE_URL}/api/products`, { params })
       .pipe(
         map((data: any) => {
-          console.log('Products Data', data);
-
           return findProductsByCategorySuccess({ payload: data });
         }),
         catchError((error: any) => {
@@ -99,8 +97,6 @@ export class ProductService {
       .get(`${this.API_BASE_URL}/api/products/home`)
       .pipe(
         map((data: any) => {
-          console.log('Products Data', data);
-
           return getHomeProductsSuccess({ payload: data });
         }),
         catchError((error: any) => {
@@ -121,8 +117,6 @@ export class ProductService {
       .get(`${this.API_BASE_URL}/api/products/id/${productId}`)
       .pipe(
         map((data: any) => {
-          console.log('Product Details', data);
-
           return findProductsByIdSuccess({ payload: data });
         }),
         catchError((error: any) => {
@@ -147,8 +141,6 @@ export class ProductService {
       })
       .pipe(
         map((data: any) => {
-          console.log('Deleted Product', data);
-
           this._snackBar.open('Product Deleted Successfully!', '', {
             duration: 2000,
             horizontalPosition: 'right',
@@ -178,8 +170,6 @@ export class ProductService {
       .post(`${this.API_BASE_URL}/api/admin/products`, reqData, { headers })
       .pipe(
         map((data: any) => {
-          console.log('Created Product', data);
-
           this._snackBar.open(
             'Product Created Successfully! Reloading Page, Please Wait...',
             '',
@@ -219,7 +209,6 @@ export class ProductService {
       .get(`${this.API_BASE_URL}/api/products/search`, { params })
       .pipe(
         map((data: any) => {
-          console.log('Search Results:', data);
           return searchProductsSuccess({ payload: data });
         }),
         catchError((error: any) => {
@@ -263,11 +252,9 @@ export class ProductService {
       })
       .pipe(
         map((data: any) => {
-          console.log('Search Results:', data);
           return searchProductsSuccess({ payload: data });
         }),
         catchError((error: any) => {
-          console.error('Search Error:', error);
           return of(
             searchProductsFailure({
               error: error.response?.data?.message || error.message,

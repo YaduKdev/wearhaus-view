@@ -87,8 +87,6 @@ export class OrderService {
         .get(`${this.API_BASE_URL}/api/orders/${orderId}`, { headers })
         .pipe(
           map((data: any) => {
-            console.log('ORDER BY ID', data);
-
             return getOrderByIdSuccess({ order: data });
           }),
           catchError((error: any) => {
@@ -117,8 +115,6 @@ export class OrderService {
       .get(`${this.API_BASE_URL}/api/orders/user`, { headers })
       .pipe(
         map((data: any) => {
-          console.log('ORDER HISTORY', data);
-
           return getOrderHistorySuccess({ orders: data });
         }),
         catchError((error: any) => {
@@ -149,8 +145,6 @@ export class OrderService {
         .get(`${this.API_BASE_URL}/api/admin/orders/`, { headers })
         .pipe(
           map((data: any) => {
-            console.log('ALL ORDERS', data);
-
             return getAllOrdersSuccess({ payload: data });
           }),
           catchError((error: any) => {
@@ -183,8 +177,6 @@ export class OrderService {
       )
       .pipe(
         map((data: any) => {
-          console.log('PLACED ORDER', data);
-
           return placeOrderSuccess({ payload: data });
         }),
         catchError((error: any) => {
@@ -214,8 +206,6 @@ export class OrderService {
       )
       .pipe(
         map((data: any) => {
-          console.log('CONFIRMED ORDER', data);
-
           return confirmOrderSuccess({ payload: data });
         }),
         catchError((error: any) => {
@@ -245,8 +235,6 @@ export class OrderService {
       )
       .pipe(
         map((data: any) => {
-          console.log('CANCELLED ORDER', data);
-
           return cancelOrderSuccess({ payload: data });
         }),
         catchError((error: any) => {
@@ -276,8 +264,6 @@ export class OrderService {
       )
       .pipe(
         map((data: any) => {
-          console.log('SHIPPED ORDER', data);
-
           return shipOrderSuccess({ payload: data });
         }),
         catchError((error: any) => {
@@ -307,8 +293,6 @@ export class OrderService {
       )
       .pipe(
         map((data: any) => {
-          console.log('DELIVERED ORDER', data);
-
           return deliverOrderSuccess({ payload: data });
         }),
         catchError((error: any) => {
@@ -338,8 +322,6 @@ export class OrderService {
       )
       .pipe(
         map((data: any) => {
-          console.log('DELETED ORDER', data);
-
           return deleteOrderSuccess({ payload: data._id });
         }),
         catchError((error: any) => {

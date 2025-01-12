@@ -66,13 +66,11 @@ export class AddressFormComponent {
   }
 
   handleCreateOrder(item: any) {
-    console.log(item);
     this.orderService.createOrder(item);
   }
 
   handleSubmit() {
     const formValue = this.myForm.value;
-    console.log('FORM VALUES======>', formValue);
     this.orderService.createOrder(formValue);
   }
 }

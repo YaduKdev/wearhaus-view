@@ -126,8 +126,6 @@ export class AddProductComponent {
     formValue.quantity = totalQuantity;
 
     if (this.myForm.valid) {
-      console.log('FORM VALUES======>', formValue);
-
       this.productService.createProduct(formValue);
 
       this.myForm.reset();

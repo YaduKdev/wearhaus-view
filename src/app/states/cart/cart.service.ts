@@ -41,8 +41,6 @@ export class CartService {
       .put(url, reqData, { headers })
       .pipe(
         map((data: any) => {
-          console.log('ADDED ITEM', data);
-
           this._snackBar.open('Item Added To Cart', '', {
             duration: 2000,
             horizontalPosition: 'right',
@@ -84,8 +82,6 @@ export class CartService {
         .get(url, { headers })
         .pipe(
           map((data: any) => {
-            console.log('GET CART', data);
-
             return getCartSuccess({ payload: data });
           }),
           catchError((error: any) => {
@@ -115,7 +111,6 @@ export class CartService {
       .delete(url, { headers })
       .pipe(
         map((data: any) => {
-          console.log('REMOVED ITEM', data);
           return removeCartItemSuccess({ cartItemId });
         }),
         catchError((error: any) => {
@@ -142,8 +137,6 @@ export class CartService {
       .put(url, reqData.data, { headers })
       .pipe(
         map((data: any) => {
-          console.log('UPDATED CART ITEM', data);
-
           return updateCartItemSuccess({ payload: data });
         }),
         catchError((error: any) => {

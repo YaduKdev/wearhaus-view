@@ -49,7 +49,6 @@ export class OrderDetailsComponent {
     this.store
       .pipe(select((store: AppState) => store.order))
       .subscribe((data) => {
-        console.log('DATA FOR ORDER ID ======>', data);
         this.order = data.order;
 
         this.steps.map((step) => {

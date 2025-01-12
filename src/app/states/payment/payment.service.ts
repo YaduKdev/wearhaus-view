@@ -45,8 +45,6 @@ export class PaymentService {
       .post(`${this.API_BASE_URL}/api/payments/${orderId}`, {}, { headers })
       .pipe(
         map((data: any) => {
-          console.log('Payment', data);
-
           if (data.payment_link_url) {
             if (typeof window !== 'undefined')
               window.location.href = data.payment_link_url;
@@ -77,8 +75,6 @@ export class PaymentService {
       )
       .pipe(
         map((data: any) => {
-          console.log('update-payment', data);
-
           return updatePaymentInfoSuccess({ payload: data });
         }),
         catchError((error: any) => {

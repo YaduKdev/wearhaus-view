@@ -310,7 +310,6 @@ export class DashboardComponent {
     this.store
       .pipe(select((store: AppState) => store.order))
       .subscribe((data) => {
-        console.log('ORDERS DATA', data.orders);
         this.ordersData = data.orders.slice(0, 5);
       });
   }

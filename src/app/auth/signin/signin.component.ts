@@ -47,7 +47,6 @@ export class SigninComponent {
 
   submitForm(): void {
     if (this.loginForm.valid) {
-      console.log('LOGIN REQ DATA', this.loginForm.value);
       this.authService.login(this.loginForm.value);
     }
   }

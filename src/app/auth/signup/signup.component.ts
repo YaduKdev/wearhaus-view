@@ -49,7 +49,6 @@ export class SignupComponent {
 
   submitForm(): void {
     if (this.signupForm.valid) {
-      console.log('REGISTER REQ DATA', this.signupForm.value);
       this.authService.register(this.signupForm.value);
     }
   }

@@ -30,7 +30,6 @@ export class AuthService {
       .post(`${this.apiUrl}/signin`, loginData)
       .pipe(
         map((user: any) => {
-          console.log('login user', user);
           if (user.jwt) {
             localStorage.setItem('jwt', user.jwt);
             localStorage.setItem('role', user.role);
@@ -64,7 +63,6 @@ export class AuthService {
       .post(`${this.apiUrl}/signup`, user)
       .pipe(
         map((user: any) => {
-          console.log('register user', user);
           if (user.jwt) {
             localStorage.setItem('jwt', user.jwt);
             localStorage.setItem('role', user.role);

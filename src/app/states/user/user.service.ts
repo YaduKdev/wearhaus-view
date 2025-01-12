@@ -36,8 +36,6 @@ export class UserService {
         })
         .pipe(
           map((user: any) => {
-            console.log('User profile', user);
-
             return getUserProfileSuccess({ userProfile: user });
           }),
           catchError((error) => {

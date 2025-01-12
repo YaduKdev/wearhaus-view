@@ -49,7 +49,6 @@ export class OrdersListComponent {
     this.store
       .pipe(select((store: AppState) => store.order))
       .subscribe((data) => {
-        console.log('ORDERS DATA', data.orders);
         this.ordersData = data.orders;
         this.totalOrders = data.orders?.length;
       });
