@@ -15,6 +15,7 @@ export const routes: Routes = [
       import('./features/routes/products/products.component').then(
         (c) => c.ProductsComponent
       ),
+    data: { renderMode: 'client' },
   },
   {
     path: 'product-details/:category/:id',
@@ -22,6 +23,7 @@ export const routes: Routes = [
       import(
         './features/routes/product-details/product-details.component'
       ).then((c) => c.ProductDetailsComponent),
+    data: { renderMode: 'client' },
   },
   {
     path: 'payments/:orderId',
@@ -29,6 +31,7 @@ export const routes: Routes = [
       import(
         './features/routes/payment-success/payment-success.component'
       ).then((c) => c.PaymentSuccessComponent),
+    data: { renderMode: 'client' },
   },
   {
     path: 'cart',
@@ -51,7 +54,7 @@ export const routes: Routes = [
   {
     path: 'checkout/payment/:id',
     canActivate: [AuthGuard],
-    data: { roles: ['CUSTOMER'] },
+    data: { roles: ['CUSTOMER'], renderMode: 'client' },
     loadComponent: () =>
       import('./features/routes/payment/payment.component').then(
         (c) => c.PaymentComponent
@@ -78,7 +81,7 @@ export const routes: Routes = [
   {
     path: 'order/:id',
     canActivate: [AuthGuard],
-    data: { roles: ['CUSTOMER'] },
+    data: { roles: ['CUSTOMER'], renderMode: 'client' },
     loadComponent: () =>
       import('./features/routes/order-details/order-details.component').then(
         (c) => c.OrderDetailsComponent
