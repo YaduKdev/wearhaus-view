@@ -23,9 +23,7 @@ export const navigation = {
         { name: 'Oversized T-shirts', id: 'men_oversized_tshirts' },
         { name: 'Jackets', id: 'men_jackets' },
         { name: 'Sweaters', id: 'men_sweaters' },
-        { name: 'Hoodies', id: 'men_hoodies' },
         { name: 'Cargos', id: 'men_cargos' },
-        { name: 'Jeans', id: 'men_jeans' },
       ],
     },
     {
@@ -52,9 +50,7 @@ export const navigation = {
         { name: 'Dresses', id: 'women_dresses', href: '#' },
         { name: 'Jackets', id: 'women_jackets' },
         { name: 'Sweaters', id: 'women_sweaters' },
-        { name: 'Hoodies', id: 'women_hoodies' },
         { name: 'Cargos', id: 'women_cargos' },
-        { name: 'Jeans', id: 'women_jeans' },
       ],
     },
     {
