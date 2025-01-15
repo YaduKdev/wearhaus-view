@@ -15,7 +15,7 @@ export const routes: Routes = [
       import('./features/routes/products/products.component').then(
         (c) => c.ProductsComponent
       ),
-    data: { renderMode: 'client' },
+    data: { renderMode: 'client-only' },
   },
   {
     path: 'product-details/:category/:id',
@@ -23,7 +23,7 @@ export const routes: Routes = [
       import(
         './features/routes/product-details/product-details.component'
       ).then((c) => c.ProductDetailsComponent),
-    data: { renderMode: 'client' },
+    data: { renderMode: 'client-only' },
   },
   {
     path: 'payments/:orderId',
@@ -31,7 +31,7 @@ export const routes: Routes = [
       import(
         './features/routes/payment-success/payment-success.component'
       ).then((c) => c.PaymentSuccessComponent),
-    data: { renderMode: 'client' },
+    data: { renderMode: 'client-only' },
   },
   {
     path: 'cart',
@@ -54,7 +54,7 @@ export const routes: Routes = [
   {
     path: 'checkout/payment/:id',
     canActivate: [AuthGuard],
-    data: { roles: ['CUSTOMER'], renderMode: 'client' },
+    data: { roles: ['CUSTOMER'], renderMode: 'client-only' },
     loadComponent: () =>
       import('./features/routes/payment/payment.component').then(
         (c) => c.PaymentComponent
@@ -81,7 +81,7 @@ export const routes: Routes = [
   {
     path: 'order/:id',
     canActivate: [AuthGuard],
-    data: { roles: ['CUSTOMER'], renderMode: 'client' },
+    data: { roles: ['CUSTOMER'], renderMode: 'client-only' },
     loadComponent: () =>
       import('./features/routes/order-details/order-details.component').then(
         (c) => c.OrderDetailsComponent
