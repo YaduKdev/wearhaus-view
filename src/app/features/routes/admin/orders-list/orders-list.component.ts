@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { OrderService } from '../../../../states/order/order.service';
@@ -18,6 +18,7 @@ import { MatMenuModule } from '@angular/material/menu';
     MatTableModule,
     MatPaginatorModule,
     MatMenuModule,
+    NgOptimizedImage,
   ],
   templateUrl: './orders-list.component.html',
   styleUrl: './orders-list.component.scss',

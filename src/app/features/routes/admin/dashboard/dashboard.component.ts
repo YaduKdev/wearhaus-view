@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { select, Store } from '@ngrx/store';
 import { OrderService } from '../../../../states/order/order.service';
 import { ProductService } from '../../../../states/product/product.service';
@@ -86,6 +86,7 @@ export interface productsalesChart {
     MatTableModule,
     MatMenuModule,
     NgApexchartsModule,
+    NgOptimizedImage,
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',

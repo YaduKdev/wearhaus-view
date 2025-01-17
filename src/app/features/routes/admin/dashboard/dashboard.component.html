@@ -17,7 +17,7 @@
         </button>
       </div>
       <div>
-        <img src="trophy.png" alt="Trophy Picture" class="min-w-24 w-32" />
+        <img ngSrc="trophy.png" alt="Trophy Picture" class="min-w-24 w-32" />
       </div>
     </div>
     <div
@@ -196,7 +196,9 @@
                 >
                   <img
                     class="object-contain object-top"
-                    [src]="item.product?.imageUrl"
+                    [ngSrc]="item.product?.imageUrl"
+                    width="80"
+                    height="100"
                     alt="item.product?.title"
                   />
                 </div>
@@ -263,7 +265,9 @@
               <div class="w-10 h-10 overflow-hidden rounded-full">
                 <img
                   class="object-contain object-top"
-                  [src]="element.imageUrl"
+                  [ngSrc]="element.imageUrl"
+                  width="80"
+                  height="100"
                   alt="element.title"
                 />
               </div>
@@ -322,7 +326,9 @@
               <div class="w-10 h-10 overflow-hidden rounded-full">
                 <img
                   class="object-contain object-top"
-                  [src]="element.imageUrl"
+                  [ngSrc]="element.imageUrl"
+                  width="80"
+                  height="100"
                   alt="element.title"
                 />
               </div>

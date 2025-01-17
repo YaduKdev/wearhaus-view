@@ -31,7 +31,9 @@
       >
         <div class="w-full overflow-hidden">
           <img
-            [src]="item.imageUrl"
+            [ngSrc]="item.imageUrl"
+            width="510"
+            height="669"
             class="slider-image hover:scale-105 transition-all duration-500"
             [alt]="item.title"
             [title]="item.title"

@@ -6,11 +6,11 @@ import {
   ViewChild,
 } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-home-product-slider',
-  imports: [RouterModule, CommonModule],
+  imports: [RouterModule, CommonModule, NgOptimizedImage],
   templateUrl: './home-product-slider.component.html',
   styleUrl: './home-product-slider.component.scss',
 })
@@ -32,7 +32,7 @@ export class HomeProductSliderComponent {
 
   startDrag(e: MouseEvent | TouchEvent) {
     // Prevent default to stop text selection during drag
-    e.preventDefault();
+    e instanceof MouseEvent && e.preventDefault();
 
     // Get the correct X position for both mouse and touch events
     const clientX = e instanceof MouseEvent ? e.clientX : e.touches[0].clientX;

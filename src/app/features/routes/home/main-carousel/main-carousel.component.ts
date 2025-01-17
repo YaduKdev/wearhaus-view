@@ -8,11 +8,11 @@ import {
 } from '@angular/core';
 import { homeCarouselData } from '../../../../../Data/mainCarousel';
 import { RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-main-carousel',
-  imports: [RouterModule, CommonModule],
+  imports: [RouterModule, CommonModule, NgOptimizedImage],
   templateUrl: './main-carousel.component.html',
   styleUrl: './main-carousel.component.scss',
 })
@@ -87,7 +87,7 @@ export class MainCarouselComponent implements OnInit {
 
   startDrag(e: MouseEvent | TouchEvent) {
     // Prevent default to stop text selection during drag
-    e.preventDefault();
+    e instanceof MouseEvent && e.preventDefault();
 
     // Get the correct X position for both mouse and touch events
     const clientX = e instanceof MouseEvent ? e.clientX : e.touches[0].clientX;

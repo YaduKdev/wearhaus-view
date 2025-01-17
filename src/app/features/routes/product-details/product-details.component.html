@@ -5,8 +5,9 @@
       <div class="preview-image-section relative w-[64%]">
         <img
           (click)="handleImagePreview()"
-          [src]="currentImage"
+          [ngSrc]="currentImage"
           class="w-full cursor-pointer h-auto object-cover"
+          priority
         />
         <div
           class="absolute bottom-0 left-0 right-0 flex justify-center items-center bg-gray-800 bg-opacity-50 p-2"
@@ -164,7 +165,7 @@
   >
     <mat-icon>close</mat-icon>
   </div>
-  <div class="w-[30%]">
+  <div class="w-[65%] lg:w-[33%]">
     <img
       *ngIf="currentImage"
       [src]="currentImage"

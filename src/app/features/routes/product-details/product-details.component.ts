@@ -14,6 +14,7 @@ import { select, Store } from '@ngrx/store';
 import { AppState } from '../../../models/appState';
 import { CartService } from '../../../states/cart/cart.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-product-details',
@@ -27,6 +28,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     MatProgressBarModule,
     ProductPreviewCardComponent,
     StarRatingComponent,
+    NgOptimizedImage,
   ],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.scss',

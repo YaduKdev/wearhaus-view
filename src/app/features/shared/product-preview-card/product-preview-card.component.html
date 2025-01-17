@@ -1,7 +1,9 @@
 <div (click)="navigate()" class="cursor-pointer">
   <div class="product-preview-item w-full overflow-hidden">
     <img
-      [src]="productData.imageUrl"
+      [ngSrc]="productData.imageUrl"
+      width="405"
+      height="506.25"
       class="product-preview-image"
       [alt]="productData.title"
       [title]="productData.title"

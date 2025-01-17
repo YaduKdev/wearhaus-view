@@ -4,7 +4,7 @@ import { select, Store } from '@ngrx/store';
 import { AppState } from '../../../../models/appState';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
@@ -16,6 +16,7 @@ import { MatIconModule } from '@angular/material/icon';
     CommonModule,
     MatButtonModule,
     MatIconModule,
+    NgOptimizedImage,
   ],
   templateUrl: './admin-products.component.html',
   styleUrl: './admin-products.component.scss',
