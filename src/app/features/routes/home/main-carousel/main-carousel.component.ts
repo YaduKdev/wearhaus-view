@@ -109,7 +109,7 @@ export class MainCarouselComponent implements OnInit {
     if (!this.isDown) return;
 
     // Prevent default scrolling
-    e.preventDefault();
+    e instanceof MouseEvent && e.preventDefault();
 
     // Get the correct X position for both mouse and touch events
     const clientX = e instanceof MouseEvent ? e.clientX : e.touches[0].clientX;
