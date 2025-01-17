@@ -24,7 +24,9 @@
             >
               <img
                 class="w-[19rem] h-[20rem] object-cover object-top mb-3"
-                [src]="category.featured[0].imageSrc"
+                [ngSrc]="category.featured[0].imageSrc"
+                width="304"
+                height="320"
                 [alt]="category.featured[0].name"
               />
               <p class="text-xs font-semibold">
@@ -39,7 +41,9 @@
             >
               <img
                 class="w-[19rem] h-[20rem] object-cover object-top mb-3"
-                [src]="category.featured[1].imageSrc"
+                [ngSrc]="category.featured[1].imageSrc"
+                width="304"
+                height="320"
                 [alt]="category.featured[1].name"
               />
               <p class="text-xs font-semibold">

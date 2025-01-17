@@ -1,10 +1,10 @@
 import { Component, Input } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-nav-content',
-  imports: [RouterModule, CommonModule],
+  imports: [RouterModule, CommonModule, NgOptimizedImage],
   templateUrl: './nav-content.component.html',
   styleUrl: './nav-content.component.scss',
 })
