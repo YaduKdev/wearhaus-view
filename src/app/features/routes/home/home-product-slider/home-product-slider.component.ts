@@ -27,7 +27,7 @@ export class HomeProductSliderComponent {
 
   constructor(private router: Router) {}
 
-  ngOnInit() {
+  ngViewAfterInit() {
     const slider = this.sliderRef.nativeElement;
     slider.addEventListener('touchstart', (e: any) => this.startDrag(e), {
       passive: false,
