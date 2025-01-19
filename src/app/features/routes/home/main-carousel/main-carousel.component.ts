@@ -87,7 +87,7 @@ export class MainCarouselComponent implements OnInit {
 
   startDrag(e: MouseEvent | TouchEvent) {
     // Prevent default to stop text selection during drag
-    e instanceof MouseEvent && e.preventDefault();
+    e.preventDefault();
 
     // Get the correct X position for both mouse and touch events
     const clientX = e instanceof MouseEvent ? e.clientX : e.touches[0].clientX;
@@ -109,7 +109,7 @@ export class MainCarouselComponent implements OnInit {
     if (!this.isDown) return;
 
     // Prevent default scrolling
-    e instanceof MouseEvent && e.preventDefault();
+    // e instanceof MouseEvent && e.preventDefault();
 
     // Get the correct X position for both mouse and touch events
     const clientX = e instanceof MouseEvent ? e.clientX : e.touches[0].clientX;
@@ -120,6 +120,12 @@ export class MainCarouselComponent implements OnInit {
     // Calculate drag distance
     const x = clientX - carousel.offsetLeft;
     const walk = (x - this.startX) * 2; // Multiply by 2 to make drag more responsive
+
+    // If primarily horizontal movement, prevent default to enable drag
+    if (Math.abs(walk) > 10) {
+      // Add a small threshold
+      e.preventDefault();
+    }
 
     // Scroll the carousel
     carousel.scrollLeft = this.scrollLeft - walk;
