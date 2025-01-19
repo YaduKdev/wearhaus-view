@@ -29,6 +29,7 @@ export class MainCarouselComponent implements OnInit {
   private startX = 0;
   private scrollLeft = 0;
   private isDown = false;
+  private startY: number = 0;
 
   constructor(private ngZone: NgZone) {}
 
@@ -97,7 +98,9 @@ export class MainCarouselComponent implements OnInit {
 
   startDrag(e: MouseEvent | TouchEvent) {
     // Prevent default to stop text selection during drag
-    e.preventDefault();
+    if (e instanceof MouseEvent) {
+      e.preventDefault();
+    }
 
     // Get the correct X position for both mouse and touch events
     const clientX = e instanceof MouseEvent ? e.clientX : e.touches[0].clientX;
@@ -110,6 +113,11 @@ export class MainCarouselComponent implements OnInit {
     this.startX = clientX - carousel.offsetLeft;
     this.scrollLeft = carousel.scrollLeft;
 
+    // Store initial Y position for touch events to detect scroll direction
+    if (e instanceof TouchEvent) {
+      this.startY = e.touches[0].clientY;
+    }
+
     // Add active class for visual feedback
     carousel.classList.add('active');
   }
@@ -120,22 +128,38 @@ export class MainCarouselComponent implements OnInit {
 
     // Prevent default scrolling
     // e instanceof MouseEvent && e.preventDefault();
-
-    // Get the correct X position for both mouse and touch events
-    const clientX = e instanceof MouseEvent ? e.clientX : e.touches[0].clientX;
+    if (e instanceof MouseEvent) {
+      e.preventDefault();
+    }
 
     // Reference to the carousel element
     const carousel = this.carouselRef.nativeElement;
 
+    // For touch events, determine if the movement is more horizontal or vertical
+    if (e instanceof TouchEvent) {
+      const touch = e.touches[0];
+      const deltaX = Math.abs(
+        touch.clientX - (this.startX + carousel.offsetLeft)
+      );
+      const deltaY = Math.abs(touch.clientY - this.startY);
+
+      // If movement is more vertical, exit early to allow scrolling
+      if (deltaY > deltaX) {
+        return;
+      }
+
+      // If movement is significantly horizontal, prevent default
+      if (deltaX > 10) {
+        e.preventDefault();
+      }
+    }
+
+    // Get the correct X position for both mouse and touch events
+    const clientX = e instanceof MouseEvent ? e.clientX : e.touches[0].clientX;
+
     // Calculate drag distance
     const x = clientX - carousel.offsetLeft;
     const walk = (x - this.startX) * 2; // Multiply by 2 to make drag more responsive
-
-    // If primarily horizontal movement, prevent default to enable drag
-    if (Math.abs(walk) > 10) {
-      // Add a small threshold
-      e.preventDefault();
-    }
 
     // Scroll the carousel
     carousel.scrollLeft = this.scrollLeft - walk;
