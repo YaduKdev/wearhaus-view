@@ -19,20 +19,30 @@ export class HomeProductSliderComponent {
   @Input() products: any;
   @ViewChild('sliderRef') sliderRef!: ElementRef;
 
-  currentIndex = 0;
-  private autoScrollInterval: any;
-  private autoScrollDuration = 3000;
-
   // Drag-related properties
   private startX = 0;
   private scrollLeft = 0;
   private isDown = false;
+  private startY: number = 0;
 
   constructor(private router: Router) {}
 
+  ngOnInit() {
+    const slider = this.sliderRef.nativeElement;
+    slider.addEventListener('touchstart', (e: any) => this.startDrag(e), {
+      passive: false,
+    });
+    slider.addEventListener('touchmove', (e: any) => this.drag(e), {
+      passive: false,
+    });
+    slider.addEventListener('touchend', () => this.stopDrag());
+  }
+
   startDrag(e: MouseEvent | TouchEvent) {
     // Prevent default to stop text selection during drag
-    e instanceof MouseEvent && e.preventDefault();
+    if (e instanceof MouseEvent) {
+      e.preventDefault();
+    }
 
     // Get the correct X position for both mouse and touch events
     const clientX = e instanceof MouseEvent ? e.clientX : e.touches[0].clientX;
@@ -45,6 +55,11 @@ export class HomeProductSliderComponent {
     this.startX = clientX - slider.offsetLeft;
     this.scrollLeft = slider.scrollLeft;
 
+    // Store initial Y position for touch events to detect scroll direction
+    if (e instanceof TouchEvent) {
+      this.startY = e.touches[0].clientY;
+    }
+
     // Add active class for visual feedback
     slider.classList.add('active');
   }
@@ -54,13 +69,33 @@ export class HomeProductSliderComponent {
     if (!this.isDown) return;
 
     // Prevent default scrolling
-    e instanceof MouseEvent && e.preventDefault();
-
-    // Get the correct X position for both mouse and touch events
-    const clientX = e instanceof MouseEvent ? e.clientX : e.touches[0].clientX;
+    if (e instanceof MouseEvent) {
+      e.preventDefault();
+    }
 
     // Reference to the slider element
     const slider = this.sliderRef.nativeElement;
+
+    if (e instanceof TouchEvent) {
+      const touch = e.touches[0];
+      const deltaX = Math.abs(
+        touch.clientX - (this.startX + slider.offsetLeft)
+      );
+      const deltaY = Math.abs(touch.clientY - this.startY);
+
+      // If movement is more vertical, exit early to allow scrolling
+      if (deltaY > deltaX) {
+        return;
+      }
+
+      // If movement is significantly horizontal, prevent default
+      if (deltaX > 10) {
+        e.preventDefault();
+      }
+    }
+
+    // Get the correct X position for both mouse and touch events
+    const clientX = e instanceof MouseEvent ? e.clientX : e.touches[0].clientX;
 
     // Calculate drag distance
     const x = clientX - slider.offsetLeft;
