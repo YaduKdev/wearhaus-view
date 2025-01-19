@@ -49,34 +49,10 @@
         width: 100%;
         height: auto;
         object-fit: cover;
-        aspect-ratio: 510 / 669;
+        aspect-ratio: 548 / 669;
       }
     }
   }
-
-  // // Navigation Dots
-  // .carousel-dots {
-  //   display: flex;
-  //   justify-content: center;
-  //   align-items: center;
-  //   margin-top: 1rem;
-
-  //   .dot {
-  //     width: 10px;
-  //     height: 10px;
-  //     border-radius: 50%;
-  //     background-color: #ccc;
-  //     margin: 0 5px;
-  //     cursor: pointer;
-  //     transition: background-color 0.3s ease;
-
-  //     &.active {
-  //       background-color: #333;
-  //       width: 12px;
-  //       height: 12px;
-  //     }
-  //   }
-  // }
 
   // Responsive adjustments
   @media (max-width: 750px) {
