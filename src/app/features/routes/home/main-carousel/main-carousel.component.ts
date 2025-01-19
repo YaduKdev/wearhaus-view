@@ -38,6 +38,16 @@ export class MainCarouselComponent implements OnInit {
     this.ngZone.runOutsideAngular(() => {
       this.startAutoScroll();
     });
+
+    const carousel = this.carouselRef.nativeElement;
+
+    carousel.addEventListener('touchstart', (e: any) => this.startDrag(e), {
+      passive: false,
+    });
+    carousel.addEventListener('touchmove', (e: any) => this.drag(e), {
+      passive: false,
+    });
+    carousel.addEventListener('touchend', () => this.stopDrag());
   }
 
   ngOnDestroy() {
