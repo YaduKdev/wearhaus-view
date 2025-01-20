@@ -33,6 +33,7 @@ import { paymentReducer } from './states/payment/payment.reducer';
 import { HttpRequestInterceptor } from './services/spinner-interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { provideImageKitLoader } from '@angular/common';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -62,6 +63,7 @@ export const appConfig: ApplicationConfig = {
       BrowserAnimationsModule,
       NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' })
     ),
+    provideImageKitLoader('https://ik.imagekit.io/nltlgdoxs/'),
     provideStore({
       auth: authReducer,
       user: userReducer,

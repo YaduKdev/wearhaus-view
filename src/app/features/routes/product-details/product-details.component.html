@@ -3,7 +3,13 @@
   <section class="lg:grid grid-cols-2 lg:gap-10">
     <div class="col-span-1 flex items-center flex-col">
       <div class="preview-image-section relative w-[64%]">
-        <img (click)="handleImagePreview()" [ngSrc]="currentImage" priority />
+        <img
+          (click)="handleImagePreview()"
+          [ngSrc]="currentImage"
+          width="600"
+          height="800"
+          priority
+        />
         <div
           class="absolute bottom-0 left-0 right-0 flex justify-center items-center bg-gray-800 bg-opacity-50 p-2"
         >
@@ -13,7 +19,12 @@
             [class.border-yellow-500]="image === currentImage"
             (click)="setImage(image)"
           >
-            <img [src]="image" class="preview-pics w-12 h-12 object-cover" />
+            <img
+              [ngSrc]="image"
+              width="300"
+              height="250"
+              class="preview-pics w-12 h-12 object-cover"
+            />
           </button>
         </div>
       </div>
@@ -162,8 +173,9 @@
   </div>
   <div class="w-[65%] lg:w-[33%]">
     <img
-      *ngIf="currentImage"
-      [src]="currentImage"
+      [ngSrc]="currentImage"
+      width="720"
+      height="1280"
       class="w-full h-auto object-cover"
     />
     <div class="mt-5 flex justify-center items-center p-2">
@@ -173,7 +185,12 @@
         [class.border-yellow-500]="image === currentImage"
         (click)="setImage(image)"
       >
-        <img [src]="image" class="w-12 h-12 object-cover" />
+        <img
+          [ngSrc]="image"
+          width="300"
+          height="450"
+          class="w-12 h-12 object-cover"
+        />
       </button>
     </div>
   </div>
