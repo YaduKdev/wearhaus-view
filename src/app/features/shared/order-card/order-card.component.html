@@ -4,7 +4,9 @@
       <div class="flex items-center w-full flex-col lg:flex-row">
         <img
           class="w-[5rem] h-[5rem] object-cover object-top mb-3 lg:mb-0"
-          [src]="item.product.imageUrl"
+          [ngSrc]="item.product.imageUrl"
+          width="300"
+          height="500"
           [alt]="item.product.title"
         />
         <div class="ml-5">

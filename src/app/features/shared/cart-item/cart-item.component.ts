@@ -3,10 +3,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { CartService } from '../../../states/cart/cart.service';
+import { NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-cart-item',
-  imports: [MatIconModule, MatButtonModule, CommonModule],
+  imports: [MatIconModule, MatButtonModule, CommonModule, NgOptimizedImage],
   templateUrl: './cart-item.component.html',
   styleUrl: './cart-item.component.scss',
 })

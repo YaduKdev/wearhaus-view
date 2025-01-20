@@ -1,8 +1,9 @@
 import { Component, Input } from '@angular/core';
+import { NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-order-card',
-  imports: [],
+  imports: [NgOptimizedImage],
   templateUrl: './order-card.component.html',
   styleUrl: './order-card.component.scss',
 })

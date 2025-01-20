@@ -5,7 +5,9 @@
     <div class="w-[5rem] h-[5rem] lg:w-[9rem] lg:h-[9rem]">
       <img
         class="w-full h-full object-cover object-top"
-        [src]="cartItem.product.imageUrl"
+        [ngSrc]="cartItem.product.imageUrl"
+        width="300"
+        height="500"
         [alt]="cartItem.product.title"
       />
     </div>

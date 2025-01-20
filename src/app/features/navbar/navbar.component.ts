@@ -26,6 +26,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { FormControl } from '@angular/forms';
 import { ProductService } from '../../states/product/product.service';
+import { NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-navbar',
@@ -39,6 +40,7 @@ import { ProductService } from '../../states/product/product.service';
     MatButtonModule,
     MatBadgeModule,
     ReactiveFormsModule,
+    NgOptimizedImage,
   ],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],

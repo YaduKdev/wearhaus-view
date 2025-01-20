@@ -54,7 +54,13 @@
             class="search-result-item flex items-center gap-4 p-4 rounded-md mb-6"
             (click)="selectResult(result)"
           >
-            <img class="w-[60px]" [src]="result.imageUrl" [alt]="result.name" />
+            <img
+              class="w-[60px]"
+              [ngSrc]="result.imageUrl"
+              width="100"
+              height="210"
+              [alt]="result.name"
+            />
             <p>
               {{ result.name }}
             </p>
@@ -115,7 +121,9 @@
           >
             <img
               class="h-20"
-              [src]="item.product.imageUrl"
+              [ngSrc]="item.product.imageUrl"
+              height="250"
+              width="100"
               [alt]="item.product.title"
             />
             <div class="w-72 flex flex-col items-start">
@@ -245,7 +253,9 @@
             >
               <img
                 class="w-[60px]"
-                [src]="result.imageUrl"
+                [ngSrc]="result.imageUrl"
+                width="100"
+                height="210"
                 [alt]="result.name"
               />
               <p>
@@ -323,7 +333,9 @@
                 >
                   <img
                     class="h-20"
-                    [src]="item.product.imageUrl"
+                    [ngSrc]="item.product.imageUrl"
+                    height="250"
+                    width="100"
                     [alt]="item.product.title"
                   />
                   <div class="w-72 flex flex-col items-start">
