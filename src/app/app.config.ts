@@ -10,11 +10,7 @@ import {
 } from '@angular/router';
 
 import { routes } from './app.routes';
-import {
-  BrowserModule,
-  provideClientHydration,
-  withEventReplay,
-} from '@angular/platform-browser';
+import { BrowserModule, withEventReplay } from '@angular/platform-browser';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { provideStore } from '@ngrx/store';
@@ -44,9 +40,8 @@ export const appConfig: ApplicationConfig = {
       withInMemoryScrolling({
         scrollPositionRestoration: 'top',
         anchorScrolling: 'enabled',
-      })
+      }),
     ),
-    provideClientHydration(withEventReplay()),
     provideAnimationsAsync(),
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
@@ -61,7 +56,7 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(
       BrowserModule,
       BrowserAnimationsModule,
-      NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' })
+      NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' }),
     ),
     provideImageKitLoader('https://ik.imagekit.io/nltlgdoxs/'),
     provideStore({
